@@ -1,0 +1,23 @@
+# ninja log v5
+23	3822	7580985597309185	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	f16ff4d464885a3d
+118	826	7580985567309792	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	71708568d58aa280
+827	1304	7580985572136039	C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3d3v1l1k/obj/arm64-v8a/libswappywrapper.so	324577a892b144ab
+86	3158	7580985590384317	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	7343b3ed2329caf1
+77	3479	7580985593617181	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	34363e75b4e9f739
+95	3243	7580985591278663	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	fb7d209a8a917e9c
+111	3365	7580985592660227	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	c8cfeaf8ce4104f7
+43	3235	7580985591227881	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	e95e4ef0d76c31c5
+52	3406	7580985593143490	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	f6b1ff0872e4d220
+103	3672	7580985595705949	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	cd7c536335524220
+3823	3979	7580985598935965	C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3d3v1l1k/obj/arm64-v8a/libgame.so	434e1e44a55d2302
+250	2396	7581063445305966	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	71708568d58aa280
+2397	5400	7581063474926169	C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3d3v1l1k/obj/arm64-v8a/libswappywrapper.so	324577a892b144ab
+111	11742	7581063536728790	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	e95e4ef0d76c31c5
+189	11786	7581063536115878	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	7343b3ed2329caf1
+225	12366	7581063542425970	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	fb7d209a8a917e9c
+154	12369	7581063542887944	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	c8cfeaf8ce4104f7
+131	13695	7581063558181118	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	f6b1ff0872e4d220
+93	13747	7581063556243688	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	34363e75b4e9f739
+57	13921	7581063559786833	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	f16ff4d464885a3d
+169	14807	7581063569499905	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	cd7c536335524220
+14808	16096	7581063582000740	C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3d3v1l1k/obj/arm64-v8a/libgame.so	434e1e44a55d2302
