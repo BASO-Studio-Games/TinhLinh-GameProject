@@ -1,8 +1,0 @@
-C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/.utmp/RelWithDebInfo/3e576v5f/armeabi-v7a/CMakeFiles/edit_cache.dir
-C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/.utmp/RelWithDebInfo/3e576v5f/armeabi-v7a/CMakeFiles/rebuild_cache.dir
-C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/.utmp/RelWithDebInfo/3e576v5f/armeabi-v7a/GameActivity/CMakeFiles/game.dir
-C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/.utmp/RelWithDebInfo/3e576v5f/armeabi-v7a/GameActivity/CMakeFiles/edit_cache.dir
-C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/.utmp/RelWithDebInfo/3e576v5f/armeabi-v7a/GameActivity/CMakeFiles/rebuild_cache.dir
-C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/.utmp/RelWithDebInfo/3e576v5f/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
-C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/.utmp/RelWithDebInfo/3e576v5f/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
-C:/Users/ttins/OneDrive/Documents/Data_tins/Project/Game/Unity/TinhLinh-GameProject/.utmp/RelWithDebInfo/3e576v5f/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir
