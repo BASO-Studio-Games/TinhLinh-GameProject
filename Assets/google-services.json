@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "729047470192",
+    "firebase_url": "https://tinh-linh-defense-default-rtdb.firebaseio.com",
+    "project_id": "tinh-linh-defense",
+    "storage_bucket": "tinh-linh-defense.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729047470192:android:d9c960d730ad74d53aa4b5",
+        "android_client_info": {
+          "package_name": "com.BASOStudio.TinhLinhDefense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "729047470192-2fha0lo46htb9h69q213b1somadsjtu8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.BASOStudio.TinhLinhDefense",
+            "certificate_hash": "716de81ada9c43af6332daf3422091524d794e4d"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfZL0VFW4I7lrss0oKgYsIy-JwgehKedM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
