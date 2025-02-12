@@ -27,24 +27,24 @@ public class Plot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (UIManager.main.IsHoveringUI()) return;
+        // if (UIManager.main.IsHoveringUI()) return;
 
-        if (towerObj != null)
+        // if (towerObj != null)
+        // {
+        //     turret.OpenUpgradeUI();
+        //     return;
+        // }
+
+        RollItem tinhlinhItem = BuildManager.main.GetSelectedTower();
+
+        if (tinhlinhItem.GetCost() > LevelManager.main.GetCurrency())
         {
-            turret.OpenUpgradeUI();
             return;
         }
 
-        Tower towerToBuild = BuildManager.main.GetSelectedTower();
+        LevelManager.main.SpendCurrency(tinhlinhItem.GetCost());
 
-        if (towerToBuild.cost > LevelManager.main.currency)
-        {
-            return;
-        }
-
-        LevelManager.main.SpendCurrency(towerToBuild.cost);
-
-        towerObj = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
+        towerObj = Instantiate(tinhlinhItem.prefab, transform.position, Quaternion.identity);
         turret = towerObj.GetComponent<Turret>();
     }
 }
