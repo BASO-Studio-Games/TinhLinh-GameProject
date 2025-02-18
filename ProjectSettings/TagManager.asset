@@ -48,5 +48,8 @@ TagManager:
   - name: UI
     uniqueID: 357693039
     locked: 0
+  - name: TinhLinh
+    uniqueID: 1103242143
+    locked: 0
   m_RenderingLayers:
   - Default
