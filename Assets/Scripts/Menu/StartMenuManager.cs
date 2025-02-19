@@ -15,7 +15,6 @@ public class StartMenuManager : MonoBehaviour
     [SerializeField] private GameObject checkingVersionScreen;
     [SerializeField] private GameObject loginScreen;
     [SerializeField] private GameObject loaderScreen;
-    [SerializeField] private int indexHomeMenuScreen;
 
     [Header("Đăng nhập:")]//----------
     [SerializeField] private TMP_Text informationLoginText; 
@@ -154,7 +153,7 @@ public class StartMenuManager : MonoBehaviour
         loaderScreen.SetActive(true);
 
         SceneLoader loader = gameObject.GetComponent<SceneLoader>();
-        loader.LoadScene(indexHomeMenuScreen);
+        loader.LoadScene("Home Menu");
     }
 
     private IEnumerator ReLogin()

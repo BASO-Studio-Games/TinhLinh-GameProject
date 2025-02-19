@@ -3,27 +3,27 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
- 
+
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private GameObject LoaderUI;
     [SerializeField] private Slider progressSlider;
     [SerializeField] private TMP_Text progressText;
- 
-    public void LoadScene(int index)
+    
+    public void LoadScene(string sceneName)
     {
-        StartCoroutine(LoadSceneCoroutine(index));
+        StartCoroutine(LoadSceneCoroutine(sceneName));
     }
- 
-    private IEnumerator LoadSceneCoroutine(int index)
+
+    private IEnumerator LoadSceneCoroutine(string sceneName)
     {
         progressSlider.value = 0;
         LoaderUI.SetActive(true);
- 
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(index);
+
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         asyncOperation.allowSceneActivation = false;
         float progress = 0;
- 
+
         while (!asyncOperation.isDone)
         {
             progress = Mathf.MoveTowards(progress, asyncOperation.progress, Time.deltaTime);

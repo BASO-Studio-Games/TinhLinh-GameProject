@@ -58,7 +58,7 @@ public class HomeMenuManager : MonoBehaviour
 
     private void OnClickAdventuresButton(){
         SceneLoader loader = gameObject.GetComponentInParent<SceneLoader>();
-        loader.LoadScene(2);
+        loader.LoadScene("Map - 1");
     }
 
     private void OnClickMiniGamesButtonButton(){
