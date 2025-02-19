@@ -49,7 +49,7 @@ public class BommerTurret : MonoBehaviour
     {
         if (animator != null)
         {
-            animator.SetTrigger("PrepareToExplode");
+            animator.SetTrigger("isAttack");
         }
 
         float elapsedTime = 0f;

@@ -10,6 +10,7 @@ public class RollManager : MonoBehaviour
 
     private EnemySpawner enemySpawner;
     private bool isUseItem;
+    private bool isTool;
     private bool isUseTool;
     [SerializeField] private Transform defendersContainer;
     private int currentchildCount;
@@ -31,6 +32,28 @@ public class RollManager : MonoBehaviour
     }
 
     private void Update() {
+        if (Input.GetMouseButtonDown(0)) // Kiểm tra nhấp chuột trái
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(mousePosition, Vector2.zero);
+
+            if (hits.Length > 0)
+            {
+                foreach (var hit in hits)
+                {
+                    // Kiểm tra xem GameObject có ItemData không
+                    var itemData = hit.collider.GetComponent<ItemData>();
+                    if (itemData == null) 
+                    {
+                        // Nếu KHÔNG có ItemData thì chọn nó
+                        Debug.Log("Đã chọn GameObject: " + hit.collider.gameObject.name);
+                        break; // Dừng lại sau khi chọn đối tượng hợp lệ
+                    }
+                }
+            }
+        }
+
+
         if (isUseItem && (Input.GetMouseButtonDown(0) || Input.touchCount > 0)){
             if (isUseTool) return;
             

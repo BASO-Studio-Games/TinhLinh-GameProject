@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3096655774907497883}
   - component: {fileID: 2345073384163434470}
   - component: {fileID: 7595645345313921170}
+  - component: {fileID: 294500382929145920}
   m_Layer: 0
   m_Name: CrossbowTinhLinh
   m_TagString: Untagged
@@ -227,3 +228,18 @@ MonoBehaviour:
   OnDead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &294500382929145920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926970352064041709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585e7d18b0f36fb42bbad4e08e46d5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idTinhLinh: 
+  cost: 0
+  isTool: 0

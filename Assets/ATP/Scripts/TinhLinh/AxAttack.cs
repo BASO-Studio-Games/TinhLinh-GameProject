@@ -8,18 +8,18 @@ public class AxAttack : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private Vector2[] squareOffsets = new Vector2[8];
-    [SerializeField] private float squareSize = 0.7f; 
+    [SerializeField] private float squareSize = 0.7f;
     [SerializeField] private int damage = 50;
-    [SerializeField] private float attackInterval = 2f;
+    [SerializeField] private float attackInterval = 1f;
     [SerializeField] private float attackDuration = 1f;
-    [SerializeField] private float delayPerSquare = 0.2f;
 
     [Header("Visuals")]
     [SerializeField] private Animator animator;
 
-    public bool isRotating = false;
-    private Vector2? currentTargetSquare = null;
+    private bool isRotating = false;
+    private bool isAttacking = false;
     private float attackCooldown = 0f;
+    private Collider2D[] enemiesInRange;
 
     private void Update()
     {
@@ -28,27 +28,40 @@ public class AxAttack : MonoBehaviour
             attackCooldown -= Time.deltaTime;
         }
 
-        if (!isRotating && attackCooldown <= 0f && DetectEnemiesInArea())
+        // Kiểm tra kẻ địch có nằm trong ô tấn công không
+        enemiesInRange = Physics2D.OverlapBoxAll(transform.position, new Vector2(squareSize * 3, squareSize * 3), 0f, enemyMask);
+
+        // Debug.Log(enemiesInRange.Length);
+        if (enemiesInRange.Length > 0 && !isAttacking)
         {
-            StartCoroutine(PerformAxAttack());
+            StartCoroutine(ContinuousAttack());
         }
     }
 
-    private bool DetectEnemiesInArea()
+    private IEnumerator ContinuousAttack()
     {
-        foreach (var offset in squareOffsets)
+        isAttacking = true;
+
+        while (enemiesInRange.Length > 0)
         {
-            Vector2 squareCenter = (Vector2)transform.position + offset;
-
-            Collider2D[] hits = Physics2D.OverlapBoxAll(squareCenter, new Vector2(squareSize, squareSize), 0f, enemyMask);
-
-            if (hits.Length > 0)
+            if (attackCooldown <= 0f && !isRotating)
             {
-                return true;
+                yield return StartCoroutine(PerformAxAttack());
+                attackCooldown = attackInterval;
             }
+
+            // Cập nhật danh sách kẻ địch trong vùng tấn công
+            enemiesInRange = Physics2D.OverlapBoxAll(transform.position, new Vector2(squareSize * 2, squareSize * 2), 0f, enemyMask);
+            
+            if (enemiesInRange.Length <= 0)
+            {
+                animator.SetBool("isAttack", false);
+            }
+
+            yield return null;
         }
 
-        return false;
+        isAttacking = false;
     }
 
     private IEnumerator PerformAxAttack()
@@ -57,23 +70,19 @@ public class AxAttack : MonoBehaviour
 
         if (animator != null)
         {
-            animator.SetTrigger("Attack");
+            animator.SetBool("isAttack", true);
         }
 
         foreach (var offset in squareOffsets)
         {
             Vector2 targetPosition = (Vector2)transform.position + offset;
-            currentTargetSquare = targetPosition;
 
             DealDamageAtSquare(targetPosition);
 
             yield return new WaitForSeconds(attackDuration / 7);
         }
 
-        currentTargetSquare = null;
         isRotating = false;
-
-        attackCooldown = attackInterval;
     }
 
     private void DealDamageAtSquare(Vector2 squareCenter)
@@ -82,10 +91,10 @@ public class AxAttack : MonoBehaviour
 
         foreach (Collider2D hit in hits)
         {
-            EnemyMovement health = hit.GetComponent<EnemyMovement>();
-            if (health != null)
+            EnemyMovement enemy = hit.GetComponent<EnemyMovement>();
+            if (enemy != null)
             {
-                health.TakeDamage(damage);
+                enemy.TakeDamage(damage);
             }
         }
     }
@@ -95,17 +104,16 @@ public class AxAttack : MonoBehaviour
         foreach (var offset in squareOffsets)
         {
             Vector2 squareCenter = (Vector2)transform.position + offset;
-
-            if (currentTargetSquare.HasValue && currentTargetSquare.Value == squareCenter)
-            {
-                Gizmos.color = Color.yellow;
-            }
-            else
-            {
-                Gizmos.color = Color.red;
-            }
-
+            Gizmos.color = Color.red;
             Gizmos.DrawWireCube(squareCenter, new Vector3(squareSize, squareSize, 0f));
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Vector2 center = (Vector2)transform.position; 
+        Gizmos.DrawWireCube(center, new Vector3(squareSize * 3, squareSize * 3, 0f));
+    }
+
 }
