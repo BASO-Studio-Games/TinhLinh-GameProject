@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 562323050972266127}
   m_Layer: 8
   m_Name: Bommer
-  m_TagString: Untagged
+  m_TagString: TinhLinh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,24 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255dbd58eefec0541845365a9c3553a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 64
-  squareRange: 0.7
-  damage: 0
-  delayBeforeExplosion: 2
-  explosionEffect: {fileID: 0}
   animator: {fileID: 562323050972266127}
-  squareOffsets:
-  - {x: 0.97, y: 0.12}
-  - {x: -0.97, y: 0.12}
-  - {x: 0, y: 1.07}
-  - {x: 0, y: -0.83}
-  - {x: -0.97, y: 1.07}
-  - {x: -0.97, y: -0.83}
-  - {x: 0.97, y: 1.07}
-  - {x: 0.97, y: -0.83}
-  isPreparingToExplode: 0
+  explosionPrefabs: {fileID: 8204921895411447031, guid: 54dededff6c02bb45be4016d63e903b7, type: 3}
 --- !u!114 &-6787231561787939256
 MonoBehaviour:
   m_ObjectHideFlags: 0

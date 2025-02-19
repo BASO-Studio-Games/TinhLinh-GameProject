@@ -6,7 +6,8 @@ public class EnemyMovement : Actor
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform arrowIndicator;
-    
+    [SerializeField] private Animator animator;
+
     [Header("Tài nguyên nhận được")]
     [SerializeField] private int currencyTakeDamage;
     [SerializeField] private int energyTakeDamage;
@@ -101,13 +102,12 @@ public class EnemyMovement : Actor
         if (arrowIndicator != null && target != null)
         {
             Vector2 direction = (target.position - transform.position).normalized;
-
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            arrowIndicator.rotation = Quaternion.Euler(0, 0, angle);
 
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            arrowIndicator.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
+
 
     public void UpdateSpeed(float newSpeed)
     {
@@ -144,7 +144,6 @@ public class EnemyMovement : Actor
 
     protected override void Die()
     {
-        Debug.Log("die");
 
         LevelManager.main.IncreaseCurrency(currencyDie);
         LevelManager.main.IncreaseEnergy(energyDie);
@@ -155,6 +154,14 @@ public class EnemyMovement : Actor
         EnemySpawner.onEnemyDestroy.Invoke();
         // LevelManager.main.IncreaseCurrency(currencyWorth);
         isDestroyed = true;
+        if (animator != null)
+        {
+            animator.SetBool("isDie", true);
+        }
+    }
+
+    public void DestroyEnemy()
+    {
         Destroy(gameObject, 0.5f);
     }
 }

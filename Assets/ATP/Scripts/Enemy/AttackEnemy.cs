@@ -4,14 +4,17 @@ using System.Collections;
 public class AttackEnemy : MonoBehaviour
 {
     [Header("Attributes")]
-    [SerializeField] private float attackInterval = 2f; 
-    [SerializeField] private float attackDuration = 1f; 
+    [SerializeField] private float attackInterval = 2f;
+    [SerializeField] private float attackDuration = 1f;
     [SerializeField] private int enemyDamage = 1;
+
+    [Header("References")]
+    [SerializeField] private Animator animator; 
 
     private EnemyMovement enemyMovement;
     private TinhLinh targetTinhLinh;
-    private float attackCooldown; 
-    private bool isPerformingAttack = false; 
+    private float attackCooldown;
+    private bool isPerformingAttack = false;
 
     private void Start()
     {
@@ -22,44 +25,57 @@ public class AttackEnemy : MonoBehaviour
             Debug.LogError("EnemyMovement script not found on this GameObject.");
         }
 
-        attackCooldown = 0f; 
+        //attackCooldown = 0f;
     }
 
     private void Update()
     {
-        if (enemyMovement.isAttack && targetTinhLinh != null && !isPerformingAttack)
-        {
-            attackCooldown -= Time.deltaTime;
+        //if (enemyMovement.isAttack && targetTinhLinh != null && !isPerformingAttack)
+        //{
+        //    attackCooldown -= Time.deltaTime;
 
-            if (attackCooldown <= 0f)
-            {
-                StartCoroutine(PerformAttack(targetTinhLinh));
-                attackCooldown = attackInterval; 
-            }
-        }
+        //    if (attackCooldown <= 0f)
+        //    {
+        //        StartCoroutine(PerformAttack(targetTinhLinh));
+        //        attackCooldown = attackInterval;
+        //    }
+        //}
     }
 
-    private IEnumerator PerformAttack(TinhLinh tinhlinh)
+    //private IEnumerator PerformAttack(TinhLinh tinhlinh)
+    //{
+    //    isPerformingAttack = true;
+
+    //    if (animator != null)
+    //    {
+    //        animator.SetBool("isAttack", true);
+    //    }
+
+    //    Debug.Log("Enemy begins attack animation!");
+
+    //    yield return new WaitForSeconds(attackDuration);
+
+    //    if (tinhlinh == null)
+    //    {
+    //        Debug.LogWarning("Target is destroyed or no longer exists.");
+    //        isPerformingAttack = false;
+    //        yield break;
+    //    }
+
+    //    Debug.Log("Enemy Attack!");
+    //    tinhlinh.TakeDamage(enemyDamage);
+
+    //    isPerformingAttack = false;
+    //}
+
+    public void Attack()
     {
-        isPerformingAttack = true;
-
-        Debug.Log("Enemy begins attack animation!");
-
-        yield return new WaitForSeconds(attackDuration);
-
-        if (tinhlinh == null)
+        if (targetTinhLinh != null)
         {
-            Debug.LogWarning("Target is destroyed or no longer exists.");
-            isPerformingAttack = false;
-            yield break; 
+            Debug.Log("Enemy Attack!");
+            targetTinhLinh.TakeDamage(enemyDamage);
         }
-
-        Debug.Log("Enemy Attack!");
-        tinhlinh.TakeDamage(enemyDamage);
-
-        isPerformingAttack = false;
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -69,6 +85,10 @@ public class AttackEnemy : MonoBehaviour
             enemyMovement.isAttack = true;
             enemyMovement.isMoving = false;
             targetTinhLinh = tinhlinh;
+            if (animator != null)
+            {
+                animator.SetBool("isAttack", true);
+            }
         }
     }
 
@@ -80,6 +100,10 @@ public class AttackEnemy : MonoBehaviour
             enemyMovement.isAttack = false;
             enemyMovement.isMoving = true;
             targetTinhLinh = null;
+            if (animator != null)
+            {
+                animator.SetBool("isAttack", false);
+            }
         }
     }
 }
