@@ -266,6 +266,7 @@ MonoBehaviour:
       m_Calls: []
   rb: {fileID: 6859782255254397202}
   arrowIndicator: {fileID: 7452201762888885711}
+  animator: {fileID: 0}
   currencyTakeDamage: 10
   energyTakeDamage: 10
   currencyDie: 20

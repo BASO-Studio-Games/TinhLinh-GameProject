@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1917722923438941787}
   - component: {fileID: -7781307872126758580}
   - component: {fileID: 4551467979847673808}
+  - component: {fileID: 6573302594383749779}
   m_Layer: 8
   m_Name: Torch
   m_TagString: TinhLinh
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -173,3 +174,15 @@ MonoBehaviour:
   idTinhLinh: 
   cost: 0
   isTool: 0
+--- !u!114 &6573302594383749779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763906890701756966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2067aa81ef41514d964bf8277b85d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

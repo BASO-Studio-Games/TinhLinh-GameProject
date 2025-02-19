@@ -1350,7 +1350,7 @@ Camera:
   m_GameObject: {fileID: 512428680}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 182262eca57b88843a316111770fbc03, type: 3}
+  m_Sprite: {fileID: -777535667, guid: 2370f7928a5562647bfabb40edb32692, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3368,7 +3368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f6f055a641dd8840b02d8e6edafec58, type: 3}
+  m_Sprite: {fileID: 1051875656, guid: 2370f7928a5562647bfabb40edb32692, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3581,7 +3581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb891cec7ba3c874c9fe352888fc49fd, type: 3}
+  m_Sprite: {fileID: 517864743, guid: 2370f7928a5562647bfabb40edb32692, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6707,7 +6707,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 8924342950866454463, guid: e19d0994f082bcd468b311eff279c797, type: 3}
-  - {fileID: 8924342950866454463, guid: fb38602a1bc25ca448f0dd133b7bca29, type: 3}
   parentObject: {fileID: 2101237008}
   totalWaves: 2
   baseEnemies: 3

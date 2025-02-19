@@ -45,11 +45,8 @@ GameObject:
   - component: {fileID: 3096655774907497883}
   - component: {fileID: 2345073384163434470}
   - component: {fileID: 7595645345313921170}
-<<<<<<< HEAD
   - component: {fileID: 294500382929145920}
-=======
-  - component: {fileID: 2884339730435422171}
->>>>>>> 9f471795e00978b1f0e544d6ad69e1de1f0801f6
+  - component: {fileID: 273718677966390556}
   m_Layer: 0
   m_Name: CrossbowTinhLinh
   m_TagString: TinhLinh
@@ -67,7 +64,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.17, y: 3.47, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7938907826620784931}
@@ -232,21 +229,14 @@ MonoBehaviour:
   OnDead:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
 --- !u!114 &294500382929145920
 MonoBehaviour:
-=======
---- !u!95 &2884339730435422171
-Animator:
-  serializedVersion: 7
->>>>>>> 9f471795e00978b1f0e544d6ad69e1de1f0801f6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6926970352064041709}
   m_Enabled: 1
-<<<<<<< HEAD
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 585e7d18b0f36fb42bbad4e08e46d5a0, type: 3}
   m_Name: 
@@ -254,18 +244,15 @@ Animator:
   idTinhLinh: 
   cost: 0
   isTool: 0
-=======
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 279279003f05ac146a5dd66e2faf8cbe, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
->>>>>>> 9f471795e00978b1f0e544d6ad69e1de1f0801f6
+--- !u!114 &273718677966390556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926970352064041709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2067aa81ef41514d964bf8277b85d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3555870453894161285}
   - component: {fileID: 3276797169311066601}
   - component: {fileID: 5225359013334901759}
+  - component: {fileID: 451333904582255054}
   m_Layer: 8
   m_Name: Attack
   m_TagString: TinhLinh
@@ -33,8 +34,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -87,9 +88,9 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 35.5, y: 35.5}
+  m_Size: {x: 45, y: 35.5}
   m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
+  m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
@@ -154,8 +155,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.04752904, y: 0.8554959}
-  m_Size: {x: 8.901776, y: 22.874775}
+  m_Offset: {x: 1.4326245, y: -1.008402}
+  m_Size: {x: 11.862086, y: 11.910672}
   m_Direction: 0
 --- !u!114 &6176575487736321396
 MonoBehaviour:
@@ -246,3 +247,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &451333904582255054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763906890701756966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2067aa81ef41514d964bf8277b85d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

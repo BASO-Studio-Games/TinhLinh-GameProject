@@ -13,7 +13,7 @@ public class Tile : MonoBehaviour
         idTinhLinh = "";
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         // Kiểm tra nếu có Tool đang được chọn
         Tool selectedTool = BuildManager.main.GetSelectedTool();
@@ -38,7 +38,7 @@ public class Tile : MonoBehaviour
 
         LevelManager.main.SpendCurrency(tinhlinhItem.GetCost());
 
-        towerObj = Instantiate(tinhlinhItem.prefab, transform.position, Quaternion.identity, defendersContainer);
+        towerObj = Instantiate(tinhlinhItem.prefab, transform.position + new Vector3(0, 0.3f, 0), Quaternion.identity, defendersContainer);
         idTinhLinh = tinhlinhItem.GetIdTinhLinh();
         turret = towerObj.GetComponent<Turret>();
 
@@ -68,7 +68,7 @@ public class Tile : MonoBehaviour
     public void SetTinhLinh(GameObject tinhLinhObj, string tinhLinhID, Turret tinhLinhTurret)
     {
         towerObj = tinhLinhObj;
-        towerObj.transform.position = transform.position;
+        towerObj.transform.position = transform.position + new Vector3(0, 0.3f, 0);
         towerObj.transform.SetParent(defendersContainer);
 
         idTinhLinh = tinhLinhID;
