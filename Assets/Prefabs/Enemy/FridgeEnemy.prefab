@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: -2062325626034649168}
   m_Layer: 6
   m_Name: FridgeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,6 +266,10 @@ MonoBehaviour:
       m_Calls: []
   rb: {fileID: 6859782255254397202}
   arrowIndicator: {fileID: 4392462887339027807}
+  currencyTakeDamage: 0
+  energyTakeDamage: 0
+  currencyDie: 0
+  energyDie: 0
   moveSpeed: 2
   currencyWorth: 50
   isStunned: 0
