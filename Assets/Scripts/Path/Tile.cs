@@ -38,7 +38,7 @@ public class Tile : MonoBehaviour
 
         LevelManager.main.SpendCurrency(tinhlinhItem.GetCost());
 
-        towerObj = Instantiate(tinhlinhItem.prefab, transform.position + new Vector3(0, 0.3f, 0), Quaternion.identity, defendersContainer);
+        towerObj = Instantiate(tinhlinhItem.prefab, transform.position + new Vector3(0, 0, 0), Quaternion.identity, defendersContainer);
         idTinhLinh = tinhlinhItem.GetIdTinhLinh();
         turret = towerObj.GetComponent<Turret>();
 

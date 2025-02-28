@@ -144,21 +144,29 @@ public class EnemyMovement : Actor
 
     protected override void Die()
     {
-
         LevelManager.main.IncreaseCurrency(currencyDie);
         LevelManager.main.IncreaseEnergy(energyDie);
 
-        m_rb.linearVelocity = Vector3.zero;
-
-        OnDead?.Invoke();
-        EnemySpawner.onEnemyDestroy.Invoke();
-        // LevelManager.main.IncreaseCurrency(currencyWorth);
         isDestroyed = true;
+        isMoving = false; 
+        rb.linearVelocity = Vector2.zero;
+        rb.isKinematic = true; 
+
         if (animator != null)
         {
             animator.SetBool("isDie", true);
         }
+
+        GetComponent<EnemyMovement>().enabled = false; 
+
+        OnDead?.Invoke();
+        EnemySpawner.onEnemyDestroy.Invoke();
+
+
+        float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        Destroy(gameObject, animationLength);
     }
+
 
     public void DestroyEnemy()
     {

@@ -1,24 +1,17 @@
-using System.Collections;
 using UnityEngine;
 
 public class StunTurret : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private int damage = 1000;
-    [SerializeField] private LayerMask enemyMask;
-    [SerializeField] private float damageDelay = 0.5f;
-    [SerializeField] private float destroyDelay = 0.5f;
-
-    [Header("Activation Settings")]
-    [SerializeField] private float activeDuration = 2f;
-    [SerializeField] private float inactiveDuration = 3f;
+    [SerializeField] private GameObject explosionEffectPrefab;
 
     [Header("Visuals")]
     [SerializeField] private Animator animator;
 
-    private float timer = 0f;
-    private bool isActive = true;
     private Collider2D turretCollider;
+
+    private Collider2D currentEnemyCollider;
 
     private void Awake()
     {
@@ -27,66 +20,51 @@ public class StunTurret : MonoBehaviour
         {
             Debug.LogError("StunTurret: Collider2D not found!");
         }
-        SetActiveState(true); // Start as inactive
-    }
-
-    private void Update()
-    {
-        Debug.Log(isActive);
-        timer += Time.deltaTime;
-
-        if (isActive && timer >= activeDuration)
+        else
         {
-            SetActiveState(false);
-            timer = 0f; // Reset timer
-        }
-        else if (!isActive && timer >= inactiveDuration)
-        {
-            SetActiveState(true);
-            timer = 0f; // Reset timer
-        }
-    }
-
-    private void SetActiveState(bool active)
-    {
-        isActive = active;
-
-        if (turretCollider != null)
-        {
-            turretCollider.enabled = active;
-        }
-
-        if (animator != null)
-        {
-            animator.SetBool("IsActive", active);
+            turretCollider.isTrigger = true;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isActive && ((1 << collision.gameObject.layer) & enemyMask) != 0)
+        if (collision.CompareTag("Enemy"))
         {
-            if (animator != null)
-            {
-                animator.SetTrigger("Explode");
-            }
-            StartCoroutine(DelayDamage(collision.gameObject));
+            animator.SetBool("isAttack", true);
+
+            currentEnemyCollider = collision;
+
+            CreateExplosionEffect(collision.transform.position);
         }
     }
 
-    private IEnumerator DelayDamage(GameObject enemy)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        yield return new WaitForSeconds(damageDelay);
-
-        EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
-        if (enemyMovement != null)
+        if (collision == currentEnemyCollider)
         {
-            Debug.Log($"StunTurret: Dealing {damage} damage to {enemyMovement.name}");
-            enemyMovement.TakeDamage(damage);
+            currentEnemyCollider = null;
         }
+    }
 
-        yield return new WaitForSeconds(destroyDelay);
+    public void Attack()
+    {
+        if (currentEnemyCollider != null)
+        {
+            EnemyMovement enemy = currentEnemyCollider.GetComponent<EnemyMovement>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+            Destroy(gameObject, 1f);
+        }
+    }
 
-        Destroy(gameObject);
+    public void CreateExplosionEffect(Vector2 position)
+    {
+        if (explosionEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(explosionEffectPrefab, position, Quaternion.identity);
+            Destroy(effect, 1.5f);
+        }
     }
 }

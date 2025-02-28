@@ -6,6 +6,7 @@ public class CrossbowTinhLinh : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
+    [SerializeField] private Animator animator;
 
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 5f;
@@ -28,17 +29,11 @@ public class CrossbowTinhLinh : MonoBehaviour
         }
         else
         {
-            timeUntilFire += Time.deltaTime;
-
-            if (timeUntilFire >= 1f / bps)
-            {
-                Shoot();
-                timeUntilFire = 0f;
-            }
+            animator.SetBool("isAttack", true);
         }
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         Debug.Log("shoot");
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);

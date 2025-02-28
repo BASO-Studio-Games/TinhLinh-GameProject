@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class AttackTinhLinh : MonoBehaviour
 {
@@ -21,12 +20,13 @@ public class AttackTinhLinh : MonoBehaviour
     [SerializeField] private Animator animator;
 
     private bool isAttacking = false;
-    private float lastAttackTime = 0f;
     private List<Collider2D> enemiesInRange = new List<Collider2D>();
+
+    private Collider2D hitTarget;
 
     private void Update()
     {
-        if (enemiesInRange.Count > 0 && !isAttacking && Time.time >= lastAttackTime + attackCooldown)
+        if (enemiesInRange.Count > 0 && !isAttacking)
         {
             CheckForPlayersInGridAndAttack();
         }
@@ -43,8 +43,8 @@ public class AttackTinhLinh : MonoBehaviour
 
             if (hit != null && enemiesInRange.Contains(hit))
             {
+                hitTarget = hit; 
                 hasTarget = true;
-                StartCoroutine(PerformAttack(hit));
                 break;
             }
         }
@@ -52,25 +52,19 @@ public class AttackTinhLinh : MonoBehaviour
         animator.SetBool("isAttack", hasTarget);
     }
 
-    private IEnumerator PerformAttack(Collider2D target)
+
+    public void Attack()
     {
         isAttacking = true;
-        lastAttackTime = Time.time;
 
-        Debug.Log("Tinh Linh Attack");
-
-        yield return new WaitForSeconds(attackDuration);
-
-        if (target != null)
+        if (hitTarget != null)
         {
-            EnemyMovement playerHealth = target.GetComponent<EnemyMovement>();
+            EnemyMovement playerHealth = hitTarget.GetComponent<EnemyMovement>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
             }
         }
-
-        yield return new WaitForSeconds(attackCooldown - attackDuration);
         isAttacking = false;
     }
 
@@ -103,7 +97,7 @@ public class AttackTinhLinh : MonoBehaviour
 
     public void AttackEffects()
     {
-        if(GetLastHitPosition() == Vector2.negativeInfinity) return;
+        if (GetLastHitPosition() == Vector2.negativeInfinity) return;
         GameObject blood = Instantiate(bloodPrefabs, GetLastHitPosition(), Quaternion.identity);
         Destroy(blood, 1f);
     }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7938907826620784931}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FiringPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2734503153424557624}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0029999015, y: 0.3900003, z: 0}
+  m_LocalPosition: {x: 0.469, y: 0.029, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,14 +40,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5209999409625869127}
-  - component: {fileID: 8389633326145498947}
   - component: {fileID: 4409853014910961791}
   - component: {fileID: 3096655774907497883}
   - component: {fileID: 2345073384163434470}
   - component: {fileID: 7595645345313921170}
   - component: {fileID: 294500382929145920}
   - component: {fileID: 273718677966390556}
-  m_Layer: 0
+  - component: {fileID: 7846758406652512609}
+  - component: {fileID: 5949865597971384869}
+  m_Layer: 8
   m_Name: CrossbowTinhLinh
   m_TagString: TinhLinh
   m_Icon: {fileID: 0}
@@ -63,49 +64,13 @@ Transform:
   m_GameObject: {fileID: 6926970352064041709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.17, y: 3.47, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7938907826620784931}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &8389633326145498947
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6926970352064041709}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 1.1699998
 --- !u!50 &4409853014910961791
 Rigidbody2D:
   serializedVersion: 5
@@ -205,7 +170,8 @@ MonoBehaviour:
     m_Bits: 64
   bulletPrefab: {fileID: 5865362418433763140, guid: 5c2b41239c67db24190b7e88814fbfe8, type: 3}
   firingPoint: {fileID: 7938907826620784931}
-  targetingRange: 3.49
+  animator: {fileID: 7846758406652512609}
+  targetingRange: 8
   bps: 1
 --- !u!114 &7595645345313921170
 MonoBehaviour:
@@ -256,3 +222,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2067aa81ef41514d964bf8277b85d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7846758406652512609
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926970352064041709}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 279279003f05ac146a5dd66e2faf8cbe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &5949865597971384869
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926970352064041709}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.06690221, y: -0.34338626}
+  m_Size: {x: 1.6596847, y: 0.72600716}
+  m_Direction: 1

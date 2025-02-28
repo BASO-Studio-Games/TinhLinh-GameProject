@@ -155,15 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f243b364940c0b443b8240156bd9fced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1000
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 64
-  damageDelay: 0.5
-  destroyDelay: 0.5
-  activeDuration: 2
-  inactiveDuration: 3
-  animator: {fileID: 0}
+  damage: 100
+  explosionEffectPrefab: {fileID: 2526599917821403406, guid: d9aefddbe95fd994a9b5475a898476f0, type: 3}
+  animator: {fileID: 3363715623180503768}
 --- !u!95 &3363715623180503768
 Animator:
   serializedVersion: 7
@@ -216,12 +210,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.93000555, y: 0.46176907}
-  m_Size: {x: 20.510017, y: 15.749827}
+  m_Offset: {x: 0.4249114, y: -0.043312963}
+  m_Size: {x: 17.479565, y: 12.3153305}
   m_Direction: 1
 --- !u!114 &602306799104024653
 MonoBehaviour:

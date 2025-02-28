@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private GameObject explosionEffectPrefab;
 
     [Header("Attributes")]
     [SerializeField] private float bulletSpeed = 5f;
@@ -17,16 +18,33 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = direction * bulletSpeed; 
+        rb.linearVelocity = direction * bulletSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        EnemyMovement enemy = collision.gameObject.GetComponent<EnemyMovement>();
-        if (enemy != null)
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            enemy.TakeDamage(bulletDamage);
+            EnemyMovement enemy = collision.gameObject.GetComponent<EnemyMovement>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(bulletDamage);
+                CreateExplosionEffect(collision.transform.position);
+            }
+            Destroy(gameObject); 
         }
-        Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject, 4.5f); 
+        }
+    }
+
+    private void CreateExplosionEffect(Vector2 position)
+    {
+        if (explosionEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(explosionEffectPrefab, position, Quaternion.identity);
+            Destroy(effect, 1.5f);
+        }
     }
 }
