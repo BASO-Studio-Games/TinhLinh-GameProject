@@ -1,9 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TinhLinh : Actor
 {
     private PlayerStats m_playerStats;
+    [SerializeField] protected float maxHp;
+    [SerializeField] private Image hpBar;
+    [SerializeField] private GameObject hpBarObject;
 
     private bool isDestroyed = false;
 
@@ -20,7 +24,10 @@ public class TinhLinh : Actor
 
         m_playerStats = (PlayerStats)statsData;
         m_playerStats.Load();
-        CurHp = m_playerStats.hp;
+        maxHp = m_playerStats.hp;
+        CurHp = maxHp;
+        UpdateHpBar();
+        SetHpBarVisible(false);
     }
 
     private void Start()
@@ -31,6 +38,8 @@ public class TinhLinh : Actor
     public override void TakeDamage(float damage)
     {
         CurHp -= damage;
+        CurHp = Mathf.Max(CurHp, 0);
+        UpdateHpBar();
         if (CurHp <= 0)
         {
             CurHp = 0;
@@ -50,6 +59,21 @@ public class TinhLinh : Actor
         EnemySpawner.onEnemyDestroy.Invoke();
         isDestroyed = true;
         Destroy(gameObject, 1.5f);
+    }
+    protected void UpdateHpBar()
+    {
+        if (hpBar != null)
+        {
+            hpBar.fillAmount = CurHp / maxHp;
+        }
+    }
+
+    public void SetHpBarVisible(bool isVisible)
+    {
+        if (hpBar != null)
+        {
+            hpBarObject.SetActive(isVisible);
+        }
     }
 
 }

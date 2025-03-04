@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyMovement : Actor
 {
@@ -14,10 +15,12 @@ public class EnemyMovement : Actor
     [SerializeField] private int currencyDie;
     [SerializeField] private int energyDie;
 
-
     [Header("Attributes")]
     [SerializeField] public float moveSpeed;
     [SerializeField] private int currencyWorth = 50;
+    [SerializeField] protected float maxHp;
+    [SerializeField] private Image hpBar;
+    [SerializeField] private GameObject hpBarObject;
 
     [SerializeField] private bool isStunned = false;
     private Transform target;
@@ -41,7 +44,10 @@ public class EnemyMovement : Actor
 
         m_enemyStats = (EnemyStats)statsData;
         m_enemyStats.Load();
-        CurHp = m_enemyStats.hp;
+        maxHp = m_enemyStats.hp;
+        CurHp = maxHp;
+        UpdateHpBar();
+        SetHpBarVisible(false);
         moveSpeed = m_enemyStats.speedEnemy;
     }
 
@@ -129,7 +135,8 @@ public class EnemyMovement : Actor
     public override void TakeDamage(float damage)
     {
         CurHp -= damage;
-
+        CurHp = MathF.Max(CurHp, 0);
+        UpdateHpBar();
         LevelManager.main.IncreaseCurrency(currencyTakeDamage);
         LevelManager.main.IncreaseEnergy(energyTakeDamage);
 
@@ -167,9 +174,23 @@ public class EnemyMovement : Actor
         Destroy(gameObject, animationLength);
     }
 
-
+    protected void UpdateHpBar()
+    {
+        if (hpBar != null)
+        {
+            hpBar.fillAmount = CurHp / maxHp;
+        }
+    }
     public void DestroyEnemy()
     {
         Destroy(gameObject, 0.5f);
+    }
+
+    public void SetHpBarVisible(bool isVisible)
+    {
+        if (hpBar != null)
+        {
+            hpBarObject.SetActive(isVisible);
+        }
     }
 }

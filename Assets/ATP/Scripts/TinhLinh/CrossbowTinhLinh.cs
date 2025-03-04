@@ -35,7 +35,6 @@ public class CrossbowTinhLinh : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log("shoot");
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Debug.Log(bulletObj.name);
 

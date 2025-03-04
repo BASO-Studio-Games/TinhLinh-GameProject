@@ -10,6 +10,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private int bulletDamage = 1;
     [SerializeField] private Vector2 direction;
+    [SerializeField] private Animator animator;
+
+    private bool isEmpowered = false; 
 
     public void SetDirection(Vector2 newDirection)
     {
@@ -31,11 +34,11 @@ public class Bullet : MonoBehaviour
                 enemy.TakeDamage(bulletDamage);
                 CreateExplosionEffect(collision.transform.position);
             }
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
         else
         {
-            Destroy(gameObject, 4.5f); 
+            Destroy(gameObject, 4.5f);
         }
     }
 
@@ -45,6 +48,27 @@ public class Bullet : MonoBehaviour
         {
             GameObject effect = Instantiate(explosionEffectPrefab, position, Quaternion.identity);
             Destroy(effect, 1.5f);
+        }
+    }
+
+    public void ChangeAnimatorState()
+    {
+        if (!isEmpowered) 
+        {
+            isEmpowered = true;
+
+            if (animator != null)
+            {
+                animator.SetBool("isChange", true);
+                Debug.Log("Bullet has been empowered!");
+            }
+            else
+            {
+                Debug.LogWarning("Bullet: Animator is missing!");
+            }
+
+            bulletDamage *= 2;  
+            bulletSpeed *= 1.5f; 
         }
     }
 }

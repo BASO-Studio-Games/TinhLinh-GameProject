@@ -135,6 +135,7 @@ MonoBehaviour:
   bulletSpeed: 5
   bulletDamage: 0
   direction: {x: 1, y: 0}
+  animator: {fileID: 2830072349398701081}
 --- !u!70 &3530106726298521880
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
