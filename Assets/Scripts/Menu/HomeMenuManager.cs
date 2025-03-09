@@ -12,6 +12,7 @@ using UnityEngine.Networking;
 public class HomeMenuManager : MonoBehaviour
 {    
     [Header("Nút bấm:")]//----------
+    [SerializeField] private Button backHomeButton;
     [SerializeField] private Button informationButton;
     [SerializeField] private Button adventuresButton;
     [SerializeField] private Button miniGamesButton;
@@ -19,6 +20,10 @@ public class HomeMenuManager : MonoBehaviour
     [SerializeField] private Button shopButton;
     [SerializeField] private Button settingButton;
     [SerializeField] private Button commentButton;
+
+    [Header("Màn hình:")]//----------
+    [SerializeField] private GameObject shopScreen;
+    [SerializeField] private GameObject bookScreen;
 
     [Header("Thông tin:")]//----------
     private User user;
@@ -34,6 +39,7 @@ public class HomeMenuManager : MonoBehaviour
     void Start()
     {
         // Cài đặt nút bấm
+        backHomeButton.onClick.AddListener(OnClickBackHomeButton);
         informationButton.onClick.AddListener(OnClickInformationButton);
         adventuresButton.onClick.AddListener(OnClickAdventuresButton);
         miniGamesButton.onClick.AddListener(OnClickMiniGamesButtonButton);
@@ -41,6 +47,8 @@ public class HomeMenuManager : MonoBehaviour
         shopButton.onClick.AddListener(OnClickShopButton);
         settingButton.onClick.AddListener(OnClickSettingButton);
         commentButton.onClick.AddListener(OnClickCommentButton);
+
+        shopScreen.SetActive(false);
 
         // Firebase
         InitFirebase();
@@ -50,6 +58,13 @@ public class HomeMenuManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void OnClickBackHomeButton(){
+        string userID = PlayerPrefs.GetString("ID_User", "DefaultUserID");
+        GetAllDataUser(userID);
+
+        shopScreen.SetActive(false);
     }
 
     private void OnClickInformationButton(){
@@ -70,6 +85,7 @@ public class HomeMenuManager : MonoBehaviour
     }
 
     private void OnClickShopButton(){
+        shopScreen.SetActive(true);
         debugText.text = "Console Log: Cửa hàng.";
     }
 

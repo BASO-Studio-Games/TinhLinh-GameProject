@@ -1519,7 +1519,6 @@ MonoBehaviour:
   checkingVersionScreen: {fileID: 1836080012}
   loginScreen: {fileID: 1249816889}
   loaderScreen: {fileID: 1135009425}
-  indexHomeMenuScreen: 1
   informationLoginText: {fileID: 1192072834}
   loginButton: {fileID: 597562504}
   intervalLogin: 0.5
@@ -1528,6 +1527,7 @@ MonoBehaviour:
   durationCheckVersion: 3
   intervalLoading: 0.25
   diamondUser: 500
+  rollNumberUser: 10
 --- !u!1 &1836080012
 GameObject:
   m_ObjectHideFlags: 0

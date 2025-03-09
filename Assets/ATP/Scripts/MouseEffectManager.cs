@@ -28,7 +28,7 @@ public class MouseEffectManager : MonoBehaviour
     {
         GameObject effect = Instantiate(clickEffectPrefab, transform);
         effect.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
-        Debug.Log(effect);
+        // Debug.Log(effect);
         Destroy(effect, 0.5f);
     }
 }
