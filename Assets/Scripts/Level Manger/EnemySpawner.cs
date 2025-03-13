@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
     private float eps;
-    private bool isSpawning = false;
+    public bool isSpawning = false;
 
     [HideInInspector] public int totalEnemies = 0;   // Tổng số quái trong tất cả các wave
     [HideInInspector] public  int[] enemiesUpToWave; // Số quái tích lũy từng wave
@@ -65,7 +65,7 @@ public class EnemySpawner : MonoBehaviour
             timeSinceLastSpawn = 0f;
         }
 
-        if (enemiesAlive == 0 && enemiesLeftToSpawn == 0)
+        if (enemiesAlive <= 0 && enemiesLeftToSpawn == 0)
         {
             EndWave();
         }

@@ -262,7 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackInterval: 2
   attackDuration: 1
-  enemyDamage: 2
+  enemyDamage: 4
   animator: {fileID: 6150241396086986513}
 --- !u!95 &6150241396086986513
 Animator:

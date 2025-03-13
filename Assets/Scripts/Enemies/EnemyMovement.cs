@@ -21,6 +21,8 @@ public class EnemyMovement : Actor
     [SerializeField] protected float maxHp;
     [SerializeField] private Image hpBar;
     [SerializeField] private GameObject hpBarObject;
+    private bool hasTriggeredDestroy = false;
+
 
     [SerializeField] private bool isStunned = false;
     private Transform target;
@@ -151,28 +153,31 @@ public class EnemyMovement : Actor
 
     protected override void Die()
     {
+        if (hasTriggeredDestroy) return; 
+
+        hasTriggeredDestroy = true; 
+
         LevelManager.main.IncreaseCurrency(currencyDie);
         LevelManager.main.IncreaseEnergy(energyDie);
 
         isDestroyed = true;
-        isMoving = false; 
+        isMoving = false;
         rb.linearVelocity = Vector2.zero;
-        rb.isKinematic = true; 
 
         if (animator != null)
         {
             animator.SetBool("isDie", true);
         }
 
-        GetComponent<EnemyMovement>().enabled = false; 
+        GetComponent<EnemyMovement>().enabled = false;
 
         OnDead?.Invoke();
         EnemySpawner.onEnemyDestroy.Invoke();
 
-
         float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
         Destroy(gameObject, animationLength);
     }
+
 
     protected void UpdateHpBar()
     {

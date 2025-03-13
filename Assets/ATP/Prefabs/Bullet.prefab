@@ -133,7 +133,7 @@ MonoBehaviour:
   rb: {fileID: 3833926726397893613}
   explosionEffectPrefab: {fileID: 2526599917821403406, guid: d9aefddbe95fd994a9b5475a898476f0, type: 3}
   bulletSpeed: 5
-  bulletDamage: 0
+  bulletDamage: 5
   direction: {x: 1, y: 0}
   animator: {fileID: 2830072349398701081}
 --- !u!70 &3530106726298521880

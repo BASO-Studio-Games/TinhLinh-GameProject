@@ -55,8 +55,6 @@ public class TinhLinh : Actor
         Debug.Log("die");
         m_rb.linearVelocity = Vector3.zero;
 
-        OnDead?.Invoke();
-        EnemySpawner.onEnemyDestroy.Invoke();
         isDestroyed = true;
         Destroy(gameObject, 1.5f);
     }
