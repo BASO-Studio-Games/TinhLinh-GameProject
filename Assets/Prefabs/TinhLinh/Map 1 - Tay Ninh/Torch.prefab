@@ -81,8 +81,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1103242143
-  m_SortingLayer: 3
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 5638c17ebdc3a6a40acd6ada659d9443, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -161,7 +161,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idTinhLinh: Torch
   cost: 50
+  information: 
   isTool: 0
+  sprite: {fileID: 21300000, guid: 5638c17ebdc3a6a40acd6ada659d9443, type: 3}
+  levelSprite: {fileID: 21300000, guid: adb5d66a57c035940a397187c11a1fe0, type: 3}
+  classSprite: {fileID: 21300000, guid: 98c8458f1b482ac47b3d32bc2a0bb748, type: 3}
 --- !u!114 &6573302594383749779
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class LevelHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currencyText.text = "Gold: " + LevelManager.main.GetCurrency();
+        currencyText.text = LevelManager.main.GetCurrency().ToString();
     
         energyCircle.fillAmount = (float)LevelManager.main.GetEnergy() / (float)LevelManager.main.GetMaxEnergy();
         energyText.text = $"{LevelManager.main.GetEnergy()}\n[{LevelManager.main.GetMaxEnergy()}]";

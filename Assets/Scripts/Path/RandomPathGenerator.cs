@@ -44,6 +44,8 @@ public class RandomPathGenerator : MonoBehaviour
     [Header("Bắt đầu trò chơi:")]//----------
     [SerializeField] private GameObject UIScreen;
 
+    [SerializeField] public bool isTutorial;
+
     private void Start()
     {
         // Thiết lập đường đi
@@ -52,10 +54,14 @@ public class RandomPathGenerator : MonoBehaviour
 
         UIScreen.SetActive(false);
 
-        rollButton.onClick.AddListener(ResetPath);
+        if (isTutorial)
+            rollButton.gameObject.SetActive(false);
+        else
+            rollButton.onClick.AddListener(ResetPath);
         startButton.onClick.AddListener(StartGame);
 
         ResetPath();
+
     }
 
     /// <summary>
@@ -90,6 +96,18 @@ public class RandomPathGenerator : MonoBehaviour
 
         path.RemoveAt(path.Count - 1); // Backtrack
         return false;
+    }
+
+    public void GenerateStraightPath()
+    {
+        path.Clear(); // Xóa đường cũ nếu có
+
+        int step = (start.y < end.y) ? 1 : -1; // Xác định hướng đi
+
+        for (int y = start.y; y != end.y + step; y += step)
+        {
+            path.Add(new Vector2Int(start.x, y));
+        }
     }
 
     // Lấy danh sách ô hàng xóm ngẫu nhiên
@@ -347,7 +365,10 @@ public class RandomPathGenerator : MonoBehaviour
             path.Clear();
 
             // Tạo lại đường đi
-            GeneratePath(start);
+            if (isTutorial)
+                GenerateStraightPath();
+            else
+                GeneratePath(start);
 
         } while (path.Count > maxSteps); // Lặp lại nếu số bước vượt quá maxSteps
 

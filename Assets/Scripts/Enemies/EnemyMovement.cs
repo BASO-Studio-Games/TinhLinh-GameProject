@@ -63,6 +63,21 @@ public class EnemyMovement : Actor
         {
             Debug.Log("Arrow Indicator is not assigned!");
         }
+
+        if (hpBarObject != null)
+        {
+            Canvas hpBarCanvas = hpBarObject.GetComponent<Canvas>();
+            if (hpBarCanvas != null)
+            {
+                hpBarCanvas.overrideSorting = true;
+                hpBarCanvas.sortingLayerName = "Default";
+                hpBarCanvas.sortingOrder = 3;
+            }
+            else
+            {
+                Debug.LogError("hpBarCanvas is null");
+            }
+        }
     }
 
     private void Update()
@@ -93,7 +108,7 @@ public class EnemyMovement : Actor
 
             if (pathIndex == LevelManager.main.path.Length)
             {
-                Debug.LogWarning("Thua rồi.......................");
+                LevelManager.main.UpdateStatusLevel(false);
                 EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 return;

@@ -1,4 +1,6 @@
 using System;
+using TMPro;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -15,6 +17,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float maxEnergyGrowthFactor = 1.2f;
     private int currentEnergy;
     [HideInInspector] public bool isMaxEnergy;
+
+    // Thông báo trạng thái level
+    [HideInInspector] public bool statusLevel = false;
+    [SerializeField] private GameObject winOrLoseMenu;
+    [SerializeField] private TMP_Text winOrLoseText;
+    [SerializeField] private GameObject[] nextButtonAndImage;
 
     private EnemySpawner enemySpawner;
 
@@ -123,5 +131,27 @@ public class LevelManager : MonoBehaviour
         
         // Thêm phần tử mới vào cuối mảng
         path[path.Length - 1] = newTransform;
+    }
+
+    // Trạng thái level-----
+    public void UpdateStatusLevel(bool isWin)
+    {
+        if (!statusLevel)
+        {
+            if (isWin){
+                statusLevel = true;
+                winOrLoseMenu.SetActive(true);
+                winOrLoseText.text = "Thắng rồi!";
+                nextButtonAndImage[0].SetActive(true);
+                nextButtonAndImage[1].SetActive(true);
+            }
+            else{
+                statusLevel = true;
+                winOrLoseMenu.SetActive(true);
+                winOrLoseText.text = "Thua rồi!";
+                nextButtonAndImage[0].SetActive(false);
+                nextButtonAndImage[1].SetActive(false);
+            }
+        }
     }
 }

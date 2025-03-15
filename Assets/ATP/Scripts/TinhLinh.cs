@@ -33,6 +33,21 @@ public class TinhLinh : Actor
     private void Start()
     {
         Init();
+
+        if (hpBarObject != null)
+        {
+            Canvas hpBarCanvas = hpBarObject.GetComponent<Canvas>();
+            if (hpBarCanvas != null)
+            {
+                hpBarCanvas.overrideSorting = true;
+                hpBarCanvas.sortingLayerName = "Default";
+                hpBarCanvas.sortingOrder = 3;
+            }
+            else
+            {
+                Debug.LogError("hpBarCanvas is null");
+            }
+        }
     }
 
     public override void TakeDamage(float damage)

@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] GameObject pauseMenu;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private SceneLoader sceneLoader;
     public void Pause()
     {
         pauseMenu.SetActive(true);
@@ -19,12 +20,16 @@ public class PauseMenu : MonoBehaviour
 
     public void Home()
     {
-        SceneManager.LoadScene("Home Menu");
+        SceneLoader loader = sceneLoader.GetComponent<SceneLoader>();
+        loader.LoadScene("Home Menu");
+        Time.timeScale = 1f;
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneLoader loader = sceneLoader.GetComponent<SceneLoader>();
+        loader.LoadScene(SceneManager.GetActiveScene().name);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }
 }

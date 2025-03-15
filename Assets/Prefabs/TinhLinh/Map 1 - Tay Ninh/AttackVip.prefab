@@ -191,7 +191,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idTinhLinh: SwordFire
   cost: 25
+  information: "\u0110\xE2y l\xE0 ki\u1EBFm c\xF3 l\u1EEDa"
   isTool: 0
+  sprite: {fileID: 21300000, guid: af3407cf3eceef34d9be66a1b7b4fde1, type: 3}
+  levelSprite: {fileID: 21300000, guid: aaac54311ac600e43a8d95c2738dc42e, type: 3}
+  classSprite: {fileID: 21300000, guid: ff46e146b86df2b469fefb2bc9163e08, type: 3}
 --- !u!95 &9131843541108470368
 Animator:
   serializedVersion: 7

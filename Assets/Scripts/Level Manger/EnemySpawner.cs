@@ -138,7 +138,7 @@ public class EnemySpawner : MonoBehaviour
         // Debug.LogWarning("Làn sóng cuối cùng " + currentWave);
         if (enemiesSpawned == totalEnemies){
             if (parentObject.transform.childCount == 0){
-                Debug.LogWarning("Thắng rồi ..........................");
+                LevelManager.main.UpdateStatusLevel(true);
             }
         }
     }

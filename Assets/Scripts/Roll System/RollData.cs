@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 [System.Serializable]
@@ -26,10 +27,34 @@ public class RollItem
         return data != null ? data.cost : 0; // Nếu không có ItemData, giá = 0
     }
 
+    public string GetInformation(){
+        ItemData data = prefab.GetComponent<ItemData>();
+        return data != null ? data.information : "";
+    }
+
+
     public bool GetIsTool()
     {
         ItemData data = prefab.GetComponent<ItemData>();
         return data != null ? data.isTool : false;
+    }
+
+    public Sprite GetSprite()
+    {
+        ItemData data = prefab.GetComponent<ItemData>();
+        return data != null ? data.sprite : null;
+    }
+    
+    public Sprite GetLevelSprite()
+    {
+        ItemData data = prefab.GetComponent<ItemData>();
+        return data != null ? data.levelSprite : null;
+    }
+
+    public Sprite GetClassSprite()
+    {
+        ItemData data = prefab.GetComponent<ItemData>();
+        return data != null ? data.classSprite : null;
     }
 }
 

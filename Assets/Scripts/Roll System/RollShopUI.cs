@@ -28,7 +28,7 @@ public class RollShopUI : MonoBehaviour
             rollManager = GetComponent<RollManager>();
 
         rollButton.onClick.AddListener(() => CheckAndRoll(true));
-        resetButton.onClick.AddListener(ResetRoll);
+        // resetButton.onClick.AddListener(ResetRoll);
         endButton.onClick.AddListener(EndRoll);
 
         rollCountText = rollButton.GetComponentInChildren<TMP_Text>();
@@ -66,7 +66,7 @@ public class RollShopUI : MonoBehaviour
                     currentRollsCount = 0;
                 }
 
-                rollCountText.text = "Xoay " + "(" + currentRollsCount.ToString() + ")";
+                rollCountText.text = currentRollsCount.ToString();
             }
             else
             {
@@ -83,7 +83,7 @@ public class RollShopUI : MonoBehaviour
             UpdateRollUI(isRoll);
             currentRollsCount--;
 
-            rollCountText.text = "Xoay " + "(" + currentRollsCount.ToString() + ")";
+            rollCountText.text = currentRollsCount.ToString();
 
             // Cập nhật lại số roll trên Firebase
             dbReference.Child("Users").Child(userID).Child("roll").SetValueAsync(currentRollsCount);
@@ -116,10 +116,28 @@ public class RollShopUI : MonoBehaviour
                 {
                     text.text = item.GetCost().ToString();
                 }
-                // else if (text.gameObject.name.Contains("Info"))
-                // {
-                //     text.text = item.information;
-                // }
+                else if (text.gameObject.name.Contains("Info"))
+                {
+                    text.text = item.GetInformation();
+                }
+            }
+
+            Image[] images = obj.GetComponentsInChildren<Image>();
+
+            foreach (Image image in images)
+            {
+                if (image.gameObject.name.Contains("Sprite")) // Nếu là tên vật phẩm
+                {
+                    image.sprite = item.GetSprite();
+                }
+                else if (image.gameObject.name.Contains("Level")) // Nếu là tên vật phẩm
+                {
+                    image.sprite = item.GetLevelSprite();
+                }
+                else if (image.gameObject.name.Contains("Class")) // Nếu là tên vật phẩm
+                {
+                    image.sprite = item.GetClassSprite();
+                }
             }
 
             Button buyButton = obj.GetComponentInChildren<Button>();
@@ -131,6 +149,12 @@ public class RollShopUI : MonoBehaviour
     {
         if (LevelManager.main.CheckCurrency(item.GetCost())) // Kiểm tra đủ vàng không
         {
+            if (item.GetIdTinhLinh() == "Tool00"){
+                LevelManager.main.SpendCurrency(item.GetCost());
+                ResetRoll();
+                return;
+            }
+
             rollManager.BuyItem(item);
             currentItem = item;
         }
@@ -140,7 +164,7 @@ public class RollShopUI : MonoBehaviour
         }
     }
 
-    private void ResetRoll()
+    public void ResetRoll()
     {
         rollManager.ResetRoll();
         UpdateRollUI(true);

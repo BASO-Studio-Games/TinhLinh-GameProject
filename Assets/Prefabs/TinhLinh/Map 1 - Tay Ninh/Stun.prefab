@@ -235,7 +235,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idTinhLinh: 
   cost: 0
+  information: 
   isTool: 0
+  sprite: {fileID: 21300000, guid: 632e532b1e3808741bde1e6035b76605, type: 3}
+  levelSprite: {fileID: 21300000, guid: adb5d66a57c035940a397187c11a1fe0, type: 3}
+  classSprite: {fileID: 21300000, guid: 2257580acf1005e42b9167969c4c4948, type: 3}
 --- !u!114 &-6695235792300745654
 MonoBehaviour:
   m_ObjectHideFlags: 0
