@@ -48,6 +48,14 @@ public class Tile : MonoBehaviour
                 return;
             }
 
+            else if (idTinhLinh == "Stun" && tinhlinhItem.GetIdTinhLinh() == "Stun")
+            {
+                EvolveTinhLinhBomp();
+                return;
+            }
+
+
+
             Debug.Log("Ô này đã có tinh linh, không thể đặt thêm.");
             return;
         }
@@ -79,6 +87,26 @@ public class Tile : MonoBehaviour
 
         GameObject evolved = Instantiate(EvolutionList.main.GetEvolvedAttackPrefab(), transform.position + new Vector3(0, 0, 0), Quaternion.identity, defendersContainer);
         idTinhLinh = "SwordFire";
+        turret = evolved.GetComponent<Turret>();
+        towerObj = evolved;
+    }
+    private void EvolveTinhLinhBomp()
+    {
+        Debug.Log($"Tiến hóa tinh linh tại ô {name}!");
+        if (evolutionEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(evolutionEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(effect, 2f);
+        }
+        else
+        {
+            Debug.Log("null");
+        }
+
+        Destroy(towerObj);
+
+        GameObject evolved = Instantiate(EvolutionList.main.GetEvolvedBompPrefab(), transform.position + new Vector3(0, 0, 0), Quaternion.identity, defendersContainer);
+        idTinhLinh = "Bomp";
         turret = evolved.GetComponent<Turret>();
         towerObj = evolved;
     }

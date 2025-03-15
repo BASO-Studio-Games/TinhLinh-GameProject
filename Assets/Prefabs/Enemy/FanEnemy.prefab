@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 6206431250929833416}
   - component: {fileID: 3737369550115801426}
   - component: {fileID: -7190846607058046770}
+  - component: {fileID: 3079205245111375356}
   m_Layer: 6
   m_Name: FanEnemy
   m_TagString: Enemy
@@ -118,8 +119,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.17, y: 8.68, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 0.7, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6874321013210882293}
   m_Father: {fileID: 0}
@@ -168,8 +169,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 649ae76e32aa02d458c14bdd990c80b3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -266,12 +267,16 @@ MonoBehaviour:
       m_Calls: []
   rb: {fileID: 6859782255254397202}
   arrowIndicator: {fileID: 6874321013210882293}
+  animator: {fileID: 3079205245111375356}
   currencyTakeDamage: 0
   energyTakeDamage: 0
   currencyDie: 0
   energyDie: 0
   moveSpeed: 2
   currencyWorth: 50
+  maxHp: 0
+  hpBar: {fileID: 0}
+  hpBarObject: {fileID: 0}
   isStunned: 0
   baseSpeed: 0
   isDestroyed: 0
@@ -289,9 +294,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45241409b9d54154dbe2db16970824f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 10
-  propellerHealth: 5
-  speedBoost: 1.5
-  bonusDamage: 2
-  baseDamage: 1
-  attackInterval: 2
+  damage: 1
+  attackInterval: 0.25
+  IsAttack: 0
+  animator: {fileID: 3079205245111375356}
+--- !u!95 &3079205245111375356
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8924342950866454463}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae74874c94f2b6f41843b636003642b3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

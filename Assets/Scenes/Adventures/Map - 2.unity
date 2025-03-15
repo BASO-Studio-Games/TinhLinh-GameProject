@@ -3639,6 +3639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 167474014}
+  nextMapName: 
 --- !u!1 &1034274923
 GameObject:
   m_ObjectHideFlags: 0
@@ -5302,7 +5303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5851028083853429888, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 98.55902
+      value: 98.55904
       objectReference: {fileID: 0}
     - target: {fileID: 6103291609804118828, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
       propertyPath: m_Name
@@ -7806,6 +7807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 8924342950866454463, guid: e19d0994f082bcd468b311eff279c797, type: 3}
+  - {fileID: 8924342950866454463, guid: 6dcb45194bd13a546b69da0ce639db57, type: 3}
   parentObject: {fileID: 2101237008}
   totalWaves: 2
   baseEnemies: 5
@@ -7888,6 +7890,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   evolvedAttackPrefab: {fileID: 7763906890701756966, guid: 0863166744aea114caa3d1b3a13a0c0c, type: 3}
+  evolvedBompPrefab: {fileID: 7763906890701756966, guid: 589414edf0c845d4192ee78611b21879, type: 3}
+  evolvedFanPrefab: {fileID: 8924342950866454463, guid: e19d0994f082bcd468b311eff279c797, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
