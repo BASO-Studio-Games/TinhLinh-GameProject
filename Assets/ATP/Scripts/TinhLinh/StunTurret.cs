@@ -55,6 +55,12 @@ public class StunTurret : MonoBehaviour
             {
                 enemy.TakeDamage(damage);
             }
+
+            TinhLinh tinhLinh = gameObject.GetComponent<TinhLinh>();
+            if (tinhLinh != null)
+            {
+                tinhLinh.ClearTile();
+            }
             Destroy(gameObject, 1f);
         }
     }

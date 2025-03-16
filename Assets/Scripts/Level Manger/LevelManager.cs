@@ -1,6 +1,5 @@
 using System;
 using TMPro;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -19,6 +18,7 @@ public class LevelManager : MonoBehaviour
     [HideInInspector] public bool isMaxEnergy;
 
     // Thông báo trạng thái level
+    public int idLevel = 11; // ID của level Map - Cấp / Map 1 - Level 1 = 11
     [HideInInspector] public bool statusLevel = false;
     [SerializeField] private GameObject winOrLoseMenu;
     [SerializeField] private TMP_Text winOrLoseText;

@@ -30,6 +30,7 @@ public class StartMenuManager : MonoBehaviour
     [Header("Tài nguyên khởi đầu:")]//----------
     [SerializeField] private int diamondUser;
     [SerializeField] private int rollNumberUser;
+    [SerializeField] private int currencyLevelUser = 11;
 
 
     private DatabaseReference dbReference;
@@ -113,7 +114,7 @@ public class StartMenuManager : MonoBehaviour
 
             informationLoginText.text = "Xin chào tài khoản, " + username;
             PlayerPrefs.SetString("ID_User", userID);
-            CheckTestDataExistence(userID, username, null, diamondUser.ToString(), rollNumberUser.ToString());
+            CheckTestDataExistence(userID, username, null, diamondUser.ToString(), rollNumberUser.ToString(), currencyLevelUser.ToString());
             StartCoroutine(LoadGame());
         }
     }
@@ -136,7 +137,7 @@ public class StartMenuManager : MonoBehaviour
             informationLoginText.text = "Xin chào tài khoản, " + username;
 
             PlayerPrefs.SetString("ID_User", id);
-            CheckTestDataExistence(id, username, ImgUrl, diamondUser.ToString(), rollNumberUser.ToString());
+            CheckTestDataExistence(id, username, ImgUrl, diamondUser.ToString(), rollNumberUser.ToString(), currencyLevelUser.ToString());
             StartCoroutine(LoadGame());
         }
         else
@@ -179,9 +180,9 @@ public class StartMenuManager : MonoBehaviour
         });
     }
 
-    private void CreateUserToFirebase(string idPlayer, string username, string avatarUrl, string diamond, string roll)
+    private void CreateUserToFirebase(string idPlayer, string username, string avatarUrl, string diamond, string roll, string currencyLevelUser)
     {    
-        User newUser = new User(username, avatarUrl, diamond, roll);
+        User newUser = new User(username, avatarUrl, diamond, roll, currencyLevelUser);
         string jsonData = JsonUtility.ToJson(newUser);
 
         dbReference.Child("Users").Child(idPlayer).SetRawJsonValueAsync(jsonData).ContinueWithOnMainThread(task =>
@@ -198,7 +199,7 @@ public class StartMenuManager : MonoBehaviour
     }
 
     // Kiểm tra sự tồn tại của Id player trên Firebase
-    private void CheckTestDataExistence(string idPlayer, string username, string avatarUrl, string diamond, string roll)
+    private void CheckTestDataExistence(string idPlayer, string username, string avatarUrl, string diamond, string roll, string currencyLevelUser)
     {
         dbReference.Child("Users").Child(idPlayer).GetValueAsync().ContinueWithOnMainThread(task =>
         {
@@ -213,7 +214,7 @@ public class StartMenuManager : MonoBehaviour
                 else
                 {
                     Debug.Log($"{idPlayer} chưa tồn tại trong cơ sở dữ liệu. Đang tạo user mới...");
-                    CreateUserToFirebase(idPlayer, username, avatarUrl, diamond, roll);
+                    CreateUserToFirebase(idPlayer, username, avatarUrl, diamond, roll, currencyLevelUser);
                 }
             }
             else

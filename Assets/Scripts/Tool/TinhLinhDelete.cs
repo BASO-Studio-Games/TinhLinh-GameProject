@@ -13,7 +13,7 @@ public class TinhLinhDelete : Tool
 
     public override void Activate(Tile tile)
     {
-        if (tile.HasTinhLinh() && selectedTile == null)
+        if (tile.HasTinhLinh() && selectedTile == null) 
         {
             selectedTile = tile;
             GameObject tinhLinh = selectedTile.GetTinhLinhObject();
@@ -28,22 +28,23 @@ public class TinhLinhDelete : Tool
             return;
         }
 
-        if (selectedTile == tile)
+        if (selectedTile == tile) 
         {
             RemoveTinhLinh(selectedTile);
+            NotifyToolActionCompletedForDelete(selectedTile); 
             selectedTile = null;
             return;
         }
 
-        if (selectedTile != null && tile.HasTinhLinh() && selectedTile != tile)
+        if (selectedTile != null && tile.HasTinhLinh() && selectedTile != tile) 
         {
             ResetTinhLinhScale(selectedTile);
-
             NotifyToolActionCompleted(selectedTile, tile);
             selectedTile = null;
             return;
         }
     }
+
 
 
     private static void RemoveTinhLinh(Tile tile)

@@ -37,18 +37,18 @@ public class Tile : MonoBehaviour
     {
         if (HasTinhLinh())
         {
-            if (idTinhLinh == "M1TN06" && tinhlinhItem.GetIdTinhLinh() == "M1TN01")
+            if (idTinhLinh == "M1TN06" && tinhlinhItem.GetIdTinhLinh() == "M1TN01" && LevelManager.main.idLevel >= 19)
             {
                 EvolveTinhLinh();
                 return;
             }
-            else if (idTinhLinh == "M1TN01" && tinhlinhItem.GetIdTinhLinh() == "M1TN06")
+            else if (idTinhLinh == "M1TN01" && tinhlinhItem.GetIdTinhLinh() == "M1TN06" && LevelManager.main.idLevel >= 19)
             {
                 EvolveTinhLinh();
                 return;
             }
 
-            else if (idTinhLinh == "M1TN02" && tinhlinhItem.GetIdTinhLinh() == "M1TN02")
+            else if (idTinhLinh == "M1TN02" && tinhlinhItem.GetIdTinhLinh() == "M1TN02" && LevelManager.main.idLevel >= 13)
             {
                 EvolveTinhLinhBomp();
                 return;
@@ -67,6 +67,7 @@ public class Tile : MonoBehaviour
         idTinhLinh = tinhlinhItem.GetIdTinhLinh();
         turret = towerObj.GetComponent<Turret>();
 
+        // Gán ô này cho tinh linh
         TinhLinh tinhLinh = towerObj.GetComponent<TinhLinh>();
         if (tinhLinh != null)
         {

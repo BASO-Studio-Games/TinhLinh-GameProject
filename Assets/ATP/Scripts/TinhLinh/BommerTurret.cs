@@ -11,6 +11,11 @@ public class BommerTurret : MonoBehaviour
     {
         if (explosionPrefabs != null)
         {
+            TinhLinh tinhLinh = gameObject.GetComponent<TinhLinh>();
+            if (tinhLinh != null)
+            {
+                tinhLinh.ClearTile();
+            }
             Destroy(gameObject);
             Instantiate(explosionPrefabs, transform.position, Quaternion.identity);
         }

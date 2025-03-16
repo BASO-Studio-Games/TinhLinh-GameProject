@@ -4913,6 +4913,7 @@ MonoBehaviour:
   usernameText: {fileID: 1301919142}
   diamondText: {fileID: 1461846320}
   avatarImage: {fileID: 1745649625}
+  currencyLevelUserText: {fileID: 689218151}
   debugText: {fileID: 487310250}
 --- !u!1 &1020652852
 GameObject:

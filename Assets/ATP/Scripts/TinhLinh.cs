@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class TinhLinh : Actor
     [SerializeField] protected float maxHp;
     [SerializeField] private Image hpBar;
     [SerializeField] private GameObject hpBarObject;
+    private Animator hpBarAnimator;
+
 
     private Tile currentTile;
 
@@ -15,10 +18,20 @@ public class TinhLinh : Actor
 
     public PlayerStats PlayerStats { get => m_playerStats;private set => m_playerStats = value; }
 
+
     public override void Init()
     {
         LoadStats();
     }
+
+    private void Awake()
+    {
+        if (hpBarObject != null)
+        {
+            hpBarAnimator = hpBarObject.GetComponent<Animator>();
+        }
+    }
+
 
     private void LoadStats()
     {
@@ -67,19 +80,30 @@ public class TinhLinh : Actor
         OnTakeDamage?.Invoke(CurHp);
     }
 
+    // protected override void Die()
+    // {
+    //     Debug.Log("die");
+    //     m_rb.linearVelocity = Vector3.zero;
+
+    //     if (currentTile != null)
+    //     {
+    //         currentTile.ClearTile();
+    //     }
+
+    //     isDestroyed = true;
+    //     Destroy(gameObject, 1.5f);
+    // }
     protected override void Die()
     {
-        Debug.Log("die");
-        m_rb.linearVelocity = Vector3.zero;
+        Debug.Log("Tinh linh chết");
 
-        if (currentTile != null)
-        {
-            currentTile.ClearTile();
-        }
+        ClearTile(); // Xóa ID tinh linh khỏi ô
 
         isDestroyed = true;
         Destroy(gameObject, 1.5f);
     }
+
+
     protected void UpdateHpBar()
     {
         if (hpBar != null)
@@ -90,15 +114,47 @@ public class TinhLinh : Actor
 
     public void SetHpBarVisible(bool isVisible)
     {
-        if (hpBar != null)
+        if (hpBarAnimator != null)
         {
-            hpBarObject.SetActive(isVisible);
+            hpBarAnimator.SetBool("isClose", !isVisible);
+        }
+
+        if (!isVisible)
+        {
+            StartCoroutine(HideHpBarAfterAnimation());
+        }
+        else
+        {
+            if (hpBarObject != null)
+            {
+                hpBarObject.SetActive(true);
+            }
+        }
+    }
+
+    private IEnumerator HideHpBarAfterAnimation()
+    {
+        float animationTime = hpBarAnimator.GetCurrentAnimatorStateInfo(0).length;
+
+        yield return new WaitForSeconds(animationTime);
+
+        if (hpBarObject != null)
+        {
+            hpBarObject.SetActive(false);
         }
     }
 
     public void SetTile(Tile tile)
     {
         currentTile = tile;
+    }
+
+    public void ClearTile()
+    {
+        if (currentTile != null)
+        {
+            currentTile.ClearTile();
+        }
     }
 
 }

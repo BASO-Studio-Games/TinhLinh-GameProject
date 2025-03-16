@@ -184,9 +184,9 @@ MonoBehaviour:
   - {x: 0.97, y: 1.07}
   - {x: 0.97, y: -0.83}
   boxSize: 0.7
-  attackCooldown: 2
+  attackCooldown: 1.2
   attackDuration: 1
-  damage: 5
+  damage: 20
   bloodPrefabs: {fileID: 2526599917821403406, guid: d9aefddbe95fd994a9b5475a898476f0, type: 3}
   animator: {fileID: 5225359013334901759}
 --- !u!114 &3555870453894161285
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTinhLinh: M1TN01
-  cost: 20
+  cost: 100
   information: "\u0110\xE2y l\xE0 ki\u1EBFm"
   isTool: 0
   sprite: {fileID: 21300000, guid: 8616cd7d7e3613a46bd481e61294c2a9, type: 3}

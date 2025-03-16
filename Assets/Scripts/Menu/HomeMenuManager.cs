@@ -30,6 +30,8 @@ public class HomeMenuManager : MonoBehaviour
     [SerializeField] private TMP_Text usernameText;
     [SerializeField] private TMP_Text diamondText;
     [SerializeField] private Image avatarImage;
+    [SerializeField] private TMP_Text currencyLevelUserText;
+    private string currencyLevelUser;
 
     [SerializeField] private TMP_Text debugText;
 
@@ -73,7 +75,7 @@ public class HomeMenuManager : MonoBehaviour
 
     private void OnClickAdventuresButton(){
         SceneLoader loader = gameObject.GetComponentInParent<SceneLoader>();
-        loader.LoadScene("Map - 1");
+        loader.LoadScene("Map - " + currencyLevelUser[currencyLevelUser.Length - 1]);
     }
 
     private void OnClickMiniGamesButtonButton(){
@@ -133,6 +135,13 @@ public class HomeMenuManager : MonoBehaviour
 
                     usernameText.text = user.username;
                     diamondText.text = user.diamond + " Kim cương";
+
+                    if (user.currentLevel != null)
+                        currencyLevelUser = user.currentLevel;
+                    else
+                        currencyLevelUser = "11";
+
+                    currencyLevelUserText.text = "Map " + currencyLevelUser[0] + "." + currencyLevelUser[currencyLevelUser.Length - 1];  
                     
                     if (!string.IsNullOrEmpty(user.avatarUrl))
                     {

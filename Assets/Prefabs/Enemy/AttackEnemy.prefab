@@ -234,15 +234,16 @@ MonoBehaviour:
   rb: {fileID: 6859782255254397202}
   arrowIndicator: {fileID: 2811218182283135790}
   animator: {fileID: 6150241396086986513}
-  currencyTakeDamage: 5
+  currencyTakeDamage: 25
   energyTakeDamage: 5
-  currencyDie: 10
+  currencyDie: 50
   energyDie: 10
   moveSpeed: 2
   currencyWorth: 50
   maxHp: 0
   hpBar: {fileID: 4416821936702038603}
   hpBarObject: {fileID: 6567284880221084233}
+  isEvolved: 0
   isStunned: 0
   baseSpeed: 0
   isDestroyed: 0
@@ -262,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackInterval: 2
   attackDuration: 1
-  enemyDamage: 4
+  enemyDamage: 15
   animator: {fileID: 6150241396086986513}
 --- !u!95 &6150241396086986513
 Animator:
