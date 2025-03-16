@@ -9,6 +9,8 @@ public class TinhLinh : Actor
     [SerializeField] private Image hpBar;
     [SerializeField] private GameObject hpBarObject;
 
+    private Tile currentTile;
+
     private bool isDestroyed = false;
 
     public PlayerStats PlayerStats { get => m_playerStats;private set => m_playerStats = value; }
@@ -70,6 +72,11 @@ public class TinhLinh : Actor
         Debug.Log("die");
         m_rb.linearVelocity = Vector3.zero;
 
+        if (currentTile != null)
+        {
+            currentTile.ClearTile();
+        }
+
         isDestroyed = true;
         Destroy(gameObject, 1.5f);
     }
@@ -87,6 +94,11 @@ public class TinhLinh : Actor
         {
             hpBarObject.SetActive(isVisible);
         }
+    }
+
+    public void SetTile(Tile tile)
+    {
+        currentTile = tile;
     }
 
 }

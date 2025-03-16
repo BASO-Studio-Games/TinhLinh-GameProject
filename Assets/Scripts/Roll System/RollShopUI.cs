@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Firebase.Database;
-using Firebase.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +7,7 @@ public class RollShopUI : MonoBehaviour
 {
     public RollManager rollManager;
     public Button rollButton;
-    private TMP_Text rollCountText;
+    private TMP_Text costOfRollText;
     public Button resetButton;
     public Button endButton;
     public Transform rollContainer;
@@ -18,9 +16,7 @@ public class RollShopUI : MonoBehaviour
     private List<RollItem> currentRolls = new List<RollItem>();
     private RollItem currentItem;
 
-    private DatabaseReference dbReference;
-    private int currentRollsCount; // Số roll hiện tại của người chơi
-    private string userID;
+    private int costOfRoll;
 
     private void Start()
     {
@@ -31,14 +27,11 @@ public class RollShopUI : MonoBehaviour
         // resetButton.onClick.AddListener(ResetRoll);
         endButton.onClick.AddListener(EndRoll);
 
-        rollCountText = rollButton.GetComponentInChildren<TMP_Text>();
+        costOfRollText = rollButton.GetComponentInChildren<TMP_Text>();
+        costOfRoll = 10;
+        costOfRollText.text = costOfRoll.ToString();
 
         ResetRoll();
-
-        userID = PlayerPrefs.GetString("ID_User", "DefaultUserID");
-        dbReference = FirebaseDatabase.DefaultInstance.RootReference;
-
-        LoadUserRolls();
     }
 
     private void Update() {
@@ -46,51 +39,6 @@ public class RollShopUI : MonoBehaviour
             currentRolls.Remove(currentItem);
             UpdateRollUI(false);
             rollManager.hasBuy = false;
-        }
-    }
-
-    private void LoadUserRolls()
-    {
-        dbReference.Child("Users").Child(userID).Child("roll").GetValueAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsCompleted)
-            {
-                DataSnapshot snapshot = task.Result;
-                Debug.Log("Đã tải dữ liệu roll: " + snapshot);
-                if (snapshot.Exists)
-                {
-                    currentRollsCount = int.Parse(snapshot.Value.ToString());
-                }
-                else
-                {
-                    currentRollsCount = 0;
-                }
-
-                rollCountText.text = currentRollsCount.ToString();
-            }
-            else
-            {
-                Debug.LogError("Lỗi tải dữ liệu roll: " + task.Exception);
-                currentRollsCount = 0;
-            }
-        });
-    }
-
-    private void CheckAndRoll(bool isRoll)
-    {
-        if (currentRollsCount > 0)
-        {
-            UpdateRollUI(isRoll);
-            currentRollsCount--;
-
-            rollCountText.text = currentRollsCount.ToString();
-
-            // Cập nhật lại số roll trên Firebase
-            dbReference.Child("Users").Child(userID).Child("roll").SetValueAsync(currentRollsCount);
-        }
-        else
-        {
-            Debug.Log("Không đủ lượt roll!");
         }
     }
 
@@ -145,6 +93,24 @@ public class RollShopUI : MonoBehaviour
         }
     }
 
+    private void CheckAndRoll(bool isRol)
+    {
+        if (LevelManager.main.GetCurrency() >= costOfRoll)
+        {
+            UpdateRollUI(isRol);
+            LevelManager.main.SpendCurrency(costOfRoll);
+
+            costOfRoll*=2;
+            if (costOfRoll > 9999) costOfRoll = 9999;
+
+            costOfRollText.text = costOfRoll.ToString();
+        }
+        else
+        {
+            Debug.Log("Không đủ tiền để roll!");
+        }
+    }
+
     private void BuyItem(RollItem item)
     {
         if (LevelManager.main.CheckCurrency(item.GetCost())) // Kiểm tra đủ vàng không
@@ -180,6 +146,9 @@ public class RollShopUI : MonoBehaviour
 
     private void EndRoll()
     {
+        costOfRoll = 10;
+        costOfRollText.text = costOfRoll.ToString();
+
         rollManager.EndRoll();
         UpdateRollUI(true);
     }

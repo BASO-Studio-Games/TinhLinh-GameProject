@@ -20,12 +20,18 @@ public class CrossbowTinhLinh : MonoBehaviour
         if (target == null)
         {
             FindTarget();
+
+            if (target == null)
+            {
+                animator.SetBool("isAttack", false);
+            }
             return;
         }
 
         if (!CheckTargetIsInRange())
         {
             target = null;
+            animator.SetBool("isAttack", false);
         }
         else
         {

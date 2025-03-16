@@ -20,6 +20,8 @@ public class DialogueLine
     public bool isGuidePoint;
     public Transform targetTransform;
     public GameObject targetPrefab;
+    public GameObject targetAction;
+    
 }
 
 [System.Serializable]

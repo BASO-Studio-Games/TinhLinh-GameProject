@@ -2,20 +2,16 @@ using UnityEngine;
 
 public class FanEnemy : MonoBehaviour
 {
-    [SerializeField] private int baseHealth = 10;
-    [SerializeField] private int propellerHealth = 5;
-
-    [SerializeField] private float speedBoost = 2f;
-    [SerializeField] private int bonusDamage = 2; 
-    [SerializeField] private int baseDamage = 1; 
-
-    [SerializeField] private float attackInterval = 2f;
+    [SerializeField] private int damage = 1;
+    [SerializeField] private float attackInterval = 0.5f;
 
     private TinhLinh targetTinhLinh;
     private EnemyMovement enemyMovement;
-    private int currentHealth;
-    private bool isPropellerActive = true; 
     private float attackCooldown;
+    public bool IsAttack = false;
+
+    [Header("References")]
+    [SerializeField] private Animator animator;
 
     private void Start()
     {
@@ -24,64 +20,23 @@ public class FanEnemy : MonoBehaviour
         {
             Debug.LogError("EnemyMovement script not found on this GameObject.");
         }
-
-        currentHealth = baseHealth + propellerHealth;
-        EnablePropeller();
     }
 
     private void Update()
     {
-        if (isPropellerActive && currentHealth <= baseHealth)
+        if (IsAttack)
         {
-            RemovePropeller();
-        }
-
-        if (enemyMovement.isAttack && targetTinhLinh != null)
-        {
-            attackCooldown -= Time.deltaTime;
-
-            if (attackCooldown <= 0f)
+            if (animator != null)
             {
-                Attack(targetTinhLinh);
-                attackCooldown = attackInterval; 
+                animator.SetBool("isAttack", true);
+            }
+
+            if (attackCooldown > 0)
+            {
+                attackCooldown -= Time.deltaTime;
             }
         }
     }
-
-    private void Attack(TinhLinh tinhlinh)
-    {
-        int currentDamage = isPropellerActive ? baseDamage + bonusDamage : baseDamage; 
-        Debug.Log($"Attack with {currentDamage} damage!");
-        tinhlinh.TakeDamage(currentDamage);
-    }
-
-    private void EnablePropeller()
-    {
-        isPropellerActive = true;
-
-        if (enemyMovement != null)
-        {
-            enemyMovement.moveSpeed *= speedBoost;
-        }
-        Debug.Log("Propeller enabled! Increased speed and damage.");
-    }
-
-    private void RemovePropeller()
-    {
-        isPropellerActive = false;
-
-        if (enemyMovement != null)
-        {
-            enemyMovement.moveSpeed /= speedBoost;
-        }
-        Debug.Log("Propeller destroyed! Enemy reverted to basic state.");
-    }
-
-    //private void Die()
-    //{
-    //    Debug.Log("Enemy died!");
-    //    Destroy(gameObject);
-    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -91,6 +46,21 @@ public class FanEnemy : MonoBehaviour
             enemyMovement.isAttack = true;
             enemyMovement.isMoving = false;
             targetTinhLinh = tinhlinh;
+
+            Debug.Log("nice");
+            if (animator != null)
+            {
+                animator.SetBool("isBerore", true);
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (IsAttack && attackCooldown <= 0)
+        {
+            Attack();
+            attackCooldown = attackInterval;
         }
     }
 
@@ -102,17 +72,51 @@ public class FanEnemy : MonoBehaviour
             enemyMovement.isAttack = false;
             enemyMovement.isMoving = true;
             targetTinhLinh = null;
+            IsAttack = false;
+
+            ResetAnimator();
+            Debug.Log("Exit Collision and Reset Animator");
         }
     }
 
-    //public void TakeDamage(int damage)
-    //{
-    //    currentHealth -= damage; 
-    //    Debug.Log($"Enemy took {damage} damage. Current health: {currentHealth}");
 
-    //    if (currentHealth <= 0)
-    //    {
-    //        Die();
-    //    }
-    //}
+    public void Attack()
+    {
+        if (targetTinhLinh != null)
+        {
+            Debug.Log("Enemy Attack!");
+            targetTinhLinh.TakeDamage(damage);
+        }
+        else
+        {
+            Debug.Log("Target is null, stopping attack.");
+            IsAttack = false;
+            ResetAnimator();
+        }
+    }
+
+
+    private void ResetAnimator()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("isAttack", false);
+            animator.SetBool("isBerore", false);
+            animator.Play("FanEnemyRun");
+        }
+    }
+
+    public void ReadyAttack()
+    {
+        if (targetTinhLinh != null)
+        {
+            IsAttack = true;
+        }
+        else
+        {
+            IsAttack = false;
+            ResetAnimator();
+        }
+    }
+
 }

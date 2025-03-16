@@ -4,6 +4,8 @@ using Unity.Collections.LowLevel.Unsafe;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Firebase.Database;
+using Firebase.Extensions;
 
 public class RandomPathGenerator : MonoBehaviour
 {
@@ -46,6 +48,12 @@ public class RandomPathGenerator : MonoBehaviour
 
     [SerializeField] public bool isTutorial;
 
+    // Firebase
+    private DatabaseReference dbReference;
+    private int currentRollsCount; // Số roll hiện tại của người chơi
+    private string userID;
+    private TMP_Text rollCountText;
+
     private void Start()
     {
         // Thiết lập đường đi
@@ -54,14 +62,23 @@ public class RandomPathGenerator : MonoBehaviour
 
         UIScreen.SetActive(false);
 
-        if (isTutorial)
+        if (isTutorial){
             rollButton.gameObject.SetActive(false);
-        else
-            rollButton.onClick.AddListener(ResetPath);
-        startButton.onClick.AddListener(StartGame);
+            startButton.gameObject.SetActive(false);
+        }
+        else{
+            rollButton.onClick.AddListener(CheckAndRoll);
+            rollCountText = rollButton.GetComponentInChildren<TMP_Text>();
+            
+            startButton.onClick.AddListener(StartGame);
+        }
 
         ResetPath();
 
+        userID = PlayerPrefs.GetString("ID_User", "DefaultUserID");
+        dbReference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        LoadUserRolls();
     }
 
     /// <summary>
@@ -383,9 +400,54 @@ public class RandomPathGenerator : MonoBehaviour
     //     {
     //         ResetPath(); 
     //     }
-    // }    
+    // }
 
-    private void StartGame(){
+    private void LoadUserRolls()
+    {
+        dbReference.Child("Users").Child(userID).Child("roll").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                Debug.Log("Đã tải dữ liệu roll: " + snapshot);
+                if (snapshot.Exists)
+                {
+                    currentRollsCount = int.Parse(snapshot.Value.ToString());
+                }
+                else
+                {
+                    currentRollsCount = 0;
+                }
+
+                rollCountText.text = currentRollsCount.ToString();
+            }
+            else
+            {
+                Debug.LogError("Lỗi tải dữ liệu roll: " + task.Exception);
+                currentRollsCount = 0;
+            }
+        });
+    }
+
+    private void CheckAndRoll()
+    {
+        if (currentRollsCount > 0)
+        {
+            ResetPath();
+            currentRollsCount--;
+
+            rollCountText.text = currentRollsCount.ToString();
+
+            // Cập nhật lại số roll trên Firebase
+            dbReference.Child("Users").Child(userID).Child("roll").SetValueAsync(currentRollsCount);
+        }
+        else
+        {
+            Debug.Log("Không đủ lượt roll!");
+        }
+    }
+
+    public void StartGame(){
         UIScreen.SetActive(true);
 
         Destroy(gameObject);

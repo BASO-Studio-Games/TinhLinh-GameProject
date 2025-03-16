@@ -37,16 +37,24 @@ public class Tile : MonoBehaviour
     {
         if (HasTinhLinh())
         {
-            if (idTinhLinh == "Torch" && tinhlinhItem.GetIdTinhLinh() == "M1TN01")
+            if (idTinhLinh == "M1TN06" && tinhlinhItem.GetIdTinhLinh() == "M1TN01")
             {
                 EvolveTinhLinh();
                 return;
             }
-            else if (idTinhLinh == "M1TN01" && tinhlinhItem.GetIdTinhLinh() == "Torch")
+            else if (idTinhLinh == "M1TN01" && tinhlinhItem.GetIdTinhLinh() == "M1TN06")
             {
                 EvolveTinhLinh();
                 return;
             }
+
+            else if (idTinhLinh == "M1TN02" && tinhlinhItem.GetIdTinhLinh() == "M1TN02")
+            {
+                EvolveTinhLinhBomp();
+                return;
+            }
+
+
 
             Debug.Log("Ô này đã có tinh linh, không thể đặt thêm.");
             return;
@@ -58,6 +66,12 @@ public class Tile : MonoBehaviour
         towerObj = Instantiate(tinhlinhItem.prefab, transform.position + new Vector3(0, 0, 0), Quaternion.identity, defendersContainer);
         idTinhLinh = tinhlinhItem.GetIdTinhLinh();
         turret = towerObj.GetComponent<Turret>();
+
+        TinhLinh tinhLinh = towerObj.GetComponent<TinhLinh>();
+        if (tinhLinh != null)
+        {
+            tinhLinh.SetTile(this);
+        }
 
         BuildManager.main.SetSelectedTower(null);
     }
@@ -79,6 +93,26 @@ public class Tile : MonoBehaviour
 
         GameObject evolved = Instantiate(EvolutionList.main.GetEvolvedAttackPrefab(), transform.position + new Vector3(0, 0, 0), Quaternion.identity, defendersContainer);
         idTinhLinh = "SwordFire";
+        turret = evolved.GetComponent<Turret>();
+        towerObj = evolved;
+    }
+    private void EvolveTinhLinhBomp()
+    {
+        Debug.Log($"Tiến hóa tinh linh tại ô {name}!");
+        if (evolutionEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(evolutionEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(effect, 2f);
+        }
+        else
+        {
+            Debug.Log("null");
+        }
+
+        Destroy(towerObj);
+
+        GameObject evolved = Instantiate(EvolutionList.main.GetEvolvedBompPrefab(), transform.position + new Vector3(0, 0, 0), Quaternion.identity, defendersContainer);
+        idTinhLinh = "Bomp";
         turret = evolved.GetComponent<Turret>();
         towerObj = evolved;
     }

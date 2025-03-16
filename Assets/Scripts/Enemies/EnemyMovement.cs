@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,7 @@ public class EnemyMovement : Actor
     [SerializeField] private Image hpBar;
     [SerializeField] private GameObject hpBarObject;
     private bool hasTriggeredDestroy = false;
+    [SerializeField] private bool isEvolved = false;
 
 
     [SerializeField] private bool isStunned = false;
@@ -57,26 +59,15 @@ public class EnemyMovement : Actor
     {
         Init();
         baseSpeed = moveSpeed;
-        target = LevelManager.main.path[pathIndex];
+
+        if (!isEvolved)
+        {
+            target = LevelManager.main.path[pathIndex];
+        }
 
         if (arrowIndicator == null)
         {
             Debug.Log("Arrow Indicator is not assigned!");
-        }
-
-        if (hpBarObject != null)
-        {
-            Canvas hpBarCanvas = hpBarObject.GetComponent<Canvas>();
-            if (hpBarCanvas != null)
-            {
-                hpBarCanvas.overrideSorting = true;
-                hpBarCanvas.sortingLayerName = "Default";
-                hpBarCanvas.sortingOrder = 3;
-            }
-            else
-            {
-                Debug.LogError("hpBarCanvas is null");
-            }
         }
     }
 
@@ -168,9 +159,9 @@ public class EnemyMovement : Actor
 
     protected override void Die()
     {
-        if (hasTriggeredDestroy) return; 
+        if (hasTriggeredDestroy) return;
 
-        hasTriggeredDestroy = true; 
+        hasTriggeredDestroy = true;
 
         LevelManager.main.IncreaseCurrency(currencyDie);
         LevelManager.main.IncreaseEnergy(energyDie);
@@ -184,6 +175,8 @@ public class EnemyMovement : Actor
             animator.SetBool("isDie", true);
         }
 
+        StartCoroutine(EvolveEnemyAfterDelay(0.5f)); 
+
         GetComponent<EnemyMovement>().enabled = false;
 
         OnDead?.Invoke();
@@ -191,6 +184,25 @@ public class EnemyMovement : Actor
 
         float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
         Destroy(gameObject, animationLength);
+    }
+
+    private IEnumerator EvolveEnemyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        FanEnemy fanEnemyComponent = GetComponent<FanEnemy>();
+        if (fanEnemyComponent != null)
+        {
+            GameObject evolvedEnemy = Instantiate(EvolutionList.main.GetEvolvedFanPrefab(), transform.position, Quaternion.identity);
+            EnemyMovement evolvedMovement = evolvedEnemy.GetComponent<EnemyMovement>();
+
+            if (evolvedMovement != null)
+            {
+                evolvedMovement.isEvolved = true;
+                evolvedMovement.pathIndex = this.pathIndex;
+                evolvedMovement.target = LevelManager.main.path[this.pathIndex];
+            }
+        }
     }
 
 

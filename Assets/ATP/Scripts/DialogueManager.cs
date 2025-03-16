@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
+using System.IO;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -17,11 +18,25 @@ public class DialogueManager : MonoBehaviour
     private GameObject currentGuidePoint;
     private GameObject currentTargetPrefab;
     private DialogueLine currentLine;
-    private List<GameObject> spawnedPrefabs = new List<GameObject>(); 
+    private List<GameObject> spawnedPrefabs = new List<GameObject>();
 
     public bool isDialogueActive = false;
     public float typingSpeed = 0.2f;
     public Animator animator;
+
+    [SerializeField]
+    private bool isPointPath = false;
+    public bool IsPointPath => isPointPath;
+
+
+    private void Update()
+    {
+        if (isPointPath)
+        {
+            SetIsCollided();
+            isPointPath = false;
+        }
+    }
 
     private void Awake()
     {
@@ -62,18 +77,11 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextDialogueLine()
     {
+
         if (currentGuidePoint != null)
         {
             Destroy(currentGuidePoint);
             currentGuidePoint = null;
-        }
-
-        foreach (var prefab in spawnedPrefabs)
-        {
-            if (prefab != null)
-            {
-                DisableAllScripts(prefab);
-            }
         }
 
         if (lines.Count == 0)
@@ -84,8 +92,25 @@ public class DialogueManager : MonoBehaviour
 
         currentLine = lines.Dequeue();
 
-        if (currentLine.isGuidePoint)
+        if (currentLine.targetAction != null)
         {
+            // currentLine.targetAction.SetActive(true);
+            RandomPathGenerator randomPathGenerator = currentLine.targetAction.GetComponent<RandomPathGenerator>();
+            if (randomPathGenerator != null)
+            {
+                randomPathGenerator.StartGame();
+            }
+
+            EndDialogue();
+            return;
+        }
+
+        isPointPath = currentLine.isGuidePoint;
+
+        if (isPointPath)
+        {
+            ResetAllPrefabButtonStates();
+
             if (dialoguePanel != null)
             {
                 StartCoroutine(HideDialoguePanel());
@@ -103,16 +128,20 @@ public class DialogueManager : MonoBehaviour
 
             if (currentLine.targetPrefab != null)
             {
-                GameObject spawnedPrefab = Instantiate(currentLine.targetPrefab, currentLine.targetTransform.position, Quaternion.identity);
-                spawnedPrefabs.Add(spawnedPrefab); 
-                currentTargetPrefab = spawnedPrefab; 
+                spawnedPrefabs.Add(currentLine.targetPrefab);
+                currentTargetPrefab = currentLine.targetPrefab;
 
-                UpdatePrefabStates();
+                UpdateAllPrefabButtonStates();
             }
+
             return;
         }
+
+        isPointPath = false;
         ShowDialogueText();
     }
+
+
 
     private void ShowDialogueText()
     {
@@ -128,7 +157,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentGuidePoint != null)
         {
-            Destroy(currentGuidePoint);
             currentGuidePoint = null;
         }
         dialoguePanel.SetActive(true);
@@ -140,13 +168,20 @@ public class DialogueManager : MonoBehaviour
     {
         if (clickedPrefab == currentTargetPrefab)
         {
-            DisableAllScripts(currentTargetPrefab);
+            ClickablePrefab clickableScript = currentTargetPrefab.GetComponent<ClickablePrefab>();
+            if (clickableScript != null)
+            {
+                clickableScript.isCollided = true;
+            }
             currentTargetPrefab = null;
             dialoguePanel.SetActive(true);
             animator.SetBool("isShow", true);
             DisplayNextDialogueLine();
+
+            UpdateAllPrefabButtonStates();
         }
     }
+
 
     IEnumerator TypeSentence(DialogueLine dialogueLine)
     {
@@ -174,14 +209,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         currentTargetPrefab = null;
-
-        foreach (var prefab in spawnedPrefabs)
-        {
-            if (prefab != null)
-            {
-                DisableAllScripts(prefab);
-            }
-        }
     }
 
     IEnumerator HideDialoguePanel()
@@ -194,47 +221,57 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
     }
 
-    private void DisableAllScripts(GameObject obj)
-    {
-        MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
-        foreach (MonoBehaviour script in scripts)
-        {
-            script.enabled = false; 
-        }
-    }
 
-
-    private void UpdatePrefabStates()
-    {
-        foreach (var prefab in spawnedPrefabs)
-        {
-            if (prefab != null)
-            {
-                if (prefab == currentTargetPrefab)
-                {
-                    EnableAllScripts(prefab);
-                }
-                else
-                {
-                    DisableAllScripts(prefab);
-                }
-            }
-        }
-    }
-
-
-    private void EnableAllScripts(GameObject obj)
-    {
-        MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
-        foreach (MonoBehaviour script in scripts)
-        {
-            script.enabled = true;
-        }
-    }
 
     public bool IsCurrentTarget(GameObject prefab)
     {
         return prefab == currentTargetPrefab;
     }
+    public void SetIsCollided()
+    {
+        if (isPointPath && currentTargetPrefab != null)
+        {
+            ClickablePrefab clickableScript = currentTargetPrefab.GetComponent<ClickablePrefab>();
+            if (clickableScript != null)
+            {
+                clickableScript.isCollided = true;
+            }
+        }
+        else
+        {
+            Debug.Log("erro");
+        }
+    }
+
+    private void UpdateAllPrefabButtonStates()
+    {
+        ClickablePrefab[] allPrefabs = FindObjectsOfType<ClickablePrefab>();
+
+        foreach (ClickablePrefab clickableScript in allPrefabs)
+        {
+            GameObject prefab = clickableScript.gameObject;
+
+            if (prefab != currentTargetPrefab && !clickableScript.IsCollided)
+            {
+                clickableScript.UpdateButtonState();
+            }
+        }
+    }
+
+    private void ResetAllPrefabButtonStates()
+    {
+        ClickablePrefab[] allPrefabs = FindObjectsOfType<ClickablePrefab>();
+
+        foreach (ClickablePrefab clickableScript in allPrefabs)
+        {
+            GameObject prefab = clickableScript.gameObject;
+
+            if (prefab != currentTargetPrefab && !clickableScript.IsCollided)
+            {
+                clickableScript.ResetCollisionState();
+            }
+        }
+    }
+
 
 }

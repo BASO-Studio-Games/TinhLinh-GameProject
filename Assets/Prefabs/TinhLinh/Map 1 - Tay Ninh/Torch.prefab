@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585e7d18b0f36fb42bbad4e08e46d5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idTinhLinh: Torch
+  idTinhLinh: M1TN06
   cost: 50
   information: 
   isTool: 0

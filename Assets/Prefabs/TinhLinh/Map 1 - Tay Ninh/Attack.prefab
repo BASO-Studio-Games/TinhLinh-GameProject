@@ -186,7 +186,7 @@ MonoBehaviour:
   boxSize: 0.7
   attackCooldown: 2
   attackDuration: 1
-  damage: 100
+  damage: 5
   bloodPrefabs: {fileID: 2526599917821403406, guid: d9aefddbe95fd994a9b5475a898476f0, type: 3}
   animator: {fileID: 5225359013334901759}
 --- !u!114 &3555870453894161285
