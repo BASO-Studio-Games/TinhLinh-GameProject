@@ -243,6 +243,7 @@ MonoBehaviour:
   maxHp: 0
   hpBar: {fileID: 4416821936702038603}
   hpBarObject: {fileID: 6567284880221084233}
+  isEvolved: 0
   isStunned: 0
   baseSpeed: 0
   isDestroyed: 0

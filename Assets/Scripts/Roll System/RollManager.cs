@@ -150,24 +150,36 @@ public class RollManager : MonoBehaviour
         Tool.OnToolActionCompleted -= HandleToolActionCompleted;
     }
 
-    private void HandleToolActionCompleted(Tool tool, Tile fromTile, Tile toTile)
+    private void HandleToolActionCompleted(Tool tool, Tile fromTile, Tile toTile, bool isDelete, bool isSwap)
     {
-        if (toTile == null)
+        if (isDelete)
         {
-            // Debug.Log($"{tool.GetType().Name} đã được chọn để di chuyển từ {fromTile.name}");
-            isUseTool = true;
+            if (fromTile != null)
+            {
+                hasBuy = true;
+                remainingSlots = Mathf.Max(remainingSlots - 1, 0);
+            }
+            isUseTool = false;
             return;
         }
 
-        // Debug.Log($"{tool.GetType().Name} đã hoàn thành hành động từ {fromTile.name} đến {toTile.name}");
-        
-        // if (tool is TinhLinhMover)
-        // {
-        //     Debug.Log("------------Tinh Linh đã được di chuyển!");
-        // }
+        if (isSwap)
+        {
+            isUseTool = false;
+            return;
+        }
+
+        if (toTile == null)
+        {
+            isUseTool = true;
+            return;
+        }
 
         hasBuy = true;
         remainingSlots = Mathf.Max(remainingSlots - 1, 0);
         isUseTool = false;
     }
+
+
+
 }

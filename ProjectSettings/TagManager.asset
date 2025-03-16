@@ -54,5 +54,8 @@ TagManager:
   - name: TinhLinh
     uniqueID: 1103242143
     locked: 0
+  - name: UIDialogue
+    uniqueID: 89672239
+    locked: 0
   m_RenderingLayers:
   - Default

@@ -800,6 +800,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 732878986721211483, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5272635967774306193, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 360.4573
@@ -838,6 +842,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5272635967774306193, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
@@ -5309,6 +5317,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialoguePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 6103291609804118828, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6972,7 +6984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4983bb103b1e74e8008773aa9c3941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollManager: {fileID: 0}
+  rollManager: {fileID: 1964594960}
   rollButton: {fileID: 873216539}
   resetButton: {fileID: 0}
   endButton: {fileID: 192164637}

@@ -13,7 +13,7 @@ public class TinhLinhSwap : Tool
 
     public override void Activate(Tile tile)
     {
-        if (tile.HasTinhLinh() && selectedTile == null)
+        if (tile.HasTinhLinh() && selectedTile == null) 
         {
             selectedTile = tile;
             GameObject tinhLinh = selectedTile.GetTinhLinhObject();
@@ -21,24 +21,24 @@ public class TinhLinhSwap : Tool
             if (tinhLinh != null)
             {
                 originalScale = tinhLinh.transform.localScale;
-                tinhLinh.transform.localScale = originalScale * 1.5f; 
+                tinhLinh.transform.localScale = originalScale * 1.5f;
             }
 
             NotifyToolActionCompleted(selectedTile, null);
             return;
         }
 
-        if (selectedTile != null && tile.HasTinhLinh() && selectedTile != tile)
+        if (selectedTile != null && tile.HasTinhLinh() && selectedTile != tile) 
         {
             ResetTinhLinhScale(selectedTile);
             SwapTinhLinh(selectedTile, tile);
 
-            NotifyToolActionCompleted(selectedTile, tile);
-            selectedTile = null; 
+            NotifyToolActionCompletedForSwap(selectedTile, tile);
+            selectedTile = null;
             return;
         }
 
-        if (selectedTile == tile)
+        if (selectedTile == tile) 
         {
             ResetTinhLinhScale(selectedTile);
             selectedTile = null;

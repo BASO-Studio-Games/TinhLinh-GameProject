@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class TinhLinh : Actor
     [SerializeField] protected float maxHp;
     [SerializeField] private Image hpBar;
     [SerializeField] private GameObject hpBarObject;
+    private Animator hpBarAnimator;
+
 
     private bool isDestroyed = false;
 
@@ -17,6 +20,15 @@ public class TinhLinh : Actor
     {
         LoadStats();
     }
+
+    private void Awake()
+    {
+        if (hpBarObject != null)
+        {
+            hpBarAnimator = hpBarObject.GetComponent<Animator>();
+        }
+    }
+
 
     private void LoadStats()
     {
@@ -83,10 +95,36 @@ public class TinhLinh : Actor
 
     public void SetHpBarVisible(bool isVisible)
     {
-        if (hpBar != null)
+        if (hpBarAnimator != null)
         {
-            hpBarObject.SetActive(isVisible);
+            hpBarAnimator.SetBool("isClose", !isVisible);
+        }
+
+        if (!isVisible)
+        {
+            StartCoroutine(HideHpBarAfterAnimation());
+        }
+        else
+        {
+            if (hpBarObject != null)
+            {
+                hpBarObject.SetActive(true);
+            }
         }
     }
+
+    private IEnumerator HideHpBarAfterAnimation()
+    {
+        float animationTime = hpBarAnimator.GetCurrentAnimatorStateInfo(0).length;
+
+        yield return new WaitForSeconds(animationTime);
+
+        if (hpBarObject != null)
+        {
+            hpBarObject.SetActive(false);
+        }
+    }
+
+
 
 }
