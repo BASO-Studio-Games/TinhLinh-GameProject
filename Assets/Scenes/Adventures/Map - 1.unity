@@ -8892,8 +8892,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   evolvedAttackPrefab: {fileID: 7763906890701756966, guid: 0863166744aea114caa3d1b3a13a0c0c, type: 3}
-  evolvedBompPrefab: {fileID: 0}
-  evolvedFanPrefab: {fileID: 0}
+  evolvedBompPrefab: {fileID: 7763906890701756966, guid: 589414edf0c845d4192ee78611b21879, type: 3}
+  evolvedFanPrefab: {fileID: 8924342950866454463, guid: e19d0994f082bcd468b311eff279c797, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

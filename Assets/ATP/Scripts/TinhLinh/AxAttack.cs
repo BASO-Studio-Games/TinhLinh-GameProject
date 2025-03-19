@@ -29,11 +29,53 @@ public class AxAttack : MonoBehaviour
 
         Collider2D[] enemiesInRange = Physics2D.OverlapBoxAll(transform.position, new Vector2(squareSize * 3, squareSize * 3), 0f, enemyMask);
 
-        if (enemiesInRange.Length > 0 && !isAttacking)
+        if (enemiesInRange.Length > 0)
         {
-            StartCoroutine(ContinuousAttack());
+            Transform nearestEnemy = FindNearestEnemy(enemiesInRange);
+            if (nearestEnemy != null)
+            {
+                RotateTowardsEnemy(nearestEnemy);
+            }
+
+            if (!isAttacking)
+            {
+                StartCoroutine(ContinuousAttack());
+            }
         }
     }
+
+    private Transform FindNearestEnemy(Collider2D[] enemies)
+    {
+        Transform nearestEnemy = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (var enemy in enemies)
+        {
+            float distance = Vector2.Distance(transform.position, enemy.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nearestEnemy = enemy.transform;
+            }
+        }
+
+        return nearestEnemy;
+    }
+
+    private void RotateTowardsEnemy(Transform enemy)
+    {
+        Vector2 direction = (enemy.position - transform.position).normalized;
+
+        if (direction.x < 0)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+    }
+
 
     private IEnumerator ContinuousAttack()
     {

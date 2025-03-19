@@ -86,10 +86,22 @@ public class EnemyMovement : Actor
     {
         if (isMoving)
         {
-            Vector2 direction = Vector2.MoveTowards(rb.position, target.position, moveSpeed * Time.fixedDeltaTime);
-            rb.MovePosition(direction);
+            Vector2 direction = ((Vector2)transform.position - (Vector2)target.position).normalized;
+            Vector2 newPosition = Vector2.MoveTowards(rb.position, target.position, moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(newPosition);
+
+
+            if (direction.x > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1); 
+            }
+            else if (direction.x < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1); 
+            }
         }
     }
+
 
     private void CheckPoint()
     {

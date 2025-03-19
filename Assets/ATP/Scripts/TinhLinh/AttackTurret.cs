@@ -43,14 +43,33 @@ public class AttackTinhLinh : MonoBehaviour
 
             if (hit != null && enemiesInRange.Contains(hit))
             {
-                hitTarget = hit; 
+                hitTarget = hit;
                 hasTarget = true;
+
+                Vector2 directionToTarget = (hit.transform.position - transform.position).normalized;
+
+                RotateTowardsTarget(directionToTarget);
+
                 break;
             }
         }
 
         animator.SetBool("isAttack", hasTarget);
     }
+
+    private void RotateTowardsTarget(Vector2 direction)
+    {
+        if (direction.x < 0)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+    }
+
+
 
 
     public void Attack()
