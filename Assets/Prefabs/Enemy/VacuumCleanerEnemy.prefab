@@ -266,12 +266,17 @@ MonoBehaviour:
       m_Calls: []
   rb: {fileID: 6859782255254397202}
   arrowIndicator: {fileID: 77024954154146149}
+  animator: {fileID: 0}
   currencyTakeDamage: 0
   energyTakeDamage: 0
   currencyDie: 0
   energyDie: 0
   moveSpeed: 2
   currencyWorth: 50
+  maxHp: 0
+  hpBar: {fileID: 0}
+  hpBarObject: {fileID: 0}
+  isEvolved: 0
   isStunned: 0
   baseSpeed: 0
   isDestroyed: 0

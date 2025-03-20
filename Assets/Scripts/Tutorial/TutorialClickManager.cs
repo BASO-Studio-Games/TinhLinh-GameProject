@@ -10,9 +10,10 @@ public class TutorialClickManager : MonoBehaviour
     public GameObject tutorialClickPanel; // Lỗ tròn hướng dẫn
     public RectTransform pointClick; // Lỗ tròn hướng dẫn
     public GameObject[] targetClick; // Danh sách các điểm cần click
-    public string[] tutorialString;    
-    public Vector3[] tutorialPointSize;    
+    public string[] tutorialString;
+    public Vector3[] tutorialPointSize;
     public TMP_Text textGuide; // Hướng dẫn hiển thị (có thể null nếu không cần)
+    public RectTransform textHighlight; // Lỗ vuông cho text hướng dẫn
 
     private int currentStep = 0;
     private int currentStringStep = 0;
@@ -44,18 +45,22 @@ public class TutorialClickManager : MonoBehaviour
 
         GameObject currentTarget = targetClick[currentStep];
 
+        if (textGuide != null)
+        {
+            textGuide.text = tutorialString[currentStringStep]; // Cập nhật nội dung text
+            Invoke(nameof(UpdateTextHighlight), 0.05f); // Chờ 0.05 giây để TextMeshPro cập nhật layout
+        }
+
         if (currentTarget == null)
         {
             // Nếu bước này chỉ là hiển thị text, ẩn lỗ bấm
             tutorialClickPanel.gameObject.SetActive(false);
-            textGuide.text = tutorialString[currentStringStep];
         }
         else
         {
             // Hiển thị lỗ bấm và di chuyển nó
             tutorialClickPanel.gameObject.SetActive(true);
-            Vector3 targetPos = currentTarget.transform.position;
-            pointClick.position = targetPos;
+            pointClick.position = currentTarget.transform.position;
 
             if (tutorialPointSize == null || tutorialPointSize.Length == 0)
             {
@@ -66,36 +71,37 @@ public class TutorialClickManager : MonoBehaviour
                 }
             }
 
-            pointClick.localScale = new Vector3(tutorialPointSize[currentSizeStep].x, tutorialPointSize[currentSizeStep].y, tutorialPointSize[currentSizeStep].z);
+            pointClick.localScale = new Vector3(
+                tutorialPointSize[currentSizeStep].x,
+                tutorialPointSize[currentSizeStep].y,
+                tutorialPointSize[currentSizeStep].z
+            );
+
             currentSizeStep++;
-            textGuide.text = tutorialString[currentStringStep];
         }
+
         currentStringStep++;
     }
 
+    void UpdateTextHighlight()
+    {
+        if (textGuide == null || textHighlight == null) return;
 
-    // void ExecuteClick(GameObject target)
-    // {
-    //     PointerEventData eventData = new PointerEventData(EventSystem.current);
-    //     eventData.position = target.transform.position;
+        LayoutRebuilder.ForceRebuildLayoutImmediate(textGuide.rectTransform);
 
-    //     List<RaycastResult> results = new List<RaycastResult>();
-    //     EventSystem.current.RaycastAll(eventData, results);
+        textHighlight.gameObject.SetActive(true);
+        textHighlight.position = textGuide.transform.position;
 
-    //     foreach (var result in results)
-    //     {
-    //         if (result.gameObject == target)
-    //         {
-    //             ExecuteEvents.Execute(result.gameObject, eventData, ExecuteEvents.pointerClickHandler);
-    //             break;
-    //         }
-    //     }
-    // }
+        float paddingX = 10f; // Thêm padding cho rộng hơn một chút
+        float paddingY = 15f; // Thêm padding cho cao hơn một chút
+        textHighlight.sizeDelta = new Vector2(textGuide.preferredWidth + paddingX, textGuide.preferredHeight + paddingY);
+    }
 
     void EndTutorial()
     {
         pointClick.gameObject.SetActive(false);
         textGuide.text = "Hướng dẫn hoàn tất!";
         gameObject.SetActive(false);
+        textHighlight.gameObject.SetActive(false);
     }
 }

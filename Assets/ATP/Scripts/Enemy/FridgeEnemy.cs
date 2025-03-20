@@ -1,128 +1,40 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
-public class FridgeEnemy : MonoBehaviour
+public class Fridge : MonoBehaviour
 {
-    [Header("Attributes")]
-    [SerializeField] private int health = 20;
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private int damage = 5;
+    [SerializeField] private int damage = 1;
+    [SerializeField] private float attackInterval = 0.5f;
 
-    [Header("Frost Settings")]
-    [SerializeField] private LayerMask enemyLayer;
-    [SerializeField] private Vector2[] frostOffsets;
-    [SerializeField] private float boxSize = 3f; 
-    [SerializeField] private float freezeDuration = 3f; 
-    [SerializeField] private float detectionInterval = 0.1f; 
-
-    private EnemyMovement enemyMovement;
     private TinhLinh targetTinhLinh;
-    private Dictionary<Collider2D, float> frostTimers = new Dictionary<Collider2D, float>();
-    private HashSet<Collider2D> frozenTargets = new HashSet<Collider2D>(); 
+    private EnemyMovement enemyMovement;
+    private float attackCooldown;
+    public bool IsAttack = false;
+
+    [Header("References")]
+    [SerializeField] private Animator animator;
 
     private void Start()
     {
         enemyMovement = GetComponent<EnemyMovement>();
-
         if (enemyMovement == null)
         {
             Debug.LogError("EnemyMovement script not found on this GameObject.");
         }
-
-        StartCoroutine(DetectEnemiesInFrostBoxesRoutine());
     }
 
-    private IEnumerator DetectEnemiesInFrostBoxesRoutine()
+    private void Update()
     {
-        while (true)
+        if (IsAttack)
         {
-            DetectEnemiesInFrostBoxes();
-            yield return new WaitForSeconds(detectionInterval);
-        }
-    }
-
-    private void DetectEnemiesInFrostBoxes()
-    {
-        HashSet<Collider2D> currentFrameTargets = new HashSet<Collider2D>();
-
-        foreach (var offset in frostOffsets)
-        {
-            Vector2 boxCenter = (Vector2)transform.position + offset;
-            Collider2D[] hits = Physics2D.OverlapBoxAll(boxCenter, new Vector2(boxSize, boxSize), 0f, enemyLayer);
-
-            foreach (Collider2D hit in hits)
+            if (animator != null)
             {
-                currentFrameTargets.Add(hit);
-
-                if (!frostTimers.ContainsKey(hit))
-                {
-                    frostTimers[hit] = 0f;
-                    Debug.Log($"Enemy {hit.name} entered frost box at {Time.time} seconds.");
-                }
-                else
-                {
-                    frostTimers[hit] += detectionInterval;
-
-                    if (frostTimers[hit] >= freezeDuration && !frozenTargets.Contains(hit))
-                    {
-                        FreezeTarget(hit); 
-                        frozenTargets.Add(hit);
-                    }
-                }
+                animator.SetBool("isAttack", true);
             }
-        }
 
-        List<Collider2D> toRemove = new List<Collider2D>();
-
-        foreach (var target in frostTimers.Keys)
-        {
-            if (!currentFrameTargets.Contains(target))
+            if (attackCooldown > 0)
             {
-                toRemove.Add(target);
+                attackCooldown -= Time.deltaTime;
             }
-        }
-
-        foreach (var target in toRemove)
-        {
-            frostTimers.Remove(target);
-            Debug.Log($"Enemy {target.name} exited frost box at {Time.time} seconds.");
-            if (frozenTargets.Contains(target))
-            {
-                UnfreezeTarget(target); 
-                frozenTargets.Remove(target);
-            }
-        }
-    }
-
-    private void FreezeTarget(Collider2D target)
-    {
-        Debug.Log($"Target {target.name} is frozen!");
-        EnemyMovement targetMovement = target.GetComponent<EnemyMovement>();
-        if (targetMovement != null)
-        {
-            targetMovement.SetStunned(true);
-        }
-    }
-
-    private void UnfreezeTarget(Collider2D target)
-    {
-        Debug.Log($"Target {target.name} is unfrozen!");
-        EnemyMovement targetMovement = target.GetComponent<EnemyMovement>();
-        if (targetMovement != null)
-        {
-            targetMovement.SetStunned(false);
-        }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.cyan;
-
-        foreach (var offset in frostOffsets)
-        {
-            Vector2 boxCenter = (Vector2)transform.position + offset;
-            Gizmos.DrawWireCube(boxCenter, new Vector3(boxSize, boxSize, 0f));
         }
     }
 
@@ -134,6 +46,20 @@ public class FridgeEnemy : MonoBehaviour
             enemyMovement.isAttack = true;
             enemyMovement.isMoving = false;
             targetTinhLinh = tinhlinh;
+
+            if (animator != null)
+            {
+                animator.SetBool("isBerore", true);
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (IsAttack && attackCooldown <= 0)
+        {
+            Attack();
+            attackCooldown = attackInterval;
         }
     }
 
@@ -145,6 +71,51 @@ public class FridgeEnemy : MonoBehaviour
             enemyMovement.isAttack = false;
             enemyMovement.isMoving = true;
             targetTinhLinh = null;
+            IsAttack = false;
+
+            ResetAnimator();
+            Debug.Log("Exit Collision and Reset Animator");
         }
     }
+
+
+    public void Attack()
+    {
+        if (targetTinhLinh != null)
+        {
+            Debug.Log("Enemy Attack!");
+            targetTinhLinh.TakeDamage(damage);
+        }
+        else
+        {
+            Debug.Log("Target is null, stopping attack.");
+            IsAttack = false;
+            ResetAnimator();
+        }
+    }
+
+
+    private void ResetAnimator()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("isAttack", false);
+            animator.SetBool("isBerore", false);
+            animator.Play("FanEnemyRun");
+        }
+    }
+
+    public void ReadyAttack()
+    {
+        if (targetTinhLinh != null)
+        {
+            IsAttack = true;
+        }
+        else
+        {
+            IsAttack = false;
+            ResetAnimator();
+        }
+    }
+
 }

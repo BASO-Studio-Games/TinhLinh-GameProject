@@ -8,6 +8,7 @@ public class SettingMenu : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        AudioManager.Instance.PlaySFX("ButtonUI");
     }
 
     public void Back()

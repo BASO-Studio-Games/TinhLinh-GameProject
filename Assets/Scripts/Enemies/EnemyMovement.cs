@@ -206,8 +206,14 @@ public class EnemyMovement : Actor
         if (fanEnemyComponent != null)
         {
             GameObject evolvedEnemy = Instantiate(EvolutionList.main.GetEvolvedFanPrefab(), transform.position, Quaternion.identity);
-            EnemyMovement evolvedMovement = evolvedEnemy.GetComponent<EnemyMovement>();
 
+            // Đảm bảo đối tượng mới được gán vào cùng parent với đối tượng cũ
+            if (transform.parent != null)
+            {
+                evolvedEnemy.transform.SetParent(transform.parent, false);
+            }
+
+            EnemyMovement evolvedMovement = evolvedEnemy.GetComponent<EnemyMovement>();
             if (evolvedMovement != null)
             {
                 evolvedMovement.isEvolved = true;
@@ -216,6 +222,7 @@ public class EnemyMovement : Actor
             }
         }
     }
+
 
 
     protected void UpdateHpBar()

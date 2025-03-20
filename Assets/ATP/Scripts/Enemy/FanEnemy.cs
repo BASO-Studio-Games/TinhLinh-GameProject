@@ -47,7 +47,6 @@ public class FanEnemy : MonoBehaviour
             enemyMovement.isMoving = false;
             targetTinhLinh = tinhlinh;
 
-            Debug.Log("nice");
             if (animator != null)
             {
                 animator.SetBool("isBerore", true);

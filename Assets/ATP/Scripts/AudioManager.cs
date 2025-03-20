@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.Log("deo co nhac");
+            Debug.Log("dont have music");
         }
 
         else
@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour
 
         else
         {
-            musicSource.PlayOneShot(s.clip);
+            sfxSource.PlayOneShot(s.clip);
         }
     }
 

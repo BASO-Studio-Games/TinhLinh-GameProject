@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject winOrLoseMenu;
     [SerializeField] private TMP_Text winOrLoseText;
     [SerializeField] private GameObject[] nextButtonAndImage;
+    public bool winner;
 
     private EnemySpawner enemySpawner;
 
@@ -139,6 +140,7 @@ public class LevelManager : MonoBehaviour
         if (!statusLevel)
         {
             if (isWin){
+                winner = true;
                 statusLevel = true;
                 winOrLoseMenu.SetActive(true);
                 winOrLoseText.text = "Thắng rồi!";
@@ -146,6 +148,7 @@ public class LevelManager : MonoBehaviour
                 nextButtonAndImage[1].SetActive(true);
             }
             else{
+                winner = false;
                 statusLevel = true;
                 winOrLoseMenu.SetActive(true);
                 winOrLoseText.text = "Thua rồi!";
