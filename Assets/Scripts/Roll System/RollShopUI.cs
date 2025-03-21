@@ -95,12 +95,14 @@ public class RollShopUI : MonoBehaviour
 
     private void CheckAndRoll(bool isRol)
     {
+        AudioManager.Instance.PlaySFX("ButtonUI");
+
         if (LevelManager.main.GetCurrency() >= costOfRoll)
         {
             UpdateRollUI(isRol);
             LevelManager.main.SpendCurrency(costOfRoll);
 
-            costOfRoll*=2;
+            costOfRoll *= 2;
             if (costOfRoll > 9999) costOfRoll = 9999;
 
             costOfRollText.text = costOfRoll.ToString();
@@ -113,9 +115,12 @@ public class RollShopUI : MonoBehaviour
 
     private void BuyItem(RollItem item)
     {
+        AudioManager.Instance.PlaySFX("ButtonUI");
+
         if (LevelManager.main.CheckCurrency(item.GetCost())) // Kiểm tra đủ vàng không
         {
-            if (item.GetIdTinhLinh() == "Tool00"){
+            if (item.GetIdTinhLinh() == "Tool00")
+            {
                 LevelManager.main.SpendCurrency(item.GetCost());
                 ResetRoll();
                 return;
@@ -132,6 +137,8 @@ public class RollShopUI : MonoBehaviour
 
     public void ResetRoll()
     {
+        AudioManager.Instance.PlaySFX("ButtonUI");
+
         rollManager.ResetRoll();
         UpdateRollUI(true);
     }
@@ -146,6 +153,8 @@ public class RollShopUI : MonoBehaviour
 
     private void EndRoll()
     {
+        AudioManager.Instance.PlaySFX("ButtonUI");
+
         costOfRoll = 10;
         costOfRollText.text = costOfRoll.ToString();
 

@@ -263,6 +263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   attackInterval: 0.25
+  freezeDelay: 2
+  freezeEffectPrefab: {fileID: 1868668190982072839, guid: 1ed6e00530baf8148b58d044c3fd56b8, type: 3}
   IsAttack: 0
   animator: {fileID: 1647703901546910810}
 --- !u!95 &1647703901546910810

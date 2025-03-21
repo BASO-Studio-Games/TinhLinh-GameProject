@@ -42,7 +42,6 @@ public class CrossbowTinhLinh : MonoBehaviour
     public void Shoot()
     {
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-        Debug.Log(bulletObj.name);
 
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetDirection(Vector2.right);

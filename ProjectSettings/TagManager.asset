@@ -54,6 +54,9 @@ TagManager:
   - name: TinhLinh
     uniqueID: 1103242143
     locked: 0
+  - name: ICE
+    uniqueID: 3986738789
+    locked: 0
   - name: UIDialogue
     uniqueID: 89672239
     locked: 0

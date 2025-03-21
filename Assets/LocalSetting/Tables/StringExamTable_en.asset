@@ -22,6 +22,30 @@ MonoBehaviour:
     m_Localized: Setting
     m_Metadata:
       m_Items: []
+  - m_Id: 9871190772678656
+    m_Localized: Languages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9872013300858880
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9872866594258944
+    m_Localized: Adventures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9873452962152448
+    m_Localized: Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9873727894585344
+    m_Localized: Book
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9874973426712576
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

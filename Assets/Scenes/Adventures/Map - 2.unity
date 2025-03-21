@@ -5206,7 +5206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1633171826269986888, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 204
+      value: 204.00002
       objectReference: {fileID: 0}
     - target: {fileID: 3852125389332267525, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
       propertyPath: m_Sprite
@@ -7864,7 +7864,7 @@ MonoBehaviour:
   - {fileID: 8924342950866454463, guid: 6dcb45194bd13a546b69da0ce639db57, type: 3}
   parentObject: {fileID: 2101237008}
   totalWaves: 2
-  baseEnemies: 3
+  baseEnemies: 1
   enemiesPerSecond: 0.2
   timeBetweenWaves: 0.1
   difficultyScalingFactor: 0.75

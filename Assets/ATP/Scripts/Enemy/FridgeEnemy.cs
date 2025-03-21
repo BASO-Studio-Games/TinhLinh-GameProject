@@ -1,9 +1,12 @@
 using UnityEngine;
+using System.Collections;
 
 public class Fridge : MonoBehaviour
 {
     [SerializeField] private int damage = 1;
     [SerializeField] private float attackInterval = 0.5f;
+    [SerializeField] private float freezeDelay = 2f; 
+    [SerializeField] private GameObject freezeEffectPrefab; 
 
     private TinhLinh targetTinhLinh;
     private EnemyMovement enemyMovement;
@@ -51,6 +54,8 @@ public class Fridge : MonoBehaviour
             {
                 animator.SetBool("isBerore", true);
             }
+
+            StartCoroutine(FreezeTargetAfterDelay());
         }
     }
 
@@ -78,7 +83,6 @@ public class Fridge : MonoBehaviour
         }
     }
 
-
     public void Attack()
     {
         if (targetTinhLinh != null)
@@ -93,7 +97,6 @@ public class Fridge : MonoBehaviour
             ResetAnimator();
         }
     }
-
 
     private void ResetAnimator()
     {
@@ -115,6 +118,49 @@ public class Fridge : MonoBehaviour
         {
             IsAttack = false;
             ResetAnimator();
+        }
+    }
+
+    private IEnumerator FreezeTargetAfterDelay()
+    {
+        yield return new WaitForSeconds(freezeDelay);
+
+        if (targetTinhLinh != null)
+        {
+            AttackTinhLinh attackScript = targetTinhLinh.GetComponent<AttackTinhLinh>();
+            Animator targetAnimator = targetTinhLinh.GetComponent<Animator>();
+
+            if (attackScript != null)
+            {
+                attackScript.enabled = false;
+                Debug.Log("Target's AttackTinhLinh has been disabled!");
+            }
+
+            if (targetAnimator != null)
+            {
+                targetAnimator.enabled = false;
+                Debug.Log("Target's Animator has been disabled!");
+            }
+
+            DisableComponent<CrossbowTinhLinh>(targetTinhLinh.gameObject);
+            DisableComponent<AxAttack>(targetTinhLinh.gameObject);
+            DisableComponent<BommerTurret>(targetTinhLinh.gameObject);
+            DisableComponent<StunTurret>(targetTinhLinh.gameObject);
+
+            if (freezeEffectPrefab != null)
+            {
+                Instantiate(freezeEffectPrefab, targetTinhLinh.transform.position, Quaternion.identity);
+            }
+        }
+    }
+
+    private void DisableComponent<T>(GameObject target) where T : MonoBehaviour
+    {
+        T component = target.GetComponent<T>();
+        if (component != null)
+        {
+            component.enabled = false;
+            Debug.Log($"{typeof(T).Name} has been disabled!");
         }
     }
 

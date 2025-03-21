@@ -80,6 +80,7 @@ public class EnemyMovement : Actor
     private void FixedUpdate()
     {
         Move();
+        Debug.Log(moveSpeed);
     }
 
     private void Move()
@@ -203,6 +204,7 @@ public class EnemyMovement : Actor
         yield return new WaitForSeconds(delay);
 
         FanEnemy fanEnemyComponent = GetComponent<FanEnemy>();
+        VacuumCleanerEnemy vacuumCleanerEnemy = GetComponent<VacuumCleanerEnemy>();
         if (fanEnemyComponent != null)
         {
             GameObject evolvedEnemy = Instantiate(EvolutionList.main.GetEvolvedFanPrefab(), transform.position, Quaternion.identity);
@@ -221,7 +223,49 @@ public class EnemyMovement : Actor
                 evolvedMovement.target = LevelManager.main.path[this.pathIndex];
             }
         }
+
+        if (vacuumCleanerEnemy != null)
+        {
+            GameObject evolvedEnemy = Instantiate(EvolutionList.main.GetEvolvedFanPrefab(), transform.position, Quaternion.identity);
+
+            // Đảm bảo đối tượng mới được gán vào cùng parent với đối tượng cũ
+            if (transform.parent != null)
+            {
+                evolvedEnemy.transform.SetParent(transform.parent, false);
+            }
+
+            EnemyMovement evolvedMovement = evolvedEnemy.GetComponent<EnemyMovement>();
+            if (evolvedMovement != null)
+            {
+                evolvedMovement.isEvolved = true;
+                evolvedMovement.pathIndex = this.pathIndex;
+                evolvedMovement.target = LevelManager.main.path[this.pathIndex];
+            }
+        }
     }
+
+    public void TriggerDie()
+    {
+        isDestroyed = true;
+        isMoving = false;
+        rb.linearVelocity = Vector2.zero;
+
+        if (animator != null)
+        {
+            animator.SetBool("isDie", true);
+        }
+
+        StartCoroutine(EvolveEnemyAfterDelay(0.5f));
+
+        GetComponent<EnemyMovement>().enabled = false;
+
+        OnDead?.Invoke();
+        EnemySpawner.onEnemyDestroy.Invoke();
+
+        float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        Destroy(gameObject, animationLength);
+    }
+
 
 
 

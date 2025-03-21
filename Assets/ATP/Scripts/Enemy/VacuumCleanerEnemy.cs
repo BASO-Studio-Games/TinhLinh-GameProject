@@ -2,75 +2,83 @@ using UnityEngine;
 
 public class VacuumCleanerEnemy : MonoBehaviour
 {
-    [Header("Attributes")]
-    [SerializeField] private int health = 20;
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private int damage = 5;
+    private TinhLinh targetTinhLinh;
+    private EnemyMovement enemyMovement;
+    private Collider2D col;
+    private SpriteRenderer spriteRenderer;
+    private bool isPhaseThrough = false;
 
-    [Header("Detection Settings")]
-    [SerializeField] private LayerMask trapLayer;
-    [SerializeField] private Vector2[] detectionOffsets; 
-    [SerializeField] private float boxSize = 1f; 
+    [Header("References")]
+    [SerializeField] private Animator animator;
 
-    [Header("Jump Settings")]
-    [SerializeField] private float jumpHeight = 2f;
-    [SerializeField] private float jumpDuration = 0.5f;
+    [Header("Speed Settings")]
+    [SerializeField] private float phaseThroughSpeedMultiplier = 2f;
+    [SerializeField] private float fadeDuration = 0.5f; 
 
-    private bool isJumping = false;
-
-    private void Update()
+    private void Start()
     {
-        if (!isJumping)
+        enemyMovement = GetComponent<EnemyMovement>();
+        col = GetComponent<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (enemyMovement == null)
         {
-            DetectAndJumpOverTrap();
+            Debug.LogError("EnemyMovement script not found on this GameObject.");
+        }
+
+        if (col == null)
+        {
+            Debug.LogError("Collider2D not found on this GameObject.");
+        }
+
+        if (spriteRenderer == null)
+        {
+            Debug.LogError("SpriteRenderer not found on this GameObject.");
         }
     }
 
-    private void DetectAndJumpOverTrap()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        foreach (var offset in detectionOffsets)
+        if (collision.gameObject.CompareTag("TinhLinh") && !isPhaseThrough)
         {
-            Vector2 boxCenter = (Vector2)transform.position + offset;
+            isPhaseThrough = true;
+            col.isTrigger = true;
+            enemyMovement.UpdateSpeed(phaseThroughSpeedMultiplier);
+            Debug.Log("Entering phase through state!");
 
-            Collider2D hit = Physics2D.OverlapBox(boxCenter, new Vector2(boxSize, boxSize), 0f, trapLayer);
-
-            if (hit != null)
-            {
-                Debug.Log("Trap detected at " + boxCenter + "! Jumping over...");
-                StartCoroutine(JumpOverTrap());
-                return; 
-            }
+            StopAllCoroutines();
+            StartCoroutine(FadeSprite(0.3f)); 
         }
     }
 
-    private System.Collections.IEnumerator JumpOverTrap()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        isJumping = true;
+        if (isPhaseThrough && other.gameObject.CompareTag("TinhLinh"))
+        {
+            isPhaseThrough = false;
+            col.isTrigger = false;
+            enemyMovement.ResetSpeed();
+            Debug.Log("Exiting phase through state!");
 
-        Vector2 startPosition = transform.position;
-        Vector2 targetPosition = new Vector2(transform.position.x, transform.position.y + jumpHeight);
+            StopAllCoroutines();
+            StartCoroutine(FadeSprite(1f));
+            enemyMovement.TriggerDie();
+        }
+    }
 
+    private System.Collections.IEnumerator FadeSprite(float targetAlpha)
+    {
+        float startAlpha = spriteRenderer.color.a;
         float elapsedTime = 0f;
 
-        while (elapsedTime < jumpDuration)
+        while (elapsedTime < fadeDuration)
         {
-            transform.position = Vector2.Lerp(startPosition, targetPosition, elapsedTime / jumpDuration);
             elapsedTime += Time.deltaTime;
+            float newAlpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeDuration);
+            spriteRenderer.color = new Color(1f, 1f, 1f, newAlpha);
             yield return null;
         }
 
-        transform.position = startPosition; 
-        isJumping = false;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-
-        foreach (var offset in detectionOffsets)
-        {
-            Vector2 boxCenter = (Vector2)transform.position + offset;
-            Gizmos.DrawWireCube(boxCenter, new Vector3(boxSize, boxSize, 0f));
-        }
+        spriteRenderer.color = new Color(1f, 1f, 1f, targetAlpha);
     }
 }
