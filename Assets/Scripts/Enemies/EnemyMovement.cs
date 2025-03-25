@@ -227,12 +227,12 @@ public class EnemyMovement : Actor
         if (vacuumCleanerEnemy != null)
         {
             GameObject evolvedEnemy = Instantiate(EvolutionList.main.GetEvolvedFanPrefab(), transform.position, Quaternion.identity);
-
-            // Đảm bảo đối tượng mới được gán vào cùng parent với đối tượng cũ
+            evolvedEnemy.GetComponent<Collider2D>().enabled = false; 
             if (transform.parent != null)
             {
                 evolvedEnemy.transform.SetParent(transform.parent, false);
             }
+            StartCoroutine(EnableColliderAfterDelay(evolvedEnemy, 0.1f));
 
             EnemyMovement evolvedMovement = evolvedEnemy.GetComponent<EnemyMovement>();
             if (evolvedMovement != null)
@@ -242,6 +242,12 @@ public class EnemyMovement : Actor
                 evolvedMovement.target = LevelManager.main.path[this.pathIndex];
             }
         }
+    }
+
+    private IEnumerator EnableColliderAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        obj.GetComponent<Collider2D>().enabled = true; 
     }
 
     public void TriggerDie()

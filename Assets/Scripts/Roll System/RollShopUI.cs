@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -18,10 +19,22 @@ public class RollShopUI : MonoBehaviour
 
     private int costOfRoll;
 
+    [SerializeField] private GameObject warningPanel;
+    [SerializeField] private CanvasGroup warningCanvas;
+
+
     private void Start()
     {
         if (rollManager == null)
-            rollManager = GetComponent<RollManager>();
+        {
+            Debug.LogError("rollManager chưa được gán! Kiểm tra Inspector.");
+        }
+        else
+        {
+            rollManager.ResetRoll();
+        }
+
+        rollManager = GetComponent<RollManager>();
 
         rollButton.onClick.AddListener(() => CheckAndRoll(true));
         // resetButton.onClick.AddListener(ResetRoll);
@@ -95,6 +108,13 @@ public class RollShopUI : MonoBehaviour
 
     private void CheckAndRoll(bool isRol)
     {
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("AudioManager.Instance bị null!");
+            return;
+        }
+
+        Debug.Log("Gọi PlaySFX(ButtonUI)");
         AudioManager.Instance.PlaySFX("ButtonUI");
 
         if (LevelManager.main.GetCurrency() >= costOfRoll)
@@ -110,11 +130,20 @@ public class RollShopUI : MonoBehaviour
         else
         {
             Debug.Log("Không đủ tiền để roll!");
+            ShowWarning();
         }
     }
 
+
     private void BuyItem(RollItem item)
     {
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("AudioManager.Instance bị null!");
+            return;
+        }
+
+        Debug.Log("Gọi PlaySFX(ButtonUI)");
         AudioManager.Instance.PlaySFX("ButtonUI");
 
         if (LevelManager.main.CheckCurrency(item.GetCost())) // Kiểm tra đủ vàng không
@@ -132,11 +161,51 @@ public class RollShopUI : MonoBehaviour
         else
         {
             Debug.Log("Không đủ vàng!");
+            ShowWarning();
         }
     }
 
+    private void ShowWarning()
+    {
+        if (warningPanel != null && warningCanvas != null)
+        {
+            warningPanel.SetActive(true);
+            warningCanvas.alpha = 1f;
+            StartCoroutine(HideWarning());
+        }
+        else
+        {
+            Debug.LogError("⚠️ warningPanel hoặc warningCanvas chưa được gán trong Inspector!");
+        }
+    }
+
+    private IEnumerator HideWarning()
+    {
+        yield return new WaitForSeconds(1f); // Đợi 1 giây trước khi bắt đầu làm mờ
+
+        float duration = 1f; // Thời gian mờ dần
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            warningCanvas.alpha = Mathf.Lerp(1f, 0f, elapsedTime / duration);
+            yield return null;
+        }
+
+        warningPanel.SetActive(false); // Tắt panel sau khi mờ dần
+    }
+
+
     public void ResetRoll()
     {
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("AudioManager.Instance bị null!");
+            return;
+        }
+
+        Debug.Log("Gọi PlaySFX(ButtonUI)");
         AudioManager.Instance.PlaySFX("ButtonUI");
 
         rollManager.ResetRoll();
@@ -153,6 +222,14 @@ public class RollShopUI : MonoBehaviour
 
     private void EndRoll()
     {
+
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("AudioManager.Instance bị null!");
+            return;
+        }
+
+        Debug.Log("Gọi PlaySFX(ButtonUI)");
         AudioManager.Instance.PlaySFX("ButtonUI");
 
         costOfRoll = 10;
@@ -161,4 +238,5 @@ public class RollShopUI : MonoBehaviour
         rollManager.EndRoll();
         UpdateRollUI(true);
     }
+
 }

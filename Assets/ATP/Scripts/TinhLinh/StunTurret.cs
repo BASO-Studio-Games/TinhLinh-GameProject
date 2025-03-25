@@ -30,13 +30,19 @@ public class StunTurret : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
+            Collider2D enemyCollider = collision.GetComponent<Collider2D>();
+
+            if (enemyCollider != null && enemyCollider.isTrigger)
+            {
+                return;
+            }
+
             animator.SetBool("isAttack", true);
-
             currentEnemyCollider = collision;
-
             CreateExplosionEffect(collision.transform.position);
         }
     }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {

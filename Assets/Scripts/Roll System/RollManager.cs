@@ -30,10 +30,13 @@ public class RollManager : MonoBehaviour
         hasBuy = false;
     }
 
-    private void Update() {
-        if (isUseItem && (Input.GetMouseButtonDown(0) || Input.touchCount > 0)){
+    private void Update()
+    {
+        //Debug.Log(remainingSlots);
+        if (isUseItem && (Input.GetMouseButtonDown(0) || Input.touchCount > 0))
+        {
             if (isUseTool) return;
-            
+
             if (defendersContainer.childCount > currentchildCount)
             {
                 hasBuy = true;
@@ -48,18 +51,36 @@ public class RollManager : MonoBehaviour
             rollMenu.SetActive(true);
             isUseItem = false;
         }
-    
 
-        if (LevelManager.main.isMaxEnergy && isEndRollMenu){
+        // Kiểm tra số lượng thẻ bài thực tế còn trong rollMenu
+        int remainingCards = 0;
+        foreach (Transform child in rollMenu.transform)
+        {
+            if (child.gameObject.activeSelf) // Đếm chỉ thẻ bài còn hiển thị
+            {
+                remainingCards++;
+            }
+        }
+
+        Debug.Log($"[RollManager] Remaining Slots: {remainingSlots}, Remaining Cards: {remainingCards}");
+
+        if (remainingSlots == 0)
+        {
+            EndRoll();
+        }
+
+        if (LevelManager.main.isMaxEnergy && isEndRollMenu)
+        {
             BuildManager.main.SetSelectedTower(null);
-
             rollMenu.SetActive(true);
             isUseItem = false;
             enemySpawner.enabled = false;
-
             isEndRollMenu = false;
         }
+
     }
+
+
 
     public List<RollItem> Roll()
     {
@@ -126,17 +147,18 @@ public class RollManager : MonoBehaviour
     }
 
     public void EndRoll()
-    {   
+    {
         enemySpawner.enabled = true;
 
         ResetRoll();
         rollMenu.SetActive(false);
 
         isEndRollMenu = true;
-        
+
         if (LevelManager.main.isMaxEnergy)
             LevelManager.main.isMaxEnergy = false;
     }
+
 
 
     // Nhận sự kiện từ tool
@@ -179,7 +201,5 @@ public class RollManager : MonoBehaviour
         remainingSlots = Mathf.Max(remainingSlots - 1, 0);
         isUseTool = false;
     }
-
-
 
 }

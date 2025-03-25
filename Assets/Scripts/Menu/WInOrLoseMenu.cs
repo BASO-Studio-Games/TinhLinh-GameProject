@@ -10,14 +10,8 @@ public class WInOrLoseMenu : MonoBehaviour
     [SerializeField] private SceneLoader sceneLoader;
     [SerializeField] private string nextMapName;
 
-    [SerializeField] private TMP_Text rollRewardText; // Hiển thị thưởng lượt quay
-    [SerializeField] private TMP_Text diamondRewardText; // Hiển thị thưởng kim cương
-
-    [SerializeField] private int WinRoll;
-    [SerializeField] private int WinDiamond;
-
-    [SerializeField] private int CloseRoll;
-    [SerializeField] private int CloseDiamond;
+    [SerializeField] private TMP_Text rollRewardText;
+    [SerializeField] private TMP_Text diamondRewardText;
 
     private DatabaseReference dbReference;
     private string userID;
@@ -49,14 +43,14 @@ public class WInOrLoseMenu : MonoBehaviour
             return;
         }
 
-        int rollReward = isWin ? WinRoll : CloseRoll;
-        int diamondReward = isWin ? WinDiamond : CloseDiamond;
+        int rollReward = isWin ? Random.Range(1, 6) : 0;
+        int diamondReward = isWin ? Random.Range(5, 51) : 0;
 
-        // Hiển thị phần thưởng trên UI
-        rollRewardText.text = $"+{rollReward} lượt quay";
-        diamondRewardText.text = $"+{diamondReward} kim cương";
+        rollRewardText.text = rollReward > 0 ? $"+{rollReward} lượt quay" : "Không có thưởng";
+        diamondRewardText.text = diamondReward > 0 ? $"+{diamondReward} kim cương" : "Không có thưởng";
 
-        // Lấy dữ liệu từ Firebase, sau đó cập nhật
+        if (!isWin) return;
+
         dbReference.Child("Users").Child(userID).GetValueAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsCompleted && task.Result.Exists)
@@ -69,7 +63,6 @@ public class WInOrLoseMenu : MonoBehaviour
                 currentRoll += rollReward;
                 currentDiamond += diamondReward;
 
-                // Lưu lên Firebase
                 dbReference.Child("Users").Child(userID).Child("roll").SetValueAsync(currentRoll);
                 dbReference.Child("Users").Child(userID).Child("diamond").SetValueAsync(currentDiamond);
 
@@ -86,12 +79,8 @@ public class WInOrLoseMenu : MonoBehaviour
     {
         if (nextMapName != null)
         {
-            SceneLoader loader = sceneLoader.GetComponent<SceneLoader>();
-            loader.LoadScene(nextMapName);
-
-            // Cập nhật level hiện tại lên Firebase
+            sceneLoader.LoadScene(nextMapName);
             dbReference.Child("Users").Child(userID).Child("currentLevel").SetValueAsync("1" + nextMapName[nextMapName.Length - 1]);
-
             Time.timeScale = 1f;
         }
         else
@@ -102,32 +91,25 @@ public class WInOrLoseMenu : MonoBehaviour
 
     public void Home()
     {
-        SceneLoader loader = sceneLoader.GetComponent<SceneLoader>();
-        loader.LoadScene("Home Menu");
+        sceneLoader.LoadScene("Home Menu");
         Time.timeScale = 1f;
     }
 
     public void Restart()
     {
-        SceneLoader loader = sceneLoader.GetComponent<SceneLoader>();
-        loader.LoadScene(SceneManager.GetActiveScene().name);
+        sceneLoader.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
     }
 
-    // ----------Firebase----------
     private void InitFirebase()
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsCompleted)
             {
-                FirebaseApp app = FirebaseApp.DefaultInstance;
                 dbReference = FirebaseDatabase.DefaultInstance.RootReference;
                 Debug.Log("✅ Firebase đã khởi tạo!");
-
-                // Gọi GiveReward() sau khi Firebase sẵn sàng
-                bool isWin = LevelManager.main.winner;
-                GiveReward(isWin);
+                GiveReward(LevelManager.main.winner);
             }
             else
             {

@@ -431,6 +431,14 @@ public class RandomPathGenerator : MonoBehaviour
 
     private void CheckAndRoll()
     {
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("AudioManager.Instance bị null!");
+            return;
+        }
+
+        Debug.Log("Gọi PlaySFX(ButtonUI)");
+        AudioManager.Instance.PlaySFX("ButtonUI");
         if (currentRollsCount > 0)
         {
             ResetPath();
@@ -449,6 +457,14 @@ public class RandomPathGenerator : MonoBehaviour
 
     public void StartGame(){
         UIScreen.SetActive(true);
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("AudioManager.Instance bị null!");
+            return;
+        }
+
+        Debug.Log("Gọi PlaySFX(ButtonUI)");
+        AudioManager.Instance.PlaySFX("ButtonUI");
 
         Destroy(gameObject);
     }

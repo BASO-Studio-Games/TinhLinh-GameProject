@@ -208,7 +208,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3737369550115801426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9abfe168411d1b4287759cf9e157f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsData: {fileID: 11400000, guid: 7fa7a826facbf15498dcc4ef9f601b89, type: 2}
+  statsData: {fileID: 11400000, guid: 2c4e401d92f388449ad5263a07dac963, type: 2}
   OnInit:
     m_PersistentCalls:
       m_Calls: []

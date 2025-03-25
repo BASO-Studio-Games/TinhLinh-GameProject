@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
@@ -9,6 +10,12 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("AudioManager.Instance null!");
+            return;
+        }
+
         AudioManager.Instance.PlaySFX("ButtonUI");
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
@@ -16,6 +23,12 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("AudioManager.Instance null!");
+            return;
+        }
+
         AudioManager.Instance.PlaySFX("ButtonUI");
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
@@ -23,6 +36,12 @@ public class PauseMenu : MonoBehaviour
 
     public void Home()
     {
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("AudioManager.Instance null!");
+            return;
+        }
+
         AudioManager.Instance.PlaySFX("ButtonUI");
         SceneLoader loader = sceneLoader.GetComponent<SceneLoader>();
         loader.LoadScene("Home Menu");
@@ -33,6 +52,12 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("AudioManager.Instance null!");
+            return;
+        }
+
         AudioManager.Instance.PlaySFX("ButtonUI");
         SceneLoader loader = sceneLoader.GetComponent<SceneLoader>();
         loader.LoadScene(SceneManager.GetActiveScene().name);

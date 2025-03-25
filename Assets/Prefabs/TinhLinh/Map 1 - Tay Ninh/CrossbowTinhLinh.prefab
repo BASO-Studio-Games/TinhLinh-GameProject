@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c05c698bc9700439141724116edb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsData: {fileID: 11400000, guid: 2da89f989c7e2454eb8c132b992364fc, type: 2}
+  statsData: {fileID: 11400000, guid: 449688bf5c4bc8541bdc476a8695ccc7, type: 2}
   OnInit:
     m_PersistentCalls:
       m_Calls: []

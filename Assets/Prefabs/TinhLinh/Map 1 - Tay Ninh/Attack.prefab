@@ -184,9 +184,9 @@ MonoBehaviour:
   - {x: 0.97, y: 1.07}
   - {x: 0.97, y: -0.83}
   boxSize: 0.7
-  attackCooldown: 1.2
+  attackCooldown: 1
   attackDuration: 1
-  damage: 20
+  damage: 30
   bloodPrefabs: {fileID: 2526599917821403406, guid: d9aefddbe95fd994a9b5475a898476f0, type: 3}
   animator: {fileID: 5225359013334901759}
 --- !u!114 &3555870453894161285
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c05c698bc9700439141724116edb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsData: {fileID: 11400000, guid: ac96f7bc109c6c44f8c495f53ac86ed5, type: 2}
+  statsData: {fileID: 11400000, guid: 63cdbce830f600443931a13f95d9de19, type: 2}
   OnInit:
     m_PersistentCalls:
       m_Calls: []

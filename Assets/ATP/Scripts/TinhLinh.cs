@@ -11,6 +11,9 @@ public class TinhLinh : Actor
     [SerializeField] private GameObject hpBarObject;
     private Animator hpBarAnimator;
 
+    public bool IsFrozen { get; private set; } = false;
+    public bool IsImmuneToFreeze { get; set; } = false;
+
 
     private Tile currentTile;
 
@@ -154,6 +157,23 @@ public class TinhLinh : Actor
         if (currentTile != null)
         {
             currentTile.ClearTile();
+        }
+    }
+
+    public void Freeze()
+    {
+        if (IsImmuneToFreeze) return; 
+
+        IsFrozen = true;
+        Debug.Log($"{gameObject.name} bị đóng băng!");
+    }
+
+    public void Unfreeze()
+    {
+        if (IsFrozen)
+        {
+            IsFrozen = false;
+            Debug.Log($"{gameObject.name} được giải băng!");
         }
     }
 

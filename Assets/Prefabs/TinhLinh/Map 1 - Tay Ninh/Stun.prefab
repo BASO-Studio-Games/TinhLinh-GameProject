@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c05c698bc9700439141724116edb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsData: {fileID: 11400000, guid: ac96f7bc109c6c44f8c495f53ac86ed5, type: 2}
+  statsData: {fileID: 11400000, guid: 3fdb7fd51375ff44ea893a8ba5612768, type: 2}
   OnInit:
     m_PersistentCalls:
       m_Calls: []

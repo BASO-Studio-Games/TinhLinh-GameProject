@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class VacuumCleanerEnemy : MonoBehaviour
 {
-    private TinhLinh targetTinhLinh;
     private EnemyMovement enemyMovement;
     private Collider2D col;
     private SpriteRenderer spriteRenderer;
@@ -13,7 +12,11 @@ public class VacuumCleanerEnemy : MonoBehaviour
 
     [Header("Speed Settings")]
     [SerializeField] private float phaseThroughSpeedMultiplier = 2f;
-    [SerializeField] private float fadeDuration = 0.5f; 
+    [SerializeField] private float fadeDuration = 0.5f;
+
+    [Header("Collision Detection")]
+    [SerializeField] private float detectionRadius = 2f;
+    [SerializeField] private LayerMask tinhLinhLayer; 
 
     private void Start()
     {
@@ -21,25 +24,16 @@ public class VacuumCleanerEnemy : MonoBehaviour
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if (enemyMovement == null)
-        {
-            Debug.LogError("EnemyMovement script not found on this GameObject.");
-        }
-
-        if (col == null)
-        {
-            Debug.LogError("Collider2D not found on this GameObject.");
-        }
-
-        if (spriteRenderer == null)
-        {
-            Debug.LogError("SpriteRenderer not found on this GameObject.");
-        }
+        if (enemyMovement == null) Debug.LogError("EnemyMovement script not found on this GameObject.");
+        if (col == null) Debug.LogError("Collider2D not found on this GameObject.");
+        if (spriteRenderer == null) Debug.LogError("SpriteRenderer not found on this GameObject.");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("TinhLinh") && !isPhaseThrough)
+        Collider2D tinhLinh = Physics2D.OverlapCircle(transform.position, detectionRadius, tinhLinhLayer);
+
+        if (tinhLinh != null && !isPhaseThrough)
         {
             isPhaseThrough = true;
             col.isTrigger = true;
@@ -47,13 +41,9 @@ public class VacuumCleanerEnemy : MonoBehaviour
             Debug.Log("Entering phase through state!");
 
             StopAllCoroutines();
-            StartCoroutine(FadeSprite(0.3f)); 
+            StartCoroutine(FadeSprite(0.3f));
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (isPhaseThrough && other.gameObject.CompareTag("TinhLinh"))
+        else if (tinhLinh == null && isPhaseThrough)
         {
             isPhaseThrough = false;
             col.isTrigger = false;
@@ -80,5 +70,11 @@ public class VacuumCleanerEnemy : MonoBehaviour
         }
 
         spriteRenderer.color = new Color(1f, 1f, 1f, targetAlpha);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }

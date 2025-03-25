@@ -125,8 +125,9 @@ public class Fridge : MonoBehaviour
     {
         yield return new WaitForSeconds(freezeDelay);
 
-        if (targetTinhLinh != null)
+        if (targetTinhLinh != null && !targetTinhLinh.IsImmuneToFreeze)
         {
+            targetTinhLinh.Freeze();
             AttackTinhLinh attackScript = targetTinhLinh.GetComponent<AttackTinhLinh>();
             Animator targetAnimator = targetTinhLinh.GetComponent<Animator>();
 
@@ -149,8 +150,15 @@ public class Fridge : MonoBehaviour
 
             if (freezeEffectPrefab != null)
             {
-                Instantiate(freezeEffectPrefab, targetTinhLinh.transform.position, Quaternion.identity);
+                GameObject freezeEffect = Instantiate(freezeEffectPrefab, targetTinhLinh.transform.position, Quaternion.identity);
+
+                FreezeEffect freezeScript = freezeEffect.GetComponent<FreezeEffect>();
+                if (freezeScript != null)
+                {
+                    freezeScript.SetTarget(targetTinhLinh.transform);
+                }
             }
+
         }
     }
 
