@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RollManager : MonoBehaviour
 {
@@ -17,6 +19,9 @@ public class RollManager : MonoBehaviour
     [HideInInspector] public bool hasBuy;
     private bool isEndRollMenu;
 
+    [SerializeField] private Button rollButton;
+    private bool isRollButtonActive = false;
+
     private void Start()
     {
         isEndRollMenu = false;
@@ -25,14 +30,14 @@ public class RollManager : MonoBehaviour
         enemySpawner.enabled = false;
 
         rollMenu.SetActive(true);
+        rollButton.gameObject.SetActive(false);
         isUseItem = false;
-        
+
         hasBuy = false;
     }
 
     private void Update()
     {
-        //Debug.Log(remainingSlots);
         if (isUseItem && (Input.GetMouseButtonDown(0) || Input.touchCount > 0))
         {
             if (isUseTool) return;
@@ -52,11 +57,10 @@ public class RollManager : MonoBehaviour
             isUseItem = false;
         }
 
-        // Kiểm tra số lượng thẻ bài thực tế còn trong rollMenu
         int remainingCards = 0;
         foreach (Transform child in rollMenu.transform)
         {
-            if (child.gameObject.activeSelf) // Đếm chỉ thẻ bài còn hiển thị
+            if (child.gameObject.activeSelf)
             {
                 remainingCards++;
             }
@@ -71,16 +75,25 @@ public class RollManager : MonoBehaviour
 
         if (LevelManager.main.isMaxEnergy && isEndRollMenu)
         {
-            BuildManager.main.SetSelectedTower(null);
-            rollMenu.SetActive(true);
-            isUseItem = false;
-            enemySpawner.enabled = false;
-            isEndRollMenu = false;
+            rollButton.gameObject.SetActive(true);
+            rollButton.interactable = true;
+            isRollButtonActive = true;
         }
-
     }
 
+    public void OpenRollPanel()
+    {
+        if (!isRollButtonActive) return;
 
+        rollMenu.SetActive(true);
+        rollButton.gameObject.SetActive(false);
+        isUseItem = false;
+        enemySpawner.enabled = false;
+        isEndRollMenu = false;
+
+        isRollButtonActive = false;
+        rollButton.interactable = false;
+    }
 
     public List<RollItem> Roll()
     {
@@ -89,20 +102,20 @@ public class RollManager : MonoBehaviour
 
         foreach (var item in rollData.rollItems)
         {
-            totalProbability += item.probability; // Tính tổng probability
+            totalProbability += item.probability;
         }
 
         for (int i = 0; i < remainingSlots; i++)
         {
-            float rand = Random.Range(0f, totalProbability); // Random từ 0 đến tổng probability
+            float rand = Random.Range(0f, totalProbability);
             float cumulative = 0f;
 
             foreach (var item in rollData.rollItems)
             {
-                cumulative += item.probability; // Cộng dồn xác suất
+                cumulative += item.probability;
                 if (rand <= cumulative)
                 {
-                    result.Add(item); 
+                    result.Add(item);
                     break;
                 }
             }
@@ -116,9 +129,10 @@ public class RollManager : MonoBehaviour
         if (remainingSlots <= 0) return;
         currentchildCount = defendersContainer.childCount;
 
-        if (item.GetIsTool()) // Nếu là Tool
+        if (item.GetIsTool())
         {
-            if (item.GetIdTinhLinh() == "Tool00"){
+            if (item.GetIdTinhLinh() == "Tool00")
+            {
                 hasBuy = true;
                 return;
             }
@@ -127,17 +141,17 @@ public class RollManager : MonoBehaviour
             if (tool != null)
             {
                 BuildManager.main.SetSelectedTool(tool);
-                // Debug.Log($"Đã chọn Tool: {tool.GetType().Name}, nhấn vào Tile để dùng.");
-
                 isUseItem = true;
                 rollMenu.SetActive(false);
+                rollButton.gameObject.SetActive(true);
             }
         }
-        else // Nếu là Tinh Linh
+        else
         {
             isUseItem = true;
             rollMenu.SetActive(false);
             BuildManager.main.SetSelectedTower(item);
+            rollButton.gameObject.SetActive(true);
         }
     }
 
@@ -152,6 +166,7 @@ public class RollManager : MonoBehaviour
 
         ResetRoll();
         rollMenu.SetActive(false);
+        rollButton.gameObject.SetActive(true);
 
         isEndRollMenu = true;
 
@@ -159,9 +174,6 @@ public class RollManager : MonoBehaviour
             LevelManager.main.isMaxEnergy = false;
     }
 
-
-
-    // Nhận sự kiện từ tool
     private void OnEnable()
     {
         Tool.OnToolActionCompleted += HandleToolActionCompleted;
@@ -185,12 +197,6 @@ public class RollManager : MonoBehaviour
             return;
         }
 
-        // if (isSwap)
-        // {
-        //     isUseTool = false;
-        //     return;
-        // }
-
         if (toTile == null)
         {
             isUseTool = true;
@@ -201,5 +207,4 @@ public class RollManager : MonoBehaviour
         remainingSlots = Mathf.Max(remainingSlots - 1, 0);
         isUseTool = false;
     }
-
 }
