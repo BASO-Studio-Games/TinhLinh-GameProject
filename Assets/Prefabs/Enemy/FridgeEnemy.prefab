@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8897a008a44b5294da4c063d624e52bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   attackInterval: 0.25
   freezeDelay: 2
   freezeEffectPrefab: {fileID: 1868668190982072839, guid: 1ed6e00530baf8148b58d044c3fd56b8, type: 3}

@@ -3582,7 +3582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 167474014}
-  nextMapName: Map - 9
+  nextMapName: Home Menu
   rollRewardText: {fileID: 1683026494}
   diamondRewardText: {fileID: 1683026493}
 --- !u!1 &1034274923
@@ -6687,7 +6687,6 @@ MonoBehaviour:
   maxRolls: 4
   defendersContainer: {fileID: 1346495602}
   hasBuy: 0
-  rollButton: {fileID: 2141589588}
 --- !u!114 &1964594961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7608,17 +7607,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3072858624430590605, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
   m_PrefabInstance: {fileID: 2141589586}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2141589588 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 54470061655336488, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
-  m_PrefabInstance: {fileID: 2141589586}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

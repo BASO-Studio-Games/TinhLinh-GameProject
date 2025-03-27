@@ -3992,6 +3992,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullPowerButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3389386506793724813, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4002,17 +4006,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3072858624430590605, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
   m_PrefabInstance: {fileID: 994487230}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &994487232 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 54470061655336488, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
-  m_PrefabInstance: {fileID: 994487230}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1013489579
 GameObject:
   m_ObjectHideFlags: 0
@@ -6302,6 +6295,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 98.55902
       objectReference: {fileID: 0}
+    - target: {fileID: 5978441221017778103, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.4200134
+      objectReference: {fileID: 0}
     - target: {fileID: 6103291609804118828, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
       propertyPath: m_Name
       value: DialoguePanel
@@ -7917,7 +7914,6 @@ MonoBehaviour:
   maxRolls: 3
   defendersContainer: {fileID: 1346495602}
   hasBuy: 0
-  rollButton: {fileID: 994487232}
 --- !u!114 &1964594961
 MonoBehaviour:
   m_ObjectHideFlags: 0

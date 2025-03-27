@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RollManager : MonoBehaviour
 {
@@ -19,9 +17,6 @@ public class RollManager : MonoBehaviour
     [HideInInspector] public bool hasBuy;
     private bool isEndRollMenu;
 
-    [SerializeField] private Button rollButton;
-    private bool isRollButtonActive = false;
-
     private void Start()
     {
         isEndRollMenu = false;
@@ -30,7 +25,6 @@ public class RollManager : MonoBehaviour
         enemySpawner.enabled = false;
 
         rollMenu.SetActive(true);
-        rollButton.gameObject.SetActive(false);
         isUseItem = false;
 
         hasBuy = false;
@@ -57,42 +51,17 @@ public class RollManager : MonoBehaviour
             isUseItem = false;
         }
 
-        int remainingCards = 0;
-        foreach (Transform child in rollMenu.transform)
-        {
-            if (child.gameObject.activeSelf)
-            {
-                remainingCards++;
-            }
-        }
-
-        // Debug.Log($"[RollManager] Remaining Slots: {remainingSlots}, Remaining Cards: {remainingCards}");
-
-        if (remainingSlots == 0)
-        {
-            EndRoll();
-        }
 
         if (LevelManager.main.isMaxEnergy && isEndRollMenu)
         {
-            rollButton.gameObject.SetActive(true);
-            rollButton.interactable = true;
-            isRollButtonActive = true;
+            BuildManager.main.SetSelectedTower(null);
+
+            rollMenu.SetActive(true);
+            isUseItem = false;
+            enemySpawner.enabled = false;
+
+            isEndRollMenu = false;
         }
-    }
-
-    public void OpenRollPanel()
-    {
-        if (!isRollButtonActive) return;
-
-        rollMenu.SetActive(true);
-        rollButton.gameObject.SetActive(false);
-        isUseItem = false;
-        enemySpawner.enabled = false;
-        isEndRollMenu = false;
-
-        isRollButtonActive = false;
-        rollButton.interactable = false;
     }
 
     public List<RollItem> Roll()
@@ -102,17 +71,17 @@ public class RollManager : MonoBehaviour
 
         foreach (var item in rollData.rollItems)
         {
-            totalProbability += item.probability;
+            totalProbability += item.probability; 
         }
 
         for (int i = 0; i < remainingSlots; i++)
         {
-            float rand = Random.Range(0f, totalProbability);
+            float rand = Random.Range(0f, totalProbability); 
             float cumulative = 0f;
 
             foreach (var item in rollData.rollItems)
             {
-                cumulative += item.probability;
+                cumulative += item.probability; 
                 if (rand <= cumulative)
                 {
                     result.Add(item);
@@ -129,7 +98,7 @@ public class RollManager : MonoBehaviour
         if (remainingSlots <= 0) return;
         currentchildCount = defendersContainer.childCount;
 
-        if (item.GetIsTool())
+        if (item.GetIsTool()) 
         {
             if (item.GetIdTinhLinh() == "Tool00")
             {
@@ -141,17 +110,16 @@ public class RollManager : MonoBehaviour
             if (tool != null)
             {
                 BuildManager.main.SetSelectedTool(tool);
+
                 isUseItem = true;
                 rollMenu.SetActive(false);
-                rollButton.gameObject.SetActive(true);
             }
         }
-        else
+        else 
         {
             isUseItem = true;
             rollMenu.SetActive(false);
             BuildManager.main.SetSelectedTower(item);
-            rollButton.gameObject.SetActive(true);
         }
     }
 
@@ -166,13 +134,13 @@ public class RollManager : MonoBehaviour
 
         ResetRoll();
         rollMenu.SetActive(false);
-        rollButton.gameObject.SetActive(true);
 
         isEndRollMenu = true;
 
         if (LevelManager.main.isMaxEnergy)
             LevelManager.main.isMaxEnergy = false;
     }
+
 
     private void OnEnable()
     {
@@ -197,6 +165,12 @@ public class RollManager : MonoBehaviour
             return;
         }
 
+        // if (isSwap)
+        // {
+        //     isUseTool = false;
+        //     return;
+        // }
+
         if (toTile == null)
         {
             isUseTool = true;
@@ -207,4 +181,7 @@ public class RollManager : MonoBehaviour
         remainingSlots = Mathf.Max(remainingSlots - 1, 0);
         isUseTool = false;
     }
+
+
+
 }
