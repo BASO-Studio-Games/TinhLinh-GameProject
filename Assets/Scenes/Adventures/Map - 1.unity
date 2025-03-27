@@ -1271,14 +1271,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.size
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].line
-      value: ...
+      value: "Cu\u1ED1i c\xF9ng c\u1EADu c\u0169ng \u0111\u1EBFn... T\xF4i \u0111\xE3
+        ch\u1EDD c\u1EADu."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].line
+      value: "Ng\xF4i l\xE0ng c\u1EE7a ch\xFAng t\xF4i \u0111ang g\u1EB7p nguy hi\u1EC3m.
+        Nh\u1EEFng th\u1EE9 t\u1EEB th\u1EBF gi\u1EDBi ngo\xE0i kia \u0111ang ti\u1EBFn
+        v\xE0o."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].line
+      value: "Ch\xFAng l\xE0 nh\u1EEFng kh\u1ED1i kim lo\u1EA1i l\u1EA1nh l\u1EBDo,
+        bi\u1EBFt di chuy\u1EC3n, bi\u1EBFt nu\u1ED1t ch\u1EEDng c\xE2y c\u1ED1i
+        v\xE0 xua \u0111u\u1ED5i mu\xF4n lo\xE0i."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].line
+      value: "T\xF4i kh\xF4ng hi\u1EC3u v\xEC sao con ng\u01B0\u1EDDi l\u1EA1i t\u1EA1o
+        ra ch\xFAng, nh\u01B0ng ch\xFAng \u0111\xE3 v\xF4 t\xECnh h\u1EE7y ho\u1EA1i
+        \u0111i ng\xF4i nh\xE0 chung c\u1EE7a ch\xFAng ta."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].line
+      value: "T\xF4i kh\xF4ng chi\u1EBFn \u0111\u1EA5u m\u1ED9t m\xECnh. Nh\u1EEFng
+        tinh linh c\u1EE7a khu r\u1EEBng s\u1EBD s\xE1t c\xE1nh c\xF9ng ch\xFAng
+        ta."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].line
+      value: "C\u1EADu s\u1EB5n s\xE0ng ch\u01B0a? \u0110\xE2y kh\xF4ng ch\u1EC9
+        l\xE0 chi\u1EBFn \u0111\u1EA5u, m\xE0 l\xE0 b\u1EA3o v\u1EC7 h\xE0nh tinh
+        xanh n\xE0y!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].line
+      value: "V\xE0o game"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].line
+      value: "\u0111\u1EA1i ca Tu\u1EA5n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].isGuidePoint
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].targetAction
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].targetAction
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].targetAction
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].targetAction
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].targetAction
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].targetAction
+      value: 
+      objectReference: {fileID: 962366112}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].targetAction
       value: 
       objectReference: {fileID: 962366112}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
@@ -1293,6 +1360,50 @@ PrefabInstance:
       propertyPath: dialogue.dialogueLines.Array.data[2].character.icon
       value: 
       objectReference: {fileID: 21300000, guid: 9e4d598c5a90e1944b26817768681ee7, type: 3}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].character.name
+      value: "Khi\xEAm \xF3c c\u1EB7c"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e4d598c5a90e1944b26817768681ee7, type: 3}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].character.name
+      value: "Khi\xEAm \xF3c c\u1EB7c"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e4d598c5a90e1944b26817768681ee7, type: 3}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].character.name
+      value: "Khi\xEAm \xF3c c\u1EB7c"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e4d598c5a90e1944b26817768681ee7, type: 3}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].character.name
+      value: "Khi\xEAm \xF3c c\u1EB7c"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e4d598c5a90e1944b26817768681ee7, type: 3}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[6].character.name
+      value: "Khi\xEAm \xF3c c\u1EB7c"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e4d598c5a90e1944b26817768681ee7, type: 3}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[7].character.name
+      value: "Khi\xEAm \xF3c c\u1EB7c"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6194,6 +6305,10 @@ PrefabInstance:
     - target: {fileID: 6103291609804118828, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
       propertyPath: m_Name
       value: DialoguePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761528552411549711, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
+      propertyPath: typingSpeed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

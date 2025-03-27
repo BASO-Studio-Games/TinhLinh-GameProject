@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTinhLinh: M1TN06
-  cost: 50
+  cost: 30
   information: 
   isTool: 0
   sprite: {fileID: 21300000, guid: 5638c17ebdc3a6a40acd6ada659d9443, type: 3}

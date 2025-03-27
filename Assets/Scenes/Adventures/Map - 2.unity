@@ -6573,9 +6573,6 @@ MonoBehaviour:
     - name: "X\xF3a b\u1ECF"
       probability: 20
       prefab: {fileID: 5267726841002526120, guid: 52f40416a91e82b4796ffc8ed5356395, type: 3}
-    - name: "\u0110u\u1ED1c"
-      probability: 10
-      prefab: {fileID: 7763906890701756966, guid: c9cf2d90318149f4098143eec284e75f, type: 3}
   rollMenu: {fileID: 1871890492}
   maxRolls: 4
   defendersContainer: {fileID: 1346495602}
@@ -7217,8 +7214,8 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 8924342950866454463, guid: e19d0994f082bcd468b311eff279c797, type: 3}
   parentObject: {fileID: 2101237008}
-  totalWaves: 2
-  baseEnemies: 3
+  totalWaves: 3
+  baseEnemies: 2
   enemiesPerSecond: 0.2
   timeBetweenWaves: 0.1
   difficultyScalingFactor: 0.75
@@ -7241,11 +7238,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 0}
   path: []
-  currency: 300
-  maxEnergy: 15
+  currency: 100
+  maxEnergy: 50
   maxEnergyGrowthFactor: 1.2
   isMaxEnergy: 0
-  idLevel: 13
+  idLevel: 12
   statusLevel: 0
   winOrLoseMenu: {fileID: 1030010920}
   winOrLoseText: {fileID: 70419799}

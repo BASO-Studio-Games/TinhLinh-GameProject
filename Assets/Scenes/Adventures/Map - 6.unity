@@ -7530,8 +7530,8 @@ MonoBehaviour:
   - {fileID: 8924342950866454463, guid: 6dcb45194bd13a546b69da0ce639db57, type: 3}
   - {fileID: 8924342950866454463, guid: d2bb382ce2e3c3b429133bbadde7d4b6, type: 3}
   parentObject: {fileID: 2101237008}
-  totalWaves: 3
-  baseEnemies: 5
+  totalWaves: 4
+  baseEnemies: 2
   enemiesPerSecond: 0.2
   timeBetweenWaves: 0.1
   difficultyScalingFactor: 0.75
@@ -7554,7 +7554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 0}
   path: []
-  currency: 1000
+  currency: 100
   maxEnergy: 50
   maxEnergyGrowthFactor: 1.2
   isMaxEnergy: 0

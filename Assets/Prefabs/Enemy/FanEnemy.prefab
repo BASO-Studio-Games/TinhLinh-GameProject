@@ -237,7 +237,7 @@ MonoBehaviour:
   currencyTakeDamage: 35
   energyTakeDamage: 10
   currencyDie: 60
-  energyDie: 15
+  energyDie: 23
   moveSpeed: 2
   currencyWorth: 50
   maxHp: 0

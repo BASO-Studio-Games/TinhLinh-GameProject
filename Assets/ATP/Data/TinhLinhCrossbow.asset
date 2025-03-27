@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf173c3d455e9444c8cce17e30c0f680, type: 3}
   m_Name: TinhLinhCrossbow
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 80

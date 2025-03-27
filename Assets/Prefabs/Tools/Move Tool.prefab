@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idTinhLinh: Tool
-  cost: 10
+  cost: 20
   information: 
   isTool: 1
   sprite: {fileID: 21300000, guid: 65cc5ecbeb3a609489d89bf00b5f23fd, type: 3}

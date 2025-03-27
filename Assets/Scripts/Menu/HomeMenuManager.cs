@@ -6,6 +6,7 @@ using Firebase;
 using Firebase.Database;
 using Firebase.Extensions;
 using UnityEngine.Networking;
+using System;
 
 public class HomeMenuManager : MonoBehaviour
 {
@@ -72,7 +73,7 @@ public class HomeMenuManager : MonoBehaviour
     {
         AudioManager.Instance.PlaySFX("ButtonUI");
         SceneLoader loader = gameObject.GetComponentInParent<SceneLoader>();
-        Debug.Log(currencyLevelUser[currencyLevelUser.Length - 1]);
+        Debug.Log(currencyLevelUser + " " + currencyLevelUser[currencyLevelUser.Length - 1]);
         loader.LoadScene("Map - " + currencyLevelUser[currencyLevelUser.Length - 1]);
 
         AudioManager.Instance.PlayMusic("Fight");
@@ -141,6 +142,7 @@ public class HomeMenuManager : MonoBehaviour
                     diamondText.text = user.diamond + " Kim cương";
 
                     currencyLevelUser = user.currentLevel ?? "11";
+                    Debug.Log("maps " + user.currentLevel);
                     currencyLevelUserText.text = "Map " + currencyLevelUser[0] + "." + currencyLevelUser[currencyLevelUser.Length - 1];
 
                     if (!string.IsNullOrEmpty(user.avatarUrl))

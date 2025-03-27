@@ -66,7 +66,7 @@ public class RollManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"[RollManager] Remaining Slots: {remainingSlots}, Remaining Cards: {remainingCards}");
+        // Debug.Log($"[RollManager] Remaining Slots: {remainingSlots}, Remaining Cards: {remainingCards}");
 
         if (remainingSlots == 0)
         {
