@@ -72,6 +72,7 @@ public class HomeMenuManager : MonoBehaviour
     {
         AudioManager.Instance.PlaySFX("ButtonUI");
         SceneLoader loader = gameObject.GetComponentInParent<SceneLoader>();
+        Debug.Log(currencyLevelUser[currencyLevelUser.Length - 1]);
         loader.LoadScene("Map - " + currencyLevelUser[currencyLevelUser.Length - 1]);
 
         AudioManager.Instance.PlayMusic("Fight");

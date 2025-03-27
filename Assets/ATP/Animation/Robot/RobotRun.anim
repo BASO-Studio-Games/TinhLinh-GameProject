@@ -22,26 +22,28 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 21300000, guid: fe31c9fbcae9bbb40b9ee5af14f1556f, type: 3}
-    - time: 0.1
+    - time: 0.083333336
       value: {fileID: 21300000, guid: 72ec65802c9dfe8428fbba44a3367db2, type: 3}
-    - time: 0.18333334
+    - time: 0.16666667
       value: {fileID: 21300000, guid: 556ead6d417275d4faa1a15ca5ef0e2b, type: 3}
-    - time: 0.26666668
+    - time: 0.25
       value: {fileID: 21300000, guid: d067387dce2649d43ba9bd934b1b620d, type: 3}
-    - time: 0.35
+    - time: 0.33333334
       value: {fileID: 21300000, guid: 8659b488f3fad4a418bc25c136681644, type: 3}
-    - time: 0.45
+    - time: 0.41666666
       value: {fileID: 21300000, guid: 97708ff6936dcce43ac84c0e338bdcb8, type: 3}
-    - time: 0.53333336
+    - time: 0.5
       value: {fileID: 21300000, guid: ea22078217d27b449881cf017a90a935, type: 3}
-    - time: 0.6333333
+    - time: 0.5833333
       value: {fileID: 21300000, guid: f20b84b98e56b214f96b0f7661ab61cf, type: 3}
-    - time: 0.71666664
+    - time: 0.6666667
       value: {fileID: 21300000, guid: 93c12c0489d4390499b5c1551b84e534, type: 3}
-    - time: 0.8
+    - time: 0.75
       value: {fileID: 21300000, guid: 77ca3bba16a98fc4dbb6b994b036255b, type: 3}
-    - time: 0.8833333
+    - time: 0.8333333
       value: {fileID: 21300000, guid: 58445e5fa2c34e04faed0d00ba8ca821, type: 3}
+    - time: 0.9166667
+      value: {fileID: 21300000, guid: e23dba1b0deeecb4593d3908f117a439, type: 3}
     - time: 0.98333335
       value: {fileID: 21300000, guid: e23dba1b0deeecb4593d3908f117a439, type: 3}
     attribute: m_Sprite
@@ -77,6 +79,7 @@ AnimationClip:
     - {fileID: 21300000, guid: 93c12c0489d4390499b5c1551b84e534, type: 3}
     - {fileID: 21300000, guid: 77ca3bba16a98fc4dbb6b994b036255b, type: 3}
     - {fileID: 21300000, guid: 58445e5fa2c34e04faed0d00ba8ca821, type: 3}
+    - {fileID: 21300000, guid: e23dba1b0deeecb4593d3908f117a439, type: 3}
     - {fileID: 21300000, guid: e23dba1b0deeecb4593d3908f117a439, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2

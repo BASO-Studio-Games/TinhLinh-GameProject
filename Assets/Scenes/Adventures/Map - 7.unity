@@ -5213,6 +5213,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2053929110}
     m_Modifications:
+    - target: {fileID: 54470061655336488, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1964594960}
+    - target: {fileID: 54470061655336488, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenRollPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 3072858624430590605, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

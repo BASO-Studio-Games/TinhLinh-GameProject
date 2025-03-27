@@ -13,6 +13,7 @@ public class RollButtonEffect : MonoBehaviour
     {
         if (LevelManager.main.isMaxEnergy)
         {
+            Debug.Log("max level !");
             rollButton.gameObject.SetActive(true);
             rollButton.interactable = true;
             buttonAnimator.SetBool("isReady", true);

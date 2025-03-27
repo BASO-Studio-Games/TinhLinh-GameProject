@@ -79,6 +79,7 @@ public class WInOrLoseMenu : MonoBehaviour
     {
         if (nextMapName != null)
         {
+            Debug.Log(nextMapName);
             sceneLoader.LoadScene(nextMapName);
             dbReference.Child("Users").Child(userID).Child("currentLevel").SetValueAsync("1" + nextMapName[nextMapName.Length - 1]);
             Time.timeScale = 1f;
