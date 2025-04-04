@@ -122,7 +122,7 @@ MonoBehaviour:
   boxSize: 0.7
   attackCooldown: 2
   attackDuration: 1
-  damage: 50
+  damage: 40
   bloodPrefabs: {fileID: 2526599917821403406, guid: d9aefddbe95fd994a9b5475a898476f0, type: 3}
   animator: {fileID: 9131843541108470368}
 --- !u!50 &-7768374022652424959
@@ -191,7 +191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idTinhLinh: M1TN07
   cost: 25
-  information: "\u0110\xE2y l\xE0 ki\u1EBFm c\xF3 l\u1EEDa"
+  information: "Thanh ki\u1EBFm r\u1EF1c l\u1EEDa, m\u1EA1nh h\u01A1n ki\u1EBFm th\u01B0\u1EDDng
+    v\xE0 c\xF3 th\u1EC3 thi\xEAu \u0111\u1ED1t k\u1EBB \u0111\u1ECBch."
   isTool: 0
   sprite: {fileID: 21300000, guid: af3407cf3eceef34d9be66a1b7b4fde1, type: 3}
   levelSprite: {fileID: 21300000, guid: aaac54311ac600e43a8d95c2738dc42e, type: 3}

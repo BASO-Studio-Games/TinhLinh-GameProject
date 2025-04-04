@@ -971,15 +971,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].line
-      value: "\u0110u\u1ED1c + Ki\u1EBFm = Ki\u1EBFm l\u1EEDa"
+      value: "Tr\u1EADn chi\u1EBFn ng\xE0y c\xE0ng c\u0103ng th\u1EB3ng h\u01A1n..."
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].line
-      value: "Ki\u1EBFm + \u0110u\u1ED1c = Ki\u1EBFm l\u1EEDa"
+      value: "N\u1EBFu th\u1EBF n\xE0y th\xEC kh\xF4ng \u1ED5n m\u1EA5t!!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].line
+      value: "Ki\u1EBFm l\u1EEDa sao, m\u1ED9t \xFD ki\u1EBFn kh\xF4ng t\u1ED3i,
+        h\xE3y th\u1EED k\u1EBFt h\u1EE3p tinh linh ki\u1EBFm v\u1EDBi ng\u1ECDn
+        \u0111u\u1ED1c xem n\xE0o."
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].targetAction
@@ -2394,17 +2400,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3072858624430590605, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
   m_PrefabInstance: {fileID: 762078147}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &762078149 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 54470061655336488, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
-  m_PrefabInstance: {fileID: 762078147}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &843106964
 GameObject:
   m_ObjectHideFlags: 0
@@ -5722,6 +5717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialoguePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 6761528552411549711, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
+      propertyPath: typingSpeed
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7076,7 +7075,7 @@ MonoBehaviour:
       prefab: {fileID: 5861525196364148555, guid: 5c248d5c05b651b4aba55efc469ec4b2, type: 3}
     - name: "L\xE0m m\u1EDBi"
       probability: 7
-      prefab: {fileID: 0}
+      prefab: {fileID: 907289502}
     - name: "R\xECu"
       probability: 14
       prefab: {fileID: 7763906890701756966, guid: 7eb6fa83be46713428ca53554edebbd6, type: 3}
@@ -7087,7 +7086,6 @@ MonoBehaviour:
   maxRolls: 4
   defendersContainer: {fileID: 1346495602}
   hasBuy: 0
-  rollButton: {fileID: 762078149}
 --- !u!114 &1964594961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7811,9 +7809,9 @@ MonoBehaviour:
   - {fileID: 8924342950866454463, guid: 6dcb45194bd13a546b69da0ce639db57, type: 3}
   - {fileID: 8924342950866454463, guid: d2bb382ce2e3c3b429133bbadde7d4b6, type: 3}
   - {fileID: 8924342950866454463, guid: f21d07579357a8a41a600acac782fb00, type: 3}
-  parentObject: {fileID: 0}
-  totalWaves: 3
-  baseEnemies: 5
+  parentObject: {fileID: 2101237008}
+  totalWaves: 4
+  baseEnemies: 4
   enemiesPerSecond: 0.2
   timeBetweenWaves: 0.1
   difficultyScalingFactor: 0.75
@@ -7836,7 +7834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 0}
   path: []
-  currency: 1000
+  currency: 130
   maxEnergy: 50
   maxEnergyGrowthFactor: 1.2
   isMaxEnergy: 0

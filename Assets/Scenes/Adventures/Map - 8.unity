@@ -7278,19 +7278,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 888532634108235112, guid: 6750e00083e4cac44856b4afbfed3d6c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 888532634108235112, guid: 6750e00083e4cac44856b4afbfed3d6c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 888532634108235112, guid: 6750e00083e4cac44856b4afbfed3d6c, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 888532634108235112, guid: 6750e00083e4cac44856b4afbfed3d6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 64.85
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2580227591933629741, guid: 6750e00083e4cac44856b4afbfed3d6c, type: 3}
       propertyPath: m_Name
@@ -7298,23 +7298,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7935836750228738882, guid: 6750e00083e4cac44856b4afbfed3d6c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7935836750228738882, guid: 6750e00083e4cac44856b4afbfed3d6c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7935836750228738882, guid: 6750e00083e4cac44856b4afbfed3d6c, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7935836750228738882, guid: 6750e00083e4cac44856b4afbfed3d6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 210.88998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7935836750228738882, guid: 6750e00083e4cac44856b4afbfed3d6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000020980835
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170898419697179837, guid: 6750e00083e4cac44856b4afbfed3d6c, type: 3}
       propertyPath: m_Pivot.x
@@ -7534,8 +7534,8 @@ MonoBehaviour:
   - {fileID: 8924342950866454463, guid: d2bb382ce2e3c3b429133bbadde7d4b6, type: 3}
   - {fileID: 8924342950866454463, guid: f21d07579357a8a41a600acac782fb00, type: 3}
   parentObject: {fileID: 2101237008}
-  totalWaves: 3
-  baseEnemies: 5
+  totalWaves: 4
+  baseEnemies: 3
   enemiesPerSecond: 0.2
   timeBetweenWaves: 0.1
   difficultyScalingFactor: 0.75
@@ -7558,7 +7558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 0}
   path: []
-  currency: 1000
+  currency: 130
   maxEnergy: 50
   maxEnergyGrowthFactor: 1.2
   isMaxEnergy: 0

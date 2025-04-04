@@ -235,7 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idTinhLinh: M1TN02
   cost: 50
-  information: "\u0110\xE2y l\xE0 b\u1EABy"
+  information: "Chi\u1EBFc b\u1EABy s\u1EAFc b\xE9n c\xF3 g\xE2y l\u01B0\u1EE3ng
+    l\u1EDBn s\xE1t th\u01B0\u01A1ng l\xEAn k\u1EBB \u0111\u1ECBch."
   isTool: 0
   sprite: {fileID: 21300000, guid: 632e532b1e3808741bde1e6035b76605, type: 3}
   levelSprite: {fileID: 21300000, guid: adb5d66a57c035940a397187c11a1fe0, type: 3}

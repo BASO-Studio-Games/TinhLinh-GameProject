@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,6 +35,7 @@ public class RollManager : MonoBehaviour
     {
         if (isUseItem && (Input.GetMouseButtonDown(0) || Input.touchCount > 0))
         {
+            Debug.Log("Chamk");
             if (isUseTool) return;
 
             if (defendersContainer.childCount > currentchildCount)
@@ -111,16 +113,22 @@ public class RollManager : MonoBehaviour
             {
                 BuildManager.main.SetSelectedTool(tool);
 
-                isUseItem = true;
+                StartCoroutine(DelayIsUseItem(0.25f));
                 rollMenu.SetActive(false);
             }
         }
         else 
         {
-            isUseItem = true;
+            StartCoroutine(DelayIsUseItem(0.25f));
             rollMenu.SetActive(false);
             BuildManager.main.SetSelectedTower(item);
         }
+    }
+
+    private IEnumerator DelayIsUseItem(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isUseItem = true;
     }
 
     public void ResetRoll()

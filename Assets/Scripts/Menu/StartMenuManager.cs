@@ -101,22 +101,29 @@ public class StartMenuManager : MonoBehaviour
     {
         informationLoginText.text = "Đang thực hiện đăng nhập.";
 
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            // Chạy trên thiết bị Android thực sự
-            PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
-        }
-        else
-        {
-            // Chạy trong Unity Editor nhưng giả lập Android
-            string userID = SystemInfo.deviceUniqueIdentifier;
-            string username = userID.Substring(userID.Length - 6);
+        // if (Application.platform == RuntimePlatform.Android)
+        // {
+        //     // Chạy trên thiết bị Android thực sự
+        //     PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+        // }
+        // else
+        // {
+        //     // Chạy trong Unity Editor nhưng giả lập Android
+        //     string userID = SystemInfo.deviceUniqueIdentifier;
+        //     string username = userID.Substring(userID.Length - 6);
 
-            informationLoginText.text = "Xin chào tài khoản, " + username;
-            PlayerPrefs.SetString("ID_User", userID);
-            CheckTestDataExistence(userID, username, null, diamondUser.ToString(), rollNumberUser.ToString(), currencyLevelUser.ToString());
-            StartCoroutine(LoadGame());
-        }
+        //     informationLoginText.text = "Xin chào tài khoản, " + username;
+        //     PlayerPrefs.SetString("ID_User", userID);
+        //     CheckTestDataExistence(userID, username, null, diamondUser.ToString(), rollNumberUser.ToString(), currencyLevelUser.ToString());
+        //     StartCoroutine(LoadGame());
+        // }
+        string userID = SystemInfo.deviceUniqueIdentifier;
+        string username = userID.Substring(userID.Length - 6);
+
+        informationLoginText.text = "Xin chào tài khoản, " + username;
+        PlayerPrefs.SetString("ID_User", userID);
+        CheckTestDataExistence(userID, username, null, diamondUser.ToString(), rollNumberUser.ToString(), currencyLevelUser.ToString());
+        StartCoroutine(LoadGame());
     }
 
     private void OnClickLoginButton()

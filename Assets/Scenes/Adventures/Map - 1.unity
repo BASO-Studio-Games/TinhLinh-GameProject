@@ -7885,7 +7885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4983bb103b1e74e8008773aa9c3941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollManager: {fileID: 0}
+  rollManager: {fileID: 1964594960}
   rollButton: {fileID: 873216539}
   resetButton: {fileID: 0}
   endButton: {fileID: 192164637}

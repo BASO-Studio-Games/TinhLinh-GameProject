@@ -3582,7 +3582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 167474014}
-  nextMapName: Home Menu
+  nextMapName: Map - 1
   rollRewardText: {fileID: 1683026494}
   diamondRewardText: {fileID: 1683026493}
 --- !u!1 &1034274923

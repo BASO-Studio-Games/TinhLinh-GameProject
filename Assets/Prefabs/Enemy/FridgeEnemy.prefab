@@ -234,10 +234,10 @@ MonoBehaviour:
   rb: {fileID: 6859782255254397202}
   arrowIndicator: {fileID: 4392462887339027807}
   animator: {fileID: 1647703901546910810}
-  currencyTakeDamage: 0
-  energyTakeDamage: 0
-  currencyDie: 0
-  energyDie: 0
+  currencyTakeDamage: 40
+  energyTakeDamage: 17
+  currencyDie: 80
+  energyDie: 30
   moveSpeed: 2
   currencyWorth: 50
   maxHp: 0

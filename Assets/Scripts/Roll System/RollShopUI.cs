@@ -27,7 +27,7 @@ public class RollShopUI : MonoBehaviour
     {
         if (rollManager == null)
         {
-            Debug.LogError("rollManager chưa được gán! Kiểm tra Inspector.");
+            Debug.LogWarning("rollManager chưa được gán! Kiểm tra Inspector.");
         }
         else
         {
