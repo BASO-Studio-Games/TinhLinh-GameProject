@@ -5,8 +5,8 @@ public class Fridge : MonoBehaviour
 {
     [SerializeField] private int damage = 1;
     [SerializeField] private float attackInterval = 0.5f;
-    [SerializeField] private float freezeDelay = 2f; 
-    [SerializeField] private GameObject freezeEffectPrefab; 
+    [SerializeField] private float freezeDelay = 2f;
+    [SerializeField] private GameObject freezeEffectPrefab;
 
     private TinhLinh targetTinhLinh;
     private EnemyMovement enemyMovement;
@@ -125,23 +125,27 @@ public class Fridge : MonoBehaviour
     {
         yield return new WaitForSeconds(freezeDelay);
 
-        if (targetTinhLinh != null && !targetTinhLinh.IsImmuneToFreeze)
+        if (targetTinhLinh != null)
         {
-            targetTinhLinh.Freeze();
+            ItemData itemData = targetTinhLinh.GetComponent<ItemData>();
+            if (itemData != null && itemData.idTinhLinh == "M1TN07")
+            {
+                Debug.Log("Target M1TN07 is immune to freeze!");
+                yield break;
+            }
+
+            if (targetTinhLinh.IsFrozen && targetTinhLinh.freezingFridge != this)
+            {
+                yield break;
+            }
+
+            targetTinhLinh.Freeze(this);
+
             AttackTinhLinh attackScript = targetTinhLinh.GetComponent<AttackTinhLinh>();
             Animator targetAnimator = targetTinhLinh.GetComponent<Animator>();
 
-            if (attackScript != null)
-            {
-                attackScript.enabled = false;
-                Debug.Log("Target's AttackTinhLinh has been disabled!");
-            }
-
-            if (targetAnimator != null)
-            {
-                targetAnimator.enabled = false;
-                Debug.Log("Target's Animator has been disabled!");
-            }
+            if (attackScript != null) attackScript.enabled = false;
+            if (targetAnimator != null) targetAnimator.enabled = false;
 
             DisableComponent<CrossbowTinhLinh>(targetTinhLinh.gameObject);
             DisableComponent<AxAttack>(targetTinhLinh.gameObject);
@@ -151,16 +155,14 @@ public class Fridge : MonoBehaviour
             if (freezeEffectPrefab != null)
             {
                 GameObject freezeEffect = Instantiate(freezeEffectPrefab, targetTinhLinh.transform.position, Quaternion.identity);
-
                 FreezeEffect freezeScript = freezeEffect.GetComponent<FreezeEffect>();
-                if (freezeScript != null)
-                {
-                    freezeScript.SetTarget(targetTinhLinh.transform);
-                }
+                if (freezeScript != null) freezeScript.SetTarget(targetTinhLinh.transform);
             }
-
         }
     }
+
+
+
 
     private void DisableComponent<T>(GameObject target) where T : MonoBehaviour
     {

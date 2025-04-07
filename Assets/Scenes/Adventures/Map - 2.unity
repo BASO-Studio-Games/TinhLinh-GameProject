@@ -6577,7 +6577,6 @@ MonoBehaviour:
   maxRolls: 4
   defendersContainer: {fileID: 1346495602}
   hasBuy: 0
-  rollButton: {fileID: 2115229868}
 --- !u!114 &1964594961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7012,7 +7011,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 89672239
   m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &2053929110
@@ -7089,17 +7088,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3072858624430590605, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
   m_PrefabInstance: {fileID: 8918474787136350475}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2115229868 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 54470061655336488, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
-  m_PrefabInstance: {fileID: 8918474787136350475}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2133059906
 GameObject:
   m_ObjectHideFlags: 0

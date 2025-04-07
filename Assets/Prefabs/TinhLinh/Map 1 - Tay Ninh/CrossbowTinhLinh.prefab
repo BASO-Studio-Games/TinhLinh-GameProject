@@ -199,6 +199,8 @@ MonoBehaviour:
   maxHp: 0
   hpBar: {fileID: 4478536483528177726}
   hpBarObject: {fileID: 6363287067854291004}
+  animator: {fileID: 7846758406652512609}
+  freezingFridge: {fileID: 0}
 --- !u!114 &294500382929145920
 MonoBehaviour:
   m_ObjectHideFlags: 0

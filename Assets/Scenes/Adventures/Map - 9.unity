@@ -971,7 +971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].line
@@ -1007,6 +1007,30 @@ PrefabInstance:
       propertyPath: dialogue.dialogueLines.Array.data[2].character.icon
       value: 
       objectReference: {fileID: 21300000, guid: 9e4d598c5a90e1944b26817768681ee7, type: 3}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].line.m_TableEntryReference.m_KeyId
+      value: 6421741568
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].line.m_TableEntryReference.m_KeyId
+      value: 8221097984
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].line.m_TableEntryReference.m_KeyId
+      value: 11257774080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].line.m_TableReference.m_TableCollectionName
+      value: GUID:278b6fdbb5489594e945549705c674d5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].line.m_TableReference.m_TableCollectionName
+      value: GUID:278b6fdbb5489594e945549705c674d5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].line.m_TableReference.m_TableCollectionName
+      value: GUID:b24ef0e7857989741b2741efc2d32eab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7632,7 +7656,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 89672239
   m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &2053929110

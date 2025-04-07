@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,17 +9,18 @@ public class TinhLinh : Actor
     [SerializeField] private Image hpBar;
     [SerializeField] private GameObject hpBarObject;
     private Animator hpBarAnimator;
+    private SpriteRenderer spriteRenderer;
+    private Sprite originalSprite;
+
 
     public bool IsFrozen { get; private set; } = false;
     public bool IsImmuneToFreeze { get; set; } = false;
 
-
     private Tile currentTile;
-
     private bool isDestroyed = false;
+    public Fridge freezingFridge; // Fridge đang đóng băng tinh linh này
 
-    public PlayerStats PlayerStats { get => m_playerStats;private set => m_playerStats = value; }
-
+    public PlayerStats PlayerStats { get => m_playerStats; private set => m_playerStats = value; }
 
     public override void Init()
     {
@@ -29,6 +29,12 @@ public class TinhLinh : Actor
 
     private void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            originalSprite = spriteRenderer.sprite;
+        }
+
         if (hpBarObject != null)
         {
             hpBarAnimator = hpBarObject.GetComponent<Animator>();
@@ -79,23 +85,9 @@ public class TinhLinh : Actor
             Die();
         }
 
-
         OnTakeDamage?.Invoke(CurHp);
     }
 
-    // protected override void Die()
-    // {
-    //     Debug.Log("die");
-    //     m_rb.linearVelocity = Vector3.zero;
-
-    //     if (currentTile != null)
-    //     {
-    //         currentTile.ClearTile();
-    //     }
-
-    //     isDestroyed = true;
-    //     Destroy(gameObject, 1.5f);
-    // }
     protected override void Die()
     {
         Debug.Log("Tinh linh chết");
@@ -105,7 +97,6 @@ public class TinhLinh : Actor
         isDestroyed = true;
         Destroy(gameObject, 1.5f);
     }
-
 
     protected void UpdateHpBar()
     {
@@ -160,21 +151,40 @@ public class TinhLinh : Actor
         }
     }
 
-    public void Freeze()
+    public void Freeze(Fridge fridge)
     {
-        if (IsImmuneToFreeze) return; 
+        if (IsImmuneToFreeze) return;
 
+        // Nếu đã bị đóng băng bởi một Fridge khác, không đóng băng lại
+        if (IsFrozen && freezingFridge != fridge)
+        {
+            Debug.Log($"{gameObject.name} đã bị đóng băng bởi {freezingFridge.name}, bỏ qua.");
+            return;
+        }
+
+        if (spriteRenderer != null && originalSprite != null)
+        {
+            spriteRenderer.sprite = originalSprite;
+        }
+        else
+        {
+            Debug.LogError("erro");
+        }
+
+        // Sau đó mới đóng băng
         IsFrozen = true;
-        Debug.Log($"{gameObject.name} bị đóng băng!");
+        freezingFridge = fridge;
+        Debug.Log($"{gameObject.name} bị đóng băng bởi {fridge.name}!");
     }
+
 
     public void Unfreeze()
     {
         if (IsFrozen)
         {
             IsFrozen = false;
+            freezingFridge = null; // Cho phép bị đóng băng lại
             Debug.Log($"{gameObject.name} được giải băng!");
         }
     }
-
 }

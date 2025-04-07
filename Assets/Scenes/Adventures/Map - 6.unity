@@ -7341,7 +7341,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 89672239
   m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &2053929110
@@ -7516,7 +7516,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 8924342950866454463, guid: e19d0994f082bcd468b311eff279c797, type: 3}
   - {fileID: 8924342950866454463, guid: 6dcb45194bd13a546b69da0ce639db57, type: 3}
-  - {fileID: 8924342950866454463, guid: d2bb382ce2e3c3b429133bbadde7d4b6, type: 3}
+  - {fileID: 8924342950866454463, guid: f21d07579357a8a41a600acac782fb00, type: 3}
   parentObject: {fileID: 2101237008}
   totalWaves: 4
   baseEnemies: 2

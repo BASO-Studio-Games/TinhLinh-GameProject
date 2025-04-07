@@ -1028,6 +1028,38 @@ PrefabInstance:
       propertyPath: dialogue.dialogueLines.Array.data[3].character.name
       value: "Tu\u1EA5n"
       objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].line.m_TableEntryReference.m_KeyId
+      value: 7369654272
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].line.m_TableEntryReference.m_KeyId
+      value: 9471000576
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].line.m_TableEntryReference.m_KeyId
+      value: 11257774080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].line.m_TableEntryReference.m_KeyId
+      value: 13602390016
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].line.m_TableReference.m_TableCollectionName
+      value: GUID:b24ef0e7857989741b2741efc2d32eab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].line.m_TableReference.m_TableCollectionName
+      value: GUID:b24ef0e7857989741b2741efc2d32eab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].line.m_TableReference.m_TableCollectionName
+      value: GUID:b24ef0e7857989741b2741efc2d32eab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].line.m_TableReference.m_TableCollectionName
+      value: GUID:b24ef0e7857989741b2741efc2d32eab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6507,17 +6539,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3072858624430590605, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
   m_PrefabInstance: {fileID: 1735439328}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1735439330 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 54470061655336488, guid: 30173d2250712d84c9e7088296f6a3f6, type: 3}
-  m_PrefabInstance: {fileID: 1735439328}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1735605664
 GameObject:
   m_ObjectHideFlags: 0
@@ -7095,7 +7116,6 @@ MonoBehaviour:
   maxRolls: 4
   defendersContainer: {fileID: 1346495602}
   hasBuy: 0
-  rollButton: {fileID: 1735439330}
 --- !u!114 &1964594961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7530,7 +7550,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 89672239
   m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &2053929110

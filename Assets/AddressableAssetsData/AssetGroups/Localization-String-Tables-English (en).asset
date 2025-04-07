@@ -21,6 +21,30 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ecd6698086202545b50258bfe82234e
+    m_Address: NPC_Map1_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1308f763b2e96640aba0fee640df1b0
+    m_Address: tutorialMap1_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf24bbcab0f40dd4bb36a1d78b2bce92
+    m_Address: NPC_Map3_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef76bac225530424ebbbef2d9b6fdb43
+    m_Address: NPC_Map9_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 7a6b72ca31ff1ff40945edbee7ae31ec, type: 2}
   m_SchemaSet:

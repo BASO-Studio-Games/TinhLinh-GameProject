@@ -15,8 +15,28 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: cd3527da610924c4580da8afd04e07ba
   m_SerializeEntries:
+  - m_GUID: 0a4035680a3fa4e4888eac57ab7120ee
+    m_Address: Assets/LocalSetting/Tables/NPC_Map1 Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 278b6fdbb5489594e945549705c674d5
+    m_Address: Assets/LocalSetting/Tables/NPC_Map9 Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7b8ac5fd10087c34eb18a6376121a024
     m_Address: Assets/LocalSetting/Tables/StringExamTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9061615bbc4f5ef4684efc80fa34cd64
+    m_Address: Assets/LocalSetting/Tables/tutorialMap1 Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b24ef0e7857989741b2741efc2d32eab
+    m_Address: Assets/LocalSetting/Tables/NPC_Map3 Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

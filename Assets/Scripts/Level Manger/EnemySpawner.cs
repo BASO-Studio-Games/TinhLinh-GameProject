@@ -14,8 +14,8 @@ public class EnemySpawner : MonoBehaviour
     // Tăng enemiesPerSecond → Kẻ địch xuất hiện nhanh hơn.
     // Giảm timeBetweenWaves → Rút ngắn thời gian nghỉ giữa các wave.
     // Tăng difficultyScalingFactor → Game khó hơn nhanh hơn.
-        //Khi difficultyScalingFactor lớn, số lượng kẻ địch và tốc độ spawn tăng nhanh hơn theo wave.
-        //Khi difficultyScalingFactor nhỏ, game khó lên từ từ.
+    //Khi difficultyScalingFactor lớn, số lượng kẻ địch và tốc độ spawn tăng nhanh hơn theo wave.
+    //Khi difficultyScalingFactor nhỏ, game khó lên từ từ.
     // Tăng enemiesPerSecondCap → Giới hạn tốc độ spawn
     public int totalWaves; // Tổng số wave của level
     [SerializeField] private int baseEnemies = 8;
@@ -35,13 +35,13 @@ public class EnemySpawner : MonoBehaviour
     public bool isSpawning = false;
 
     [HideInInspector] public int totalEnemies = 0;   // Tổng số quái trong tất cả các wave
-    [HideInInspector] public  int[] enemiesUpToWave; // Số quái tích lũy từng wave
+    [HideInInspector] public int[] enemiesUpToWave; // Số quái tích lũy từng wave
     private int enemiesSpawned = 0; // Số quái đã spawn
 
     private void Awake()
     {
         onEnemyDestroy.AddListener(EnemyDestroyed);
-        CalculateTotalEnemies(); 
+        CalculateTotalEnemies();
     }
 
     private void Start()
@@ -87,14 +87,27 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        int index = UnityEngine.Random.Range(0, enemyPrefabs.Length);
-        GameObject prefabToSpawn = enemyPrefabs[index];
+        GameObject prefabToSpawn;
+
+        // Nếu số lượng quái đã spawn nhỏ hơn 3, luôn chọn con đầu mảng
+        if (enemiesSpawned < 3)
+        {
+            prefabToSpawn = enemyPrefabs[0];
+        }
+        else
+        {
+            // Chọn ngẫu nhiên từ danh sách enemyPrefabs
+            int index = UnityEngine.Random.Range(0, enemyPrefabs.Length);
+            prefabToSpawn = enemyPrefabs[index];
+        }
+
         Vector3 spawnPosition = new Vector3(LevelManager.main.startPoint.position.x, LevelManager.main.startPoint.position.y, 0);
         GameObject spawnedEnemy = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
         spawnedEnemy.transform.SetParent(parentObject.transform, false);
 
         enemiesSpawned++;
     }
+
 
     private IEnumerator StartWave()
     {
@@ -132,12 +145,15 @@ public class EnemySpawner : MonoBehaviour
         return (float)enemiesSpawned / totalEnemies;
     }
 
-    private void CheckWaveInLevel(){
+    private void CheckWaveInLevel()
+    {
         if (currentWave < totalWaves) return;
 
         // Debug.LogWarning("Làn sóng cuối cùng " + currentWave);
-        if (enemiesSpawned == totalEnemies){
-            if (parentObject.transform.childCount == 0){
+        if (enemiesSpawned == totalEnemies)
+        {
+            if (parentObject.transform.childCount == 0)
+            {
                 LevelManager.main.UpdateStatusLevel(true);
             }
         }

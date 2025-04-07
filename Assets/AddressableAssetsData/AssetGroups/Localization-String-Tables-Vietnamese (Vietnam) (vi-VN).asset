@@ -15,8 +15,32 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Vietnamese (Vietnam) (vi-VN)
   m_GUID: 4e94cf0947face84fb0cbdbfec2d8ca7
   m_SerializeEntries:
+  - m_GUID: 2231371dc5a283a49813d378f3422f74
+    m_Address: NPC_Map1_vi-VN
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-vi-VN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8d18cc4f4b700ed4eaa1b926b17ad799
+    m_Address: NPC_Map9_vi-VN
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-vi-VN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e8ac1a9674244941806fa839e5805e9
+    m_Address: tutorialMap1_vi-VN
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-vi-VN
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: db8e1e4ba0e1f074b878675f1651156d
     m_Address: StringExamTable_vi-VN
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-vi-VN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: efb173b18190ce54b85aa25d9dbb860d
+    m_Address: NPC_Map3_vi-VN
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-vi-VN

@@ -186,7 +186,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence(DialogueLine dialogueLine)
     {
         dialogueArea.text = "";
-        foreach (char letter in dialogueLine.line.ToCharArray())
+        foreach (char letter in dialogueLine.line.GetLocalizedString())
         {
             dialogueArea.text += letter;
             yield return new WaitForSeconds(typingSpeed);

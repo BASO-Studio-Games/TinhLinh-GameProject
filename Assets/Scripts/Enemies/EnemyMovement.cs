@@ -207,7 +207,14 @@ public class EnemyMovement : Actor
         VacuumCleanerEnemy vacuumCleanerEnemy = GetComponent<VacuumCleanerEnemy>();
         if (fanEnemyComponent != null)
         {
-            GameObject evolvedEnemy = Instantiate(EvolutionList.main.GetEvolvedFanPrefab(), transform.position, Quaternion.identity);
+            Vector3 spawnPosition = transform.position;
+            spawnPosition.z = 0f; // đảm bảo không có lệch theo trục Z
+
+            GameObject evolvedEnemy = Instantiate(EvolutionList.main.GetEvolvedFanPrefab(), spawnPosition, Quaternion.identity);
+
+            // Đảm bảo vị trí đúng nếu bị lệch
+            evolvedEnemy.transform.position = spawnPosition;
+
 
             // Đảm bảo đối tượng mới được gán vào cùng parent với đối tượng cũ
             if (transform.parent != null)

@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: tutorialMap1_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 9061615bbc4f5ef4684efc80fa34cd64, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 21735145472
+    m_Localized: This is a Spirit warrior, he will be a partner - a good warrior.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446215487488
+    m_Localized: 'Name of the Tinh Linh
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17497235652608
+    m_Localized: 'Cost to summon this Tinh Linh warrior.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17502784716800
+    m_Localized: Look how handsome he is...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17506169520128
+    m_Localized: 'The rank of this warrior.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17664936509440
+    m_Localized: 'He belongs to the melee warrior type.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17715142328320
+    m_Localized: 'Details of Spirit here.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17759249629184
+    m_Localized: 'Choose a warrior for yourself.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17784033771520
+    m_Localized: 'Do you see the way they will attack? Let''s send our warriors into
+      battle.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17805886095360
+    m_Localized: 'While you stop enemies you will gain energy, when full you can
+      summon more Tinh Linh.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17888656490496
+    m_Localized: 'Manage your finances well, that is the key to success.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17919539150848
+    m_Localized: 'These are enemy attacks, stop and destroy their plots.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17934923857920
+    m_Localized: 'You can use money to search for other Tinh Linh.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17948689563648
+    m_Localized: 'When you are ready, you can click here to fight.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17988120215552
+    m_Localized: 'Please protect this village and destroy their plots. Go ahead.
+
+'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

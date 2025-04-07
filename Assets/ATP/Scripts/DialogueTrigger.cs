@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization;
 
 [System.Serializable]
 public class DialogueCharacter
@@ -14,15 +15,14 @@ public class DialogueCharacter
 public class DialogueLine
 {
     public DialogueCharacter character;
-    [TextArea(3, 10)]
-    public string line;
+    public LocalizedString line;
     public GameObject guidePointPrefab;
     public bool isGuidePoint;
     public Transform targetTransform;
     public GameObject targetPrefab;
     public GameObject targetAction;
-    
 }
+
 
 [System.Serializable]
 public class Dialogue

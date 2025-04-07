@@ -121,6 +121,11 @@ public class AttackTinhLinh : MonoBehaviour
         Destroy(blood, 1f);
     }
 
+    public void AttackSound()
+    {
+        AudioManager.Instance.PlaySFX("TinhLinhHit");
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;

@@ -720,6 +720,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarningGoldPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 6598529889907780948, guid: f6e812631ef11f245bb52fd69ab60da4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1404,6 +1408,54 @@ PrefabInstance:
       propertyPath: dialogue.dialogueLines.Array.data[7].character.name
       value: "Khi\xEAm \xF3c c\u1EB7c"
       objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].line.m_TableEntryReference.m_KeyId
+      value: 455874969600
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].line.m_TableEntryReference.m_KeyId
+      value: 458584489984
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].line.m_TableEntryReference.m_KeyId
+      value: 460706807808
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].line.m_TableEntryReference.m_KeyId
+      value: 463336636416
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].line.m_TableEntryReference.m_KeyId
+      value: 665661472768
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].line.m_TableEntryReference.m_KeyId
+      value: 1093920882688
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].line.m_TableReference.m_TableCollectionName
+      value: GUID:0a4035680a3fa4e4888eac57ab7120ee
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].line.m_TableReference.m_TableCollectionName
+      value: GUID:0a4035680a3fa4e4888eac57ab7120ee
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].line.m_TableReference.m_TableCollectionName
+      value: GUID:0a4035680a3fa4e4888eac57ab7120ee
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[3].line.m_TableReference.m_TableCollectionName
+      value: GUID:0a4035680a3fa4e4888eac57ab7120ee
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[4].line.m_TableReference.m_TableCollectionName
+      value: GUID:0a4035680a3fa4e4888eac57ab7120ee
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[5].line.m_TableReference.m_TableCollectionName
+      value: GUID:0a4035680a3fa4e4888eac57ab7120ee
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1574,31 +1626,126 @@ MonoBehaviour:
   - {fileID: 1785938113}
   - {fileID: 970608784}
   tutorialString:
-  - "\u0110\xE2y l\xE0 m\u1ED9t chi\u1EBFn binh Tinh Linh, c\u1EADu ta s\u1EBD l\xE0
-    m\u1ED9t c\u1ED9ng s\u1EF1 - m\u1ED9t chi\u1EBFn binh t\u1ED1t."
-  - "T\xEAn c\u1EE7a Tinh Linh."
-  - "Chi ph\xED \u0111\u1EC3 tri\u1EC7u h\u1ED3i chi\u1EBFn binh Tinh Linh n\xE0y."
-  - "Th\u1EA5y c\u1EADu ta \u0111\u1EB9p ch\u1EE9..."
-  - "C\u1EA5p b\u1EADc c\u1EE7a chi\u1EBFn binh n\xE0y."
-  - "C\u1EADu ta thu\u1ED9c h\u1EC7 chi\u1EBFn binh c\u1EADn chi\u1EBFn."
-  - "Th\xF4ng tin chi ti\u1EBFt c\u1EE7a Tinh Linh \u1EDF \u0111\xE2y."
-  - "H\xE3y ch\u1ECDn cho m\xECnh m\u1ED9t chi\u1EBFn binh."
-  - "B\u1EA1n th\u1EA5y con \u0111\u01B0\u1EDDng b\u1ECDn ch\xFAng s\u1EBD t\u1EA5n
-    c\xF4ng ch\u1EE9 ch\u1EE9, h\xE3y cho chi\u1EBFn binh c\u1EE7a m\xECnh xu\u1EA5t
-    tr\u1EADn n\xE0o."
-  - "Trong l\xFAc b\u1EA1n ng\u0103n ch\u1EB7n k\u1EBB th\xF9 b\u1EA1n s\u1EBD \u0111\u01B0\u1EE3c
-    n\u0103ng l\u01B0\u1EE3ng, khi \u0111\u1EA7y b\u1EA1n c\xF3 th\u1EC3 tri\u1EC7u
-    h\u1ED3i th\xEAm Tinh Linh."
-  - "B\u1EA1n h\xE3y qu\u1EA3n l\xFD t\u1ED1t t\xE0i ch\xEDnh c\u1EE7a m\xECnh, \u0111\xF3
-    l\xE0 ch\xECa kh\xF3a \u0111\u1EC3 th\xE0nh c\xF4ng."
-  - "\u0110\xE2y l\xE0 c\xE1c \u0111\u1EE3t t\u1EA5n c\xF4ng c\u1EE7a k\u1EBB th\xF9,
-    h\xE3y ng\u0103n ch\u1EB7n v\xE0 ph\xE1 tan \xE2m m\u01B0u c\u1EE7a ch\xFAng."
-  - "B\u1EA1n c\xF3 th\u1EC3 d\xF9ng ti\u1EC1n \u0111\u1EC3 t\xECm ki\u1EBFm c\xE1c
-    Tinh Linh kh\xE1c."
-  - "Khi b\u1EA1n \u0111\xE3 s\u1EB5n s\xE0n r\u1ED3i th\xEC c\xF3 th\u1EC3 b\u1EA5m
-    v\xE0o \u0111\xE2y \u0111\u1EC3 chi\u1EBFn."
-  - "H\xE3y b\u1EA3o v\u1EC7 ng\xF4i l\xE0ng n\xE0y, \u0111\u1EADp tan \xE2m m\u01B0u
-    c\u1EE7a ch\xFAng. Ti\u1EBFn l\xEAn."
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 21735145472
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 446215487488
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17497235652608
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17502784716800
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17506169520128
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17664936509440
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17715142328320
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17759249629184
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17784033771520
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17805886095360
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17888656490496
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17919539150848
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17934923857920
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17948689563648
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:9061615bbc4f5ef4684efc80fa34cd64
+    m_TableEntryReference:
+      m_KeyId: 17988120215552
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   tutorialPointSize:
   - {x: 2, y: 3, z: 1}
   - {x: 1, y: 0.5, z: 1}
@@ -1614,6 +1761,9 @@ MonoBehaviour:
   - {x: 0.5, y: 0.5, z: 1}
   textGuide: {fileID: 1620449112}
   textHighlight: {fileID: 200600937}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &347416590
 GameObject:
   m_ObjectHideFlags: 0
@@ -6157,7 +6307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1633171826269986888, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 203.99998
+      value: 204
       objectReference: {fileID: 0}
     - target: {fileID: 3852125389332267525, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
       propertyPath: m_Sprite
@@ -6285,7 +6435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5243218623058754937, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -41.14293
+      value: -41.142944
       objectReference: {fileID: 0}
     - target: {fileID: 5851028083853429888, guid: cc84ef9e47492444b8d0febea57576ba, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -8379,7 +8529,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 89672239
   m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &2053929110
