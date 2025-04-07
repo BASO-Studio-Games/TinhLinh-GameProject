@@ -56,11 +56,8 @@ public class ShopMenuManager : MonoBehaviour
 
     public void BuyRollItem(int value)
     {
-        if (user == null)
-        {
-            Debug.LogError("User data chưa được tải!");
-            return;
-        }
+        string userID = PlayerPrefs.GetString("ID_User", "DefaultUserID");
+        GetAllDataUser(userID, false);
 
         int currentDiamond = int.Parse(user.diamond);
         int currentRoll = int.Parse(user.roll);
@@ -72,7 +69,7 @@ public class ShopMenuManager : MonoBehaviour
             currentRoll += 1;
 
             // Cập nhật dữ liệu trên Firebase
-            string userID = PlayerPrefs.GetString("ID_User", "DefaultUserID");
+            // string userID = PlayerPrefs.GetString("ID_User", "DefaultUserID");
             dbReference.Child("Users").Child(userID).Child("diamond").SetValueAsync(currentDiamond);
             dbReference.Child("Users").Child(userID).Child("roll").SetValueAsync(currentRoll);
 
@@ -99,12 +96,12 @@ public class ShopMenuManager : MonoBehaviour
             dbReference = FirebaseDatabase.DefaultInstance.RootReference;
 
             string userID = PlayerPrefs.GetString("ID_User", "DefaultUserID");
-            GetAllDataUser(userID);
+            GetAllDataUser(userID, true);
         });
     }
 
     // Đọc dữ liệu từ Firebase
-    private void GetAllDataUser(string idPlayer)
+    private void GetAllDataUser(string idPlayer, bool display)
     {
         Debug.Log($"Đọc dữ liệu từ ID {idPlayer}");
         dbReference.Child("Users").Child(idPlayer).GetValueAsync().ContinueWithOnMainThread(task =>
@@ -121,9 +118,11 @@ public class ShopMenuManager : MonoBehaviour
                 if (user != null)
                 {
                     Debug.Log($"Lấy dữ liệu từ {user.username} thành công.");
-
-                    rollText.text = user.roll + " Lượt quay";
-                    diamondText.text = user.diamond + " Kim cương";
+                    
+                    if (display){
+                        diamondText.text = user.diamond + " Kim cương";
+                        rollText.text = user.roll + " Lượt quay";
+                    }
                 }
                 else
                 {

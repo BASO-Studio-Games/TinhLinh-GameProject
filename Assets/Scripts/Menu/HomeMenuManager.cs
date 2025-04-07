@@ -90,6 +90,7 @@ public class HomeMenuManager : MonoBehaviour
     {
         AudioManager.Instance.PlaySFX("ButtonUI");
         debugText.text = "Console Log: Thông tin trò chơi.";
+        Application.OpenURL("https://tins24.itch.io/tlxm");
     }
 
     private void OnClickShopButton()
@@ -143,7 +144,7 @@ public class HomeMenuManager : MonoBehaviour
 
                     currencyLevelUser = user.currentLevel ?? "11";
                     Debug.Log("maps " + user.currentLevel);
-                    currencyLevelUserText.text = "Map " + currencyLevelUser[0] + "." + currencyLevelUser[currencyLevelUser.Length - 1];
+                    // currencyLevelUserText.text = "Map " + currencyLevelUser[0] + "." + currencyLevelUser[currencyLevelUser.Length - 1];
 
                     if (!string.IsNullOrEmpty(user.avatarUrl))
                     {

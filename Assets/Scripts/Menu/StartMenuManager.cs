@@ -75,20 +75,20 @@ public class StartMenuManager : MonoBehaviour
             }
         }   
 
-        elapsedTime = 0f;
-        dotCount = 0;
+        // elapsedTime = 0f;
+        // dotCount = 0;
 
-        while (elapsedTime < durationCheckVersion)
-        {
-            // Thay đổi nội dung Text
-            loadingCheckText.text = "Đang kiểm tra phiên bản" + new string('.', dotCount);
-            dotCount = (dotCount + 1) % 4; // Quay lại 0 sau khi đạt 3 (Load...)
+        // while (elapsedTime < durationCheckVersion)
+        // {
+        //     // Thay đổi nội dung Text
+        //     loadingCheckText.text = "Đang kiểm tra phiên bản" + new string('.', dotCount);
+        //     dotCount = (dotCount + 1) % 4; // Quay lại 0 sau khi đạt 3 (Load...)
             
-            // Chờ một khoảng thời gian
-            yield return new WaitForSeconds(intervalLoading);
+        //     // Chờ một khoảng thời gian
+        //     yield return new WaitForSeconds(intervalLoading);
 
-            elapsedTime += intervalLoading;
-        }
+        //     elapsedTime += intervalLoading;
+        // }
         
         // Hoàn tất kiểm tra, chuyển màn hình
         checkingVersionScreen.SetActive(false);
