@@ -28,4 +28,9 @@ public class BommerTurret : MonoBehaviour
             animator.SetBool("isAttack", true);
         }
     }
+
+    public void SoundEffect()
+    {
+        AudioManager.Instance.PlaySFX("Bomp");
+    }
 }

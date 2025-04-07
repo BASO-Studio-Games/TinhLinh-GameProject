@@ -156,8 +156,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.026582241, y: -0.004952252}
-  m_Size: {x: 0.35426396, y: 0.9373219}
+  m_Offset: {x: 0.0056026727, y: 0.011140287}
+  m_Size: {x: 0.4701303, y: 1.0081291}
   m_Direction: 0
 --- !u!114 &6176575487736321396
 MonoBehaviour:
@@ -214,7 +214,6 @@ MonoBehaviour:
   maxHp: 0
   hpBar: {fileID: 1961971647077632009}
   hpBarObject: {fileID: 9030359619971280907}
-  animator: {fileID: 5225359013334901759}
   freezingFridge: {fileID: 0}
 --- !u!114 &3276797169311066601
 MonoBehaviour:

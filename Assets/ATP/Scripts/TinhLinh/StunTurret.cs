@@ -79,4 +79,9 @@ public class StunTurret : MonoBehaviour
             Destroy(effect, 1.5f);
         }
     }
+
+    public void AttackSound()
+    {
+        AudioManager.Instance.PlaySFX("TinhLinhHit");
+    }
 }

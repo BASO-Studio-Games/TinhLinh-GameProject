@@ -43,6 +43,7 @@ public class AttackTinhLinh : MonoBehaviour
 
             if (hit != null && enemiesInRange.Contains(hit))
             {
+                Debug.Log("phat hien muc tieu");
                 hitTarget = hit;
                 hasTarget = true;
 
@@ -51,6 +52,10 @@ public class AttackTinhLinh : MonoBehaviour
                 RotateTowardsTarget(directionToTarget);
 
                 break;
+            }
+            else
+            {
+                Debug.Log("khong co muc tieu");
             }
         }
 
@@ -91,6 +96,7 @@ public class AttackTinhLinh : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & playerMask) != 0)
         {
+            Debug.Log("da va cham");
             enemiesInRange.Add(collision.collider);
             lastHitPosition = collision.transform.position;
         }

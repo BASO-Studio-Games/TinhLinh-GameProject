@@ -76,7 +76,6 @@ public class AxAttack : MonoBehaviour
         }
     }
 
-
     private IEnumerator ContinuousAttack()
     {
         isAttacking = true;
@@ -124,13 +123,21 @@ public class AxAttack : MonoBehaviour
     {
         Collider2D[] hits = Physics2D.OverlapBoxAll(squareCenter, new Vector2(squareSize, squareSize), 0f, enemyMask);
 
+        bool hasHitEnemy = false;
+
         foreach (Collider2D hit in hits)
         {
             EnemyMovement enemy = hit.GetComponent<EnemyMovement>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
+                hasHitEnemy = true;
             }
+        }
+
+        if (hasHitEnemy)
+        {
+            AudioManager.Instance.PlaySFX("TinhLinhHit");
         }
     }
 

@@ -62,6 +62,11 @@ public class CrossbowTinhLinh : MonoBehaviour
         }
     }
 
+    public void MusicSound()
+    {
+        AudioManager.Instance.PlaySFX("Crossbow");
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

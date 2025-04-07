@@ -8706,6 +8706,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8307892031259551228, guid: 8e582958730b58241a574afb1043535f, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307892031259551228, guid: 8e582958730b58241a574afb1043535f, type: 3}
+      propertyPath: sfxSounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6cc5f8a9e68f30a4480d8c8b7a39192b, type: 3}
+    - target: {fileID: 8307892031259551228, guid: 8e582958730b58241a574afb1043535f, type: 3}
+      propertyPath: sfxSounds.Array.data[1].name
+      value: TinhLinhHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307892031259551228, guid: 8e582958730b58241a574afb1043535f, type: 3}
+      propertyPath: sfxSounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ecaf09e79f842334c8326ad8620e6233, type: 3}
+    - target: {fileID: 8307892031259551228, guid: 8e582958730b58241a574afb1043535f, type: 3}
+      propertyPath: sfxSounds.Array.data[2].name
+      value: Crossbow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307892031259551228, guid: 8e582958730b58241a574afb1043535f, type: 3}
+      propertyPath: sfxSounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 66a17fcc6c4cd81428f273d815455996, type: 3}
+    - target: {fileID: 8307892031259551228, guid: 8e582958730b58241a574afb1043535f, type: 3}
+      propertyPath: sfxSounds.Array.data[3].name
+      value: Bomp
+      objectReference: {fileID: 0}
     - target: {fileID: 8336305350639163288, guid: 8e582958730b58241a574afb1043535f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.13732082
