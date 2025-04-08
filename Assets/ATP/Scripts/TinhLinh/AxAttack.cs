@@ -19,6 +19,8 @@ public class AxAttack : MonoBehaviour
     private bool isRotating = false;
     private bool isAttacking = false;
     private float attackCooldown = 0f;
+    private Coroutine attackCoroutine;
+
 
     private void Update()
     {
@@ -27,7 +29,12 @@ public class AxAttack : MonoBehaviour
             attackCooldown -= Time.deltaTime;
         }
 
-        Collider2D[] enemiesInRange = Physics2D.OverlapBoxAll(transform.position, new Vector2(squareSize * 3, squareSize * 3), 0f, enemyMask);
+        Collider2D[] enemiesInRange = Physics2D.OverlapBoxAll(
+            transform.position,
+            new Vector2(squareSize * 3, squareSize * 3),
+            0f,
+            enemyMask
+        );
 
         if (enemiesInRange.Length > 0)
         {
@@ -37,12 +44,23 @@ public class AxAttack : MonoBehaviour
                 RotateTowardsEnemy(nearestEnemy);
             }
 
-            if (!isAttacking)
+            if (attackCoroutine == null)
             {
-                StartCoroutine(ContinuousAttack());
+                attackCoroutine = StartCoroutine(ContinuousAttack());
+            }
+        }
+        else
+        {
+            if (attackCoroutine != null)
+            {
+                StopCoroutine(attackCoroutine);
+                attackCoroutine = null;
+                isAttacking = false;
+                animator.SetBool("isAttack", false);
             }
         }
     }
+
 
     private Transform FindNearestEnemy(Collider2D[] enemies)
     {
@@ -83,12 +101,18 @@ public class AxAttack : MonoBehaviour
 
         while (true)
         {
-            Collider2D[] enemiesInRange = Physics2D.OverlapBoxAll(transform.position, new Vector2(squareSize * 3, squareSize * 3), 0f, enemyMask);
+            Collider2D[] enemiesInRange = Physics2D.OverlapBoxAll(
+                transform.position,
+                new Vector2(squareSize * 3, squareSize * 3),
+                0f,
+                enemyMask
+            );
 
             if (enemiesInRange.Length <= 0)
             {
                 animator.SetBool("isAttack", false);
-                break;
+                attackCoroutine = null;
+                yield break;
             }
 
             if (attackCooldown <= 0f && !isRotating)
@@ -99,9 +123,8 @@ public class AxAttack : MonoBehaviour
 
             yield return null;
         }
-
-        isAttacking = false;
     }
+
 
     private IEnumerator PerformAxAttack()
     {

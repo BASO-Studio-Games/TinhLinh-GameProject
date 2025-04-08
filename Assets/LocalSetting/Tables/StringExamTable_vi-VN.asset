@@ -46,6 +46,42 @@ MonoBehaviour:
     m_Localized: "\xC2m nh\u1EA1c"
     m_Metadata:
       m_Items: []
+  - m_Id: 15872523015290880
+    m_Localized: "L\u01B0\u1EE3t quay"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15872527851323392
+    m_Localized: "Tr\u1ED1ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15872535480762368
+    m_Localized: "Kh\xF4ng c\xF3 th\u01B0\u1EDFng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15890575144517632
+    m_Localized: "+{0} kim c\u01B0\u01A1ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15890601275031552
+    m_Localized: "+{0} l\u01B0\u1EE3t quay"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16166096776462336
+    m_Localized: "Th\u1EAFng r\u1ED3i!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16166099540508672
+    m_Localized: "Thua r\u1ED3i!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16170181990809600
+    m_Localized: "Kim c\u01B0\u01A1ng"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16170185459499008
+    m_Localized: "L\u01B0\u1EE3t quay"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

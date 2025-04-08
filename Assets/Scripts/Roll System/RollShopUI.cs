@@ -199,14 +199,7 @@ public class RollShopUI : MonoBehaviour
 
     public void ResetRoll()
     {
-        if (AudioManager.Instance == null)
-        {
-            Debug.LogError("AudioManager.Instance bị null!");
-            return;
-        }
-
-        Debug.Log("Gọi PlaySFX(ButtonUI)");
-        AudioManager.Instance.PlaySFX("ButtonUI");
+z
 
         rollManager.ResetRoll();
         UpdateRollUI(true);

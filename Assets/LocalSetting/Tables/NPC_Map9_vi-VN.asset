@@ -19,11 +19,17 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 6421741568
-    m_Localized: "\u0110u\u1ED1c + Ki\u1EBFm = Ki\u1EBFm l\u1EEDa"
+    m_Localized: "Tr\u1EADn chi\u1EBFn ng\xE0y c\xE0ng c\u0103ng th\u1EB3ng h\u01A1n..."
     m_Metadata:
       m_Items: []
   - m_Id: 8221097984
-    m_Localized: "Ki\u1EBFm + \u0110u\u1ED1c = Ki\u1EBFm l\u1EEDa"
+    m_Localized: "N\u1EBFu th\u1EBF n\xE0y th\xEC kh\xF4ng \u1ED5n m\u1EA5t !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 273000582873088
+    m_Localized: "Ki\u1EBFm l\u1EEDa sao? M\u1ED9t c\xE2y ki\u1EBFm kh\xF4ng t\u1ED3i,
+      h\xE3y th\u1EED k\u1EBFt h\u1EE3p Tinh Linh ki\u1EBFm v\u1EDBi ng\u1ECDn \u0111u\u1ED1c
+      xem n\xE0o."
     m_Metadata:
       m_Items: []
   references:

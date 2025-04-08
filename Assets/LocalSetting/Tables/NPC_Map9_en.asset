@@ -19,11 +19,22 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 6421741568
-    m_Localized: Torch + Sword = Fire Sword
+    m_Localized: 'The battle is getting more and more intense...
+
+'
     m_Metadata:
       m_Items: []
   - m_Id: 8221097984
-    m_Localized: Sword + Torch = Fire Sword
+    m_Localized: 'If this is the case, it''s not okay!
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 273000582873088
+    m_Localized: 'Fire sword? Not a bad sword, let''s try combining the Spirit Sword
+      with the torch.
+
+'
     m_Metadata:
       m_Items: []
   references:

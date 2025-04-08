@@ -3834,6 +3834,36 @@ MonoBehaviour:
   nextMapName: Map - 7
   rollRewardText: {fileID: 991474125}
   diamondRewardText: {fileID: 991474124}
+  noRewardString:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 15872535480762368
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  diamondRewardFormatString:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 15890575144517632
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  rollRewardFormatString:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 15890601275031552
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1034274923
 GameObject:
   m_ObjectHideFlags: 0
@@ -7554,6 +7584,27 @@ MonoBehaviour:
   - {fileID: 690280292}
   - {fileID: 1735798268}
   winner: 0
+  winTextLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 16166096776462336
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  loseTextLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 16166099540508672
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &2141041841
 Transform:
   m_ObjectHideFlags: 0

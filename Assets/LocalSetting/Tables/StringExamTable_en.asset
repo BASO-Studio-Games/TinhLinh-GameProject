@@ -46,6 +46,42 @@ MonoBehaviour:
     m_Localized: Music
     m_Metadata:
       m_Items: []
+  - m_Id: 15872523015290880
+    m_Localized: Roll number
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15872527851323392
+    m_Localized: null
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15872535480762368
+    m_Localized: ' No reward'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15890575144517632
+    m_Localized: +{0} diamonds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15890601275031552
+    m_Localized: +{0} spins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16166096776462336
+    m_Localized: You win!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16166099540508672
+    m_Localized: You lose!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16170181990809600
+    m_Localized: Diamonds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16170185459499008
+    m_Localized: Rolls
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

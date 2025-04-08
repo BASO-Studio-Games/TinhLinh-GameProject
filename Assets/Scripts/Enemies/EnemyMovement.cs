@@ -254,8 +254,17 @@ public class EnemyMovement : Actor
     private IEnumerator EnableColliderAfterDelay(GameObject obj, float delay)
     {
         yield return new WaitForSeconds(delay);
-        obj.GetComponent<Collider2D>().enabled = true; 
+
+        var collider = obj.GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            collider.enabled = true;
+
+            // Đồng bộ hóa hệ thống vật lý ngay sau khi bật collider
+            Physics2D.SyncTransforms();
+        }
     }
+
 
     public void TriggerDie()
     {

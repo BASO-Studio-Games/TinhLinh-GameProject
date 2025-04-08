@@ -3585,6 +3585,36 @@ MonoBehaviour:
   nextMapName: Map - 1
   rollRewardText: {fileID: 1683026494}
   diamondRewardText: {fileID: 1683026493}
+  noRewardString:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 15872535480762368
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  diamondRewardFormatString:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 15890575144517632
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  rollRewardFormatString:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 15890601275031552
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1034274923
 GameObject:
   m_ObjectHideFlags: 0
@@ -7412,7 +7442,7 @@ MonoBehaviour:
   - {fileID: 8924342950866454463, guid: d2bb382ce2e3c3b429133bbadde7d4b6, type: 3}
   - {fileID: 8924342950866454463, guid: f21d07579357a8a41a600acac782fb00, type: 3}
   parentObject: {fileID: 2101237008}
-  totalWaves: 999
+  totalWaves: 5
   baseEnemies: 5
   enemiesPerSecond: 0.2
   timeBetweenWaves: 0.1
@@ -7436,7 +7466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 0}
   path: []
-  currency: 1000
+  currency: 130
   maxEnergy: 50
   maxEnergyGrowthFactor: 1.2
   isMaxEnergy: 0
@@ -7448,6 +7478,27 @@ MonoBehaviour:
   - {fileID: 690280292}
   - {fileID: 1735798268}
   winner: 0
+  winTextLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 16166096776462336
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  loseTextLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 16166099540508672
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &2141041841
 Transform:
   m_ObjectHideFlags: 0

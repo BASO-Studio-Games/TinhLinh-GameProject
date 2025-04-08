@@ -23,6 +23,10 @@ MonoBehaviour:
     m_Key: NPC2
     m_Metadata:
       m_Items: []
+  - m_Id: 273000582873088
+    m_Key: NPC3
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,6 +1,9 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+
 
 public class LevelManager : MonoBehaviour
 {
@@ -24,6 +27,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TMP_Text winOrLoseText;
     [SerializeField] private GameObject[] nextButtonAndImage;
     public bool winner;
+
+    [SerializeField] private LocalizedString winTextLocalized;
+    [SerializeField] private LocalizedString loseTextLocalized;
+
 
     private EnemySpawner enemySpawner;
 
@@ -143,7 +150,10 @@ public class LevelManager : MonoBehaviour
                 winner = true;
                 statusLevel = true;
                 winOrLoseMenu.SetActive(true);
-                winOrLoseText.text = "Thắng rồi!";
+                winTextLocalized.GetLocalizedStringAsync().Completed += handle =>
+                {
+                    winOrLoseText.text = handle.Result;
+                };
                 nextButtonAndImage[0].SetActive(true);
                 nextButtonAndImage[1].SetActive(true);
             }
@@ -151,7 +161,10 @@ public class LevelManager : MonoBehaviour
                 winner = false;
                 statusLevel = true;
                 winOrLoseMenu.SetActive(true);
-                winOrLoseText.text = "Thua rồi!";
+                loseTextLocalized.GetLocalizedStringAsync().Completed += handle =>
+                {
+                    winOrLoseText.text = handle.Result;
+                };
                 nextButtonAndImage[0].SetActive(false);
                 nextButtonAndImage[1].SetActive(false);
             }

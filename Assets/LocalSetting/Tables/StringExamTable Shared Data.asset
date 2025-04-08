@@ -44,23 +44,39 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15872523015290880
-    m_Key: New Entry
+    m_Key: "L\u01B0\u1EE3t quay"
     m_Metadata:
       m_Items: []
   - m_Id: 15872527851323392
-    m_Key: New Entry 1
+    m_Key: "Tr\u1ED1ng"
     m_Metadata:
       m_Items: []
   - m_Id: 15872535480762368
-    m_Key: New Entry 2
+    m_Key: NoReward
     m_Metadata:
       m_Items: []
   - m_Id: 15890575144517632
-    m_Key: New Entry 3
+    m_Key: DiamondRewardFormat
     m_Metadata:
       m_Items: []
   - m_Id: 15890601275031552
-    m_Key: New Entry 4
+    m_Key: RollRewardFormat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16166096776462336
+    m_Key: WinText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16166099540508672
+    m_Key: LoseText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16170181990809600
+    m_Key: DiamondText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16170185459499008
+    m_Key: RollText
     m_Metadata:
       m_Items: []
   m_Metadata:

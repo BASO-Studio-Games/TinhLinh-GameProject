@@ -5,6 +5,9 @@ using Firebase.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+
 
 public class ShopMenuManager : MonoBehaviour
 {
@@ -12,6 +15,10 @@ public class ShopMenuManager : MonoBehaviour
     [SerializeField] private TMP_Text rollText;
     [SerializeField] private GameObject[] Items;
     private Button[] buttonItems;
+
+    [SerializeField] private LocalizedString diamondTextLocalized;
+    [SerializeField] private LocalizedString rollTextLocalized;
+
 
     private User user;
     private DatabaseReference dbReference;
@@ -74,8 +81,16 @@ public class ShopMenuManager : MonoBehaviour
             dbReference.Child("Users").Child(userID).Child("roll").SetValueAsync(currentRoll);
 
             // Cập nhật UI
-            diamondText.text = currentDiamond.ToString() + " Kim cương";
-            rollText.text = currentRoll.ToString() + " Lượt quay";
+            diamondTextLocalized.GetLocalizedStringAsync().Completed += handle =>
+            {
+                diamondText.text = $"{currentDiamond} {handle.Result}";
+            };
+
+            rollTextLocalized.GetLocalizedStringAsync().Completed += handle =>
+            {
+                rollText.text = $"{currentRoll} {handle.Result}";
+            };
+
 
             Debug.Log("Mua lượt roll thành công! Số vàng còn lại: " + currentDiamond);
         }
@@ -120,8 +135,16 @@ public class ShopMenuManager : MonoBehaviour
                     Debug.Log($"Lấy dữ liệu từ {user.username} thành công.");
                     
                     if (display){
-                        diamondText.text = user.diamond + " Kim cương";
-                        rollText.text = user.roll + " Lượt quay";
+                        diamondTextLocalized.GetLocalizedStringAsync().Completed += handle =>
+                        {
+                            diamondText.text = $"{user.diamond} {handle.Result}";
+                        };
+
+                        rollTextLocalized.GetLocalizedStringAsync().Completed += handle =>
+                        {
+                            rollText.text = $"{user.roll} {handle.Result}";
+                        };
+
                     }
                 }
                 else

@@ -457,14 +457,14 @@ public class RandomPathGenerator : MonoBehaviour
 
     public void StartGame(){
         UIScreen.SetActive(true);
-        if (AudioManager.Instance == null)
-        {
-            Debug.LogError("AudioManager.Instance bị null!");
-            return;
-        }
+        //if (AudioManager.Instance == null)
+        //{
+        //    Debug.LogError("AudioManager.Instance bị null!");
+        //    return;
+        //}
 
-        Debug.Log("Gọi PlaySFX(ButtonUI)");
-        AudioManager.Instance.PlaySFX("ButtonUI");
+        //Debug.Log("Gọi PlaySFX(ButtonUI)");
+        //AudioManager.Instance.PlaySFX("ButtonUI");
 
         Destroy(gameObject);
     }

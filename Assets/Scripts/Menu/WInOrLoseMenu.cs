@@ -4,6 +4,9 @@ using Firebase.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+
 
 public class WInOrLoseMenu : MonoBehaviour
 {
@@ -12,6 +15,10 @@ public class WInOrLoseMenu : MonoBehaviour
 
     [SerializeField] private TMP_Text rollRewardText;
     [SerializeField] private TMP_Text diamondRewardText;
+
+    [SerializeField] private LocalizedString noRewardString;
+    [SerializeField] private LocalizedString diamondRewardFormatString;
+    [SerializeField] private LocalizedString rollRewardFormatString;
 
     private DatabaseReference dbReference;
     private string userID;
@@ -46,8 +53,38 @@ public class WInOrLoseMenu : MonoBehaviour
         int rollReward = isWin ? Random.Range(1, 6) : 0;
         int diamondReward = isWin ? Random.Range(5, 51) : 0;
 
-        rollRewardText.text = rollReward > 0 ? $"+{rollReward} lượt quay" : "Không có thưởng";
-        diamondRewardText.text = diamondReward > 0 ? $"+{diamondReward} kim cương" : "Không có thưởng";
+        if (rollReward > 0)
+        {
+            rollRewardFormatString.Arguments = new object[] { rollReward };
+            rollRewardFormatString.GetLocalizedStringAsync().Completed += handle =>
+            {
+                rollRewardText.text = handle.Result;
+            };
+        }
+        else
+        {
+            noRewardString.GetLocalizedStringAsync().Completed += handle =>
+            {
+                rollRewardText.text = handle.Result;
+            };
+        }
+
+        if (diamondReward > 0)
+        {
+            diamondRewardFormatString.Arguments = new object[] { diamondReward };
+            diamondRewardFormatString.GetLocalizedStringAsync().Completed += handle =>
+            {
+                diamondRewardText.text = handle.Result;
+            };
+        }
+        else
+        {
+            noRewardString.GetLocalizedStringAsync().Completed += handle =>
+            {
+                diamondRewardText.text = handle.Result;
+            };
+        }
+
 
         if (!isWin) return;
 

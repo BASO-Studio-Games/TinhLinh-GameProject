@@ -971,7 +971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].line
@@ -1017,7 +1017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].line.m_TableEntryReference.m_KeyId
-      value: 11257774080
+      value: 273000582873088
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].line.m_TableReference.m_TableCollectionName
@@ -1029,7 +1029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8535141521653163015, guid: 373532a385620014dbc7a15c85f7e1c2, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].line.m_TableReference.m_TableCollectionName
-      value: GUID:b24ef0e7857989741b2741efc2d32eab
+      value: GUID:278b6fdbb5489594e945549705c674d5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3819,6 +3819,36 @@ MonoBehaviour:
   nextMapName: Map - 10
   rollRewardText: {fileID: 1056263746}
   diamondRewardText: {fileID: 1056263745}
+  noRewardString:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 15872535480762368
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  diamondRewardFormatString:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 15890575144517632
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  rollRewardFormatString:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 15890601275031552
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1034274923
 GameObject:
   m_ObjectHideFlags: 0
@@ -7870,6 +7900,27 @@ MonoBehaviour:
   - {fileID: 690280292}
   - {fileID: 1735798268}
   winner: 0
+  winTextLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 16166096776462336
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  loseTextLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:7b8ac5fd10087c34eb18a6376121a024
+    m_TableEntryReference:
+      m_KeyId: 16166099540508672
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &2141041841
 Transform:
   m_ObjectHideFlags: 0
